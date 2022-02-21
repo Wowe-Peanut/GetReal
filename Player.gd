@@ -1,5 +1,6 @@
 extends KinematicBody
 
+const BOX = preload("res://Box.tscn")
 
 onready var camera = $Camera
 onready var raycast = $Camera/RayCast
@@ -44,17 +45,24 @@ func _physics_process(delta):
 		velocity.y += jump
 	
 	if Input.is_action_just_pressed("interact"):
-		if held_object:
+		if is_instance_valid(held_object) and held_object:
 			held_object.mode = RigidBody.MODE_RIGID
 			held_object.collision_mask = 1
+			held_object.held = false
 			held_object = null
 		else:
 			if raycast.get_collider():
 				held_object = raycast.get_collider()
 				held_object.mode = RigidBody.MODE_KINEMATIC
 				held_object.collision_mask = 0
+				held_object.held = true
+				
+	if Input.is_action_just_pressed("use"):
+		var new_box = BOX.instance()
+		get_tree().root.get_node("Main/Boxes").add_child(new_box)
+		
 			
-	if held_object:
+	if is_instance_valid(held_object) and held_object:
 		held_object.global_transform.origin = hold_position.global_transform.origin
 
 	velocity.x = desired_velocity.x
