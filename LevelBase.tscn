@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/crosshair.png" type="Texture" id=6]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Main.gd" type="Script" id=8]
+
+[sub_resource type="Environment" id=6]
+ambient_light_color = Color( 1, 0.980392, 0.890196, 1 )
+ambient_light_energy = 0.28
+tonemap_mode = 4
+ssao_enabled = true
+glow_enabled = true
+adjustment_enabled = true
+adjustment_saturation = 1.2
+
+[node name="LevelBase" type="Spatial"]
+script = ExtResource( 8 )
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Boxes" type="Node" parent="."]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lights"]
+environment = SubResource( 6 )
+
+[node name="Barriers" type="Node" parent="."]
+
+[node name="Door" parent="Barriers" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -14.5 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50913, 0 )
+
+[node name="Crosshair" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="Crosshair"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Crosshair/CenterContainer"]
+margin_left = 496.0
+margin_top = 284.0
+margin_right = 528.0
+margin_bottom = 316.0
+mouse_filter = 2
+texture = ExtResource( 6 )
