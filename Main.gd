@@ -13,9 +13,9 @@ func _ready():
 func _on_button_triggered():
 	for button in get_node("Buttons").get_children():
 		if !button.triggered:
-			door.locked = true
+			door.close()
 			return
-	door.locked = false
+	door.open()
 
 
 
