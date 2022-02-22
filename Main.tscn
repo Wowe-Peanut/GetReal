@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/crosshair.png" type="Texture" id=6]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main.gd" type="Script" id=8]
+[ext_resource path="res://Barrier.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
@@ -35,6 +36,7 @@ adjustment_enabled = true
 adjustment_saturation = 1.2
 
 [node name="Main" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00156021, -0.0234246, -0.00243568 )
 script = ExtResource( 8 )
 
 [node name="Level" type="Node" parent="."]
@@ -138,7 +140,10 @@ gravity_scale = 2.5
 
 [node name="Button" parent="Buttons" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13 )
-opens = false
+
+[node name="Button2" parent="Buttons" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.60755, 0, 2.32807 )
+connection = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50913, 0 )
@@ -192,5 +197,12 @@ margin_bottom = 316.0
 mouse_filter = 2
 texture = ExtResource( 6 )
 
-[node name="Door" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -14.5 )
+[node name="Barriers" type="Node" parent="."]
+
+[node name="Barrier" parent="Barriers" instance=ExtResource( 9 )]
+transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 1, 0.0105114, -1.42342, -6.35392 )
+start_locked = true
+
+[node name="Door" parent="Barriers" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00156021, -0.523425, -14.5024 )
+start_locked = true

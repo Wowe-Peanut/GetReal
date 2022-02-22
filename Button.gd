@@ -2,7 +2,7 @@ extends StaticBody
 
 signal triggered()
 
-export var opens: bool = true
+export var unlocks: bool = true
 export var connection: int = 0
 var triggered: bool = false
 
@@ -13,13 +13,13 @@ func _ready():
 
 
 func _on_area_entered(body):
-	if body.name == "Box":
+	if "Box" in body.name:
 		print("triggered")
 		triggered = true
 		emit_signal("triggered")
 
 func _on_area_exited(body):
-	if body.name == "Box":
+	if "Box" in body.name:
 		print("off button")
 		triggered = false
 		emit_signal("triggered")
