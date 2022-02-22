@@ -2,7 +2,7 @@ extends StaticBody
 
 signal triggered()
 
-export var opens: bool = true
+export var unlocks: bool = true
 export var connection: int = 0
 var triggered: bool = false
 

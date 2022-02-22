@@ -5,7 +5,7 @@
 [ext_resource path="res://Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main.gd" type="Script" id=8]
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=1]
 ambient_light_color = Color( 1, 0.980392, 0.890196, 1 )
 ambient_light_energy = 0.28
 tonemap_mode = 4
@@ -26,11 +26,11 @@ script = ExtResource( 8 )
 [node name="Lights" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lights"]
-environment = SubResource( 6 )
+environment = SubResource( 1 )
 
 [node name="Barriers" type="Node" parent="."]
 
-[node name="Door" parent="Barriers" instance=ExtResource( 7 )]
+[node name="Door" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -14.5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
