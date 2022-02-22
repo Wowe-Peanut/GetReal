@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -1.51, 2.75, 0.3 ), Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -0.78, 2.75, 0.3 ) ]
+"values": [ Transform( 0.01, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -1.51, 2.75, 0.3 ), Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -0.78, 2.75, 0.3 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("DoorRight:transform")
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 1.51, 2.75, 0.3 ), Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 0.78, 2.75, 0.3 ) ]
+"values": [ Transform( 0.01, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 1.51, 2.75, 0.3 ), Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 0.78, 2.75, 0.3 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -0.78, 2.75, 0.3 ), Transform( 0, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -1.51, 2.75, 0.3 ) ]
+"values": [ Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -0.78, 2.75, 0.3 ), Transform( 0.01, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -1.51, 2.75, 0.3 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("DoorRight:transform")
@@ -56,7 +56,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 0.78, 2.75, 0.3 ), Transform( 0, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 1.51, 2.75, 0.3 ) ]
+"values": [ Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 0.78, 2.75, 0.3 ), Transform( 0.01, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 1.51, 2.75, 0.3 ) ]
 }
 
 [sub_resource type="BoxShape" id=1]
@@ -114,11 +114,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.5 )
 shape = SubResource( 5 )
 
 [node name="DoorLeft" type="MeshInstance" parent="."]
-transform = Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -0.78, 2.75, 0.3 )
+transform = Transform( 0, 0, 0, 0, 2.75, 0, 0, 0, 0.1, -1.51, 2.75, 0.3 )
 mesh = SubResource( 6 )
 material/0 = null
 
 [node name="DoorRight" type="MeshInstance" parent="."]
-transform = Transform( 0.75, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 0.78, 2.75, 0.3 )
+transform = Transform( 0, 0, 0, 0, 2.75, 0, 0, 0, 0.1, 1.51, 2.75, 0.3 )
 mesh = SubResource( 6 )
 material/0 = null
