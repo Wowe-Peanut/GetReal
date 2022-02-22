@@ -9,23 +9,23 @@
 [ext_resource path="res://Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main.gd" type="Script" id=8]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
 
 [sub_resource type="CubeMesh" id=2]
-material = SubResource( 6 )
+material = SubResource( 1 )
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 3 )
 
-[sub_resource type="Environment" id=5]
+[sub_resource type="Environment" id=6]
 ambient_light_color = Color( 1, 0.980392, 0.890196, 1 )
 ambient_light_energy = 0.28
 tonemap_mode = 4
@@ -45,10 +45,10 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Floor"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 4 )
+material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Floor"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Floor2" type="StaticBody" parent="Level"]
 transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 10, 0 )
@@ -56,10 +56,10 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Floor2"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 4 )
+material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Floor2"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Wall" type="StaticBody" parent="Level"]
 transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 2, 10, 2, 9 )
@@ -67,10 +67,10 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Wall2" type="StaticBody" parent="Level"]
 transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 2, -10, 2, 9 )
@@ -78,10 +78,10 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall2"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall2"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Wall3" type="StaticBody" parent="Level"]
 transform = Transform( 30, 0, 0, 0, 10, 0, 0, 0, 2, 0, 4.5, 16 )
@@ -89,10 +89,10 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall3"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall3"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Wall6" type="StaticBody" parent="Level"]
 transform = Transform( 30, 0, 0, 0, 10, 0, 0, 0, 2, 0, 4.5, -16 )
@@ -100,10 +100,10 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall6"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall6"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Wall4" type="StaticBody" parent="Level"]
 transform = Transform( -1.31134e-06, 0, 2, 0, 10, 0, -30, 0, -8.74228e-08, -16, 4.5, 0 )
@@ -111,10 +111,10 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall4"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall4"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Wall5" type="StaticBody" parent="Level"]
 transform = Transform( -1.31134e-06, 0, 2, 0, 10, 0, -30, 0, -8.74228e-08, 16, 4.5, 0 )
@@ -122,10 +122,10 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall5"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall5"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Boxes" type="Node" parent="."]
 
@@ -138,6 +138,7 @@ gravity_scale = 2.5
 
 [node name="Button" parent="Buttons" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13 )
+opens = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50913, 0 )
@@ -171,7 +172,7 @@ omni_range = 28.37
 omni_attenuation = 0.258817
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 5 )
+environment = SubResource( 6 )
 
 [node name="Crosshair" type="CanvasLayer" parent="."]
 

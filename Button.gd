@@ -2,8 +2,9 @@ extends StaticBody
 
 signal triggered()
 
+export var opens: bool = true
+export var connection: int = 0
 var triggered: bool = false
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

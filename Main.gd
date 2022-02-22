@@ -11,11 +11,15 @@ func _ready():
 		
 		
 func _on_button_triggered():
+	var unlock = true
 	for button in get_node("Buttons").get_children():
-		if !button.triggered:
-			door.close()
-			return
-	door.open()
+		if button.connection == 0:
+			unlock = unlock and (button.triggered == button.opens)
+	
+	if unlock:
+		door.open()
+	else:
+		door.close()
 
 
 
