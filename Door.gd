@@ -1,12 +1,13 @@
 extends StaticBody
 
 onready var animation = $AnimationPlayer
-var locked: bool = false
+var locked: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area.connect("body_entered", self, "_on_body_entered")
-	close()
+	open()
+	#close()
 
 func _on_body_entered(body):
 	if !locked and body.name == "Player":

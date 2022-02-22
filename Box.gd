@@ -8,7 +8,7 @@ func _ready():
 	$VisibilityNotifier.connect("screen_exited", self, "_on_screen_exited")
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !held:
 		#Raycasts from all vertices 
 		var space_state = get_world().direct_space_state

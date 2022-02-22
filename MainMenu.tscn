@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Fonts/TitleFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/PNG/Dark/texture_02.png" type="Texture" id=2]
@@ -8,18 +8,26 @@
 [ext_resource path="res://MainMenuCamera.gd" type="Script" id=6]
 [ext_resource path="res://MenuButtons.gd" type="Script" id=7]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=16]
 albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 2, 2, 2 )
+uv1_triplanar = true
 
 [sub_resource type="CubeMesh" id=2]
-material = SubResource( 1 )
+material = SubResource( 16 )
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=15]
 albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 4, 4, 4 )
+uv1_triplanar = true
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 3 )
+uv1_triplanar = true
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 2 )
@@ -106,7 +114,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Floor"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 15 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Floor"]
 shape = SubResource( 4 )

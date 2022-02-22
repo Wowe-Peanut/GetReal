@@ -1,7 +1,7 @@
 extends Spatial
 
 
-onready var door = $Door
+onready var door = $Barriers/Door
 
 
 # Called when the node enters the scene tree for the first time.
