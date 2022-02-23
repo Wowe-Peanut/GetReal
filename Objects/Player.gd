@@ -59,6 +59,7 @@ func _process(delta):
 				
 	if Input.is_action_just_pressed("use"):
 		var new_box = BOX.instance()
+		new_box.translate(Vector3(0, -5, 0))
 		get_parent().get_node("Boxes").add_child(new_box)
 		
 			

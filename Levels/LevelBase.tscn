@@ -25,7 +25,7 @@ script = ExtResource( 8 )
 
 [node name="Level" type="Node" parent="."]
 
-[node name="CSGBox" type="CSGBox" parent="Level"]
+[node name="Room" type="CSGBox" parent="Level"]
 use_collision = true
 invert_faces = true
 width = 20.0

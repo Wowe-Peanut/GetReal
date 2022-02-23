@@ -18,7 +18,6 @@ uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
 
 [node name="Box" type="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91342, 4.19322 )
 collision_layer = 2
 mass = 7.0
 script = ExtResource( 1 )

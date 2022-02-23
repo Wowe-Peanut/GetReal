@@ -2,26 +2,37 @@ extends StaticBody
 
 onready var animation = $AnimationPlayer
 
-export var start_locked: bool
-export var connection: int = 1
-var locked: bool = true
+export var open_default: bool = false
+export var id: int = 1
+var open: bool = true
 
 
 
 func _ready():
-	locked = not start_locked
-	if start_locked:
-		lock()
+	open = open_default
+	if open:
+		animation.play("open")
 	else:
-		unlock()
+		animation.play("close")
 
-func unlock():
-	if locked:
-		animation.play("unlock")
-		locked = false
+func power(on):
+	if on:
+		#Go to non-default
+		if open_default and open:
+			animation.play("close")
+			open = false
+		elif (not open_default) and (not open):
+			animation.play("open")
+			open = true
+	else:
+		#Go to default
+		if open_default and not open:
+			animation.play("open")
+			open = true
+		elif (not open_default) and open:
+			animation.play("close")
+			open = false
 	
-func lock():
-	if not locked:
-		animation.play("lock")
-		locked = true
+
+
 
