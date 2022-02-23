@@ -17,15 +17,10 @@ func _ready():
 	animation_player.play("Blurb")
 	yield(animation_player, "animation_finished")
 	
-	timer.start()
-	yield(timer, "timeout")
 	$BlurbCenter/Blurb.percent_visible = 0.0
 	
 	animation_player.play("Tagline")
 	yield(animation_player, "animation_finished")
-	
-	timer.start()
-	yield(timer, "timeout")
 	
 	get_tree().change_scene("res://Levels/Level1.tscn")
 	
