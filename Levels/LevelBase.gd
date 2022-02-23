@@ -1,5 +1,6 @@
 extends Spatial
 
+export var next_level: PackedScene
 
 var connections = [[],[],[],[],[]] #Godot stupid with 2d arrays
 
@@ -10,6 +11,8 @@ func _ready():
 	
 	for barrier in get_node("Barriers").get_children():
 		connections[barrier.connection].append(barrier)
+		
+	get_node("Barriers/Door").connect("player_entered", self, "_on_player_complete")
 	
 		
 		
@@ -30,6 +33,7 @@ func _on_button_triggered():
 				for c in connections[i]:
 					c.lock()
 		
-	
+func _on_player_complete():
+	get_tree().change_scene_to(next_level)
 
 

@@ -1,2 +1,2 @@
-﻿license: Freeware, Non-Commercial
-link: https://www.fontspace.com/entanglement-font-f70715
+﻿license: SIL Open Font License (OFL)
+link: https://www.fontspace.com/beon-font-f17325

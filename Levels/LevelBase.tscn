@@ -55,7 +55,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50913, 0 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+[node name="CrosshairContainer" type="CenterContainer" parent="HUD"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -63,7 +63,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Crosshair" type="TextureRect" parent="HUD/CenterContainer"]
+[node name="Crosshair" type="TextureRect" parent="HUD/CrosshairContainer"]
 margin_left = 496.0
 margin_top = 284.0
 margin_right = 528.0
