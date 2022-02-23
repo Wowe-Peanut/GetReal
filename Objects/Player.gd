@@ -56,11 +56,6 @@ func _process(delta):
 				held_object.mode = RigidBody.MODE_KINEMATIC
 				held_object.collision_mask = 0
 				held_object.held = true
-				
-	if Input.is_action_just_pressed("use"):
-		var new_box = BOX.instance()
-		new_box.translate(Vector3(0, -5, 0))
-		get_parent().get_node("Boxes").add_child(new_box)
 		
 			
 	if is_instance_valid(held_object) and held_object:

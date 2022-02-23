@@ -10,6 +10,10 @@ func _ready():
 	get_node("Barriers/Door").connect("player_entered", self, "_on_player_complete")
 	
 	
+func _process(delta):
+	if Input.is_action_pressed("reset"):
+		get_tree().reload_current_scene()
+	
 
 func _on_button_triggered():
 	for barrier in get_node("Barriers").get_children():

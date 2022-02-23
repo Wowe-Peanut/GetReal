@@ -80,7 +80,7 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 next_level = ExtResource( 5 )
 
-[node name="CSGBox" parent="Level" index="0"]
+[node name="Room" parent="Level" index="0"]
 width = 16.0
 depth = 40.0
 
@@ -114,6 +114,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -10 )
 
 [node name="Door" parent="Barriers" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -19.5 )
+open_default = true
 
 [node name="Player" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 16 )
