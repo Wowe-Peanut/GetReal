@@ -8,12 +8,16 @@
 
 [node name="Button" parent="Buttons" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.438, -5.24118, 4.61625 )
+connection = 1
+
+[node name="Button2" parent="Buttons" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.77392, -5.24118, 4.61625 )
 unlocks = false
 connection = 1
 
 [node name="Door" parent="Barriers" index="0"]
+start_locked = true
 connection = 1
 
 [node name="Barrier" parent="Barriers" index="1" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.89756, 0 )
-start_locked = true
