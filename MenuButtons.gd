@@ -17,7 +17,7 @@ func _ready():
 	credits_panel.visible = false
 
 func _on_play_pressed():
-	get_tree().change_scene("res://Main.tscn")
+	get_tree().change_scene("res://Level1.tscn")
 	
 func _on_credits_pressed():
 	credits_panel.visible = !credits_panel.visible

@@ -16,17 +16,18 @@ func _ready():
 func _on_button_triggered():
 	#Connect buttons
 	for i in range(len(connections)):
-		var unlock = true
+		var button_count = 0
+		var change = true
 		for button in get_node("Buttons").get_children():
 			if button.connection == i:
-				unlock = unlock and (button.triggered == button.unlocks)
-			
-		if unlock:
+				change = change and (button.triggered == button.unlocks)
+				button_count += 1
+		if button_count > 0:
 			for c in connections[i]:
-				c.unlock()
-		else:
-			for c in connections[i]:
-				c.lock()
+				if c.locked:
+					c.unlock()
+				else:
+					c.lock()
 		
 	
 

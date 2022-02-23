@@ -8,16 +8,16 @@
 [ext_resource path="res://MainMenuCamera.gd" type="Script" id=6]
 [ext_resource path="res://MenuButtons.gd" type="Script" id=7]
 
-[sub_resource type="SpatialMaterial" id=16]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 2, 2, 2 )
 uv1_triplanar = true
 
 [sub_resource type="CubeMesh" id=2]
-material = SubResource( 16 )
+material = SubResource( 1 )
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 4, 4, 4 )
 uv1_triplanar = true
@@ -25,14 +25,14 @@ uv1_triplanar = true
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 3 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=7]
 ambient_light_color = Color( 1, 0.980392, 0.890196, 1 )
 ambient_light_energy = 0.28
 tonemap_mode = 4
@@ -41,7 +41,7 @@ glow_enabled = true
 adjustment_enabled = true
 adjustment_saturation = 1.2
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -56,8 +56,7 @@ tracks/0/keys = {
 "values": [ Vector3( 13.5812, 4.43043, -4.92138 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "move"
+[sub_resource type="Animation" id=9]
 length = 16.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -72,12 +71,12 @@ tracks/0/keys = {
 "values": [ Vector3( 13.5812, 4.43043, -4.92138 ), Vector3( 13.581, 4.7, -5.1 ), Vector3( 13.581, 4.43, -5.1 ), Vector3( 13.581, 5, -4.62 ), Vector3( 13.5812, 4.43043, -4.92138 ) ]
 }
 
-[sub_resource type="Theme" id=9]
+[sub_resource type="Theme" id=10]
 default_font = ExtResource( 1 )
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.913725, 0.788235, 1, 0.235294 )
 border_width_left = 3
 border_width_top = 3
@@ -85,7 +84,7 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color( 0.733333, 0.572549, 0.94902, 1 )
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 3
 border_width_top = 3
@@ -93,10 +92,10 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color( 0.733333, 0.572549, 0.94902, 1 )
 
-[sub_resource type="Theme" id=13]
+[sub_resource type="Theme" id=14]
 default_font = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.866667, 0.694118, 0.960784, 0.235294 )
 border_width_left = 3
 border_width_top = 3
@@ -114,7 +113,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Floor"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 15 )
+material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Floor"]
 shape = SubResource( 4 )
@@ -125,7 +124,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Floor2"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Floor2"]
 shape = SubResource( 4 )
@@ -136,7 +135,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall"]
 shape = SubResource( 4 )
@@ -147,7 +146,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall2"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall2"]
 shape = SubResource( 4 )
@@ -158,7 +157,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall3"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall3"]
 shape = SubResource( 4 )
@@ -169,7 +168,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall6"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall6"]
 shape = SubResource( 4 )
@@ -180,7 +179,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall4"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall4"]
 shape = SubResource( 4 )
@@ -191,7 +190,7 @@ input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Wall5"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Wall5"]
 shape = SubResource( 4 )
@@ -239,7 +238,7 @@ mass = 0.5
 gravity_scale = 2.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 6 )
+environment = SubResource( 7 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -0.803116, 0.000730996, 0.595823, 0.0100293, 0.999874, 0.0122919, -0.595739, 0.0158475, -0.803022, 13.5812, 4.43043, -4.92138 )
@@ -247,8 +246,8 @@ script = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
 root_node = NodePath("../..")
-anims/RESET = SubResource( 7 )
-anims/move = SubResource( 8 )
+anims/RESET = SubResource( 8 )
+anims/move = SubResource( 9 )
 
 [node name="Menu" type="CanvasLayer" parent="."]
 
@@ -268,8 +267,8 @@ __meta__ = {
 margin_right = 404.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 100 )
-theme = SubResource( 9 )
-custom_styles/panel = SubResource( 10 )
+theme = SubResource( 10 )
+custom_styles/panel = SubResource( 11 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuButtons/PanelContainer"]
 margin_right = 404.0
@@ -288,24 +287,24 @@ __meta__ = {
 margin_top = 61.0
 margin_right = 404.0
 margin_bottom = 124.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
 text = "Play"
 
 [node name="Credits" type="Button" parent="Menu/MenuButtons/PanelContainer/VBoxContainer"]
 margin_top = 128.0
 margin_right = 404.0
 margin_bottom = 191.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
 text = "Credits"
 
 [node name="Quit" type="Button" parent="Menu/MenuButtons/PanelContainer/VBoxContainer"]
 margin_top = 195.0
 margin_right = 404.0
 margin_bottom = 258.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
 text = "Quit"
 
 [node name="CreditsPanel" type="MarginContainer" parent="Menu"]
@@ -316,7 +315,7 @@ margin_left = 600.0
 margin_top = 100.0
 margin_right = -20.0
 margin_bottom = -100.0
-theme = SubResource( 13 )
+theme = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -324,7 +323,7 @@ __meta__ = {
 [node name="PanelContainer" type="PanelContainer" parent="Menu/CreditsPanel"]
 margin_right = 404.0
 margin_bottom = 400.0
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

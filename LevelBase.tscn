@@ -7,12 +7,12 @@
 [ext_resource path="res://Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main.gd" type="Script" id=8]
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=2]
 ambient_light_color = Color( 0.980392, 0.862745, 1, 1 )
 tonemap_mode = 4
 ssao_enabled = true
@@ -31,7 +31,7 @@ invert_faces = true
 width = 20.0
 height = 12.0
 depth = 20.0
-material = SubResource( 7 )
+material = SubResource( 1 )
 
 [node name="Boxes" type="Node" parent="."]
 
@@ -40,7 +40,7 @@ material = SubResource( 7 )
 [node name="Lights" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lights"]
-environment = SubResource( 6 )
+environment = SubResource( 2 )
 
 [node name="Light" parent="Lights" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.85038, 0 )

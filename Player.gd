@@ -59,7 +59,7 @@ func _physics_process(delta):
 				
 	if Input.is_action_just_pressed("use"):
 		var new_box = BOX.instance()
-		get_tree().root.get_node("Main/Boxes").add_child(new_box)
+		get_parent().get_node("Boxes").add_child(new_box)
 		
 			
 	if is_instance_valid(held_object) and held_object:
