@@ -1,6 +1,6 @@
 extends KinematicBody
 
-const BOX = preload("res://Box.tscn")
+const BOX = preload("res://Objects/Box.tscn")
 
 onready var camera = $Camera
 onready var raycast = $Camera/RayCast
@@ -37,7 +37,7 @@ func get_input():
 		get_tree().quit()
 	return input_dir.normalized()
 	
-func _physics_process(delta):
+func _process(delta):
 	velocity.y += gravity * delta
 	var desired_velocity = get_input() * max_speed
 	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/PNG/Purple/texture_03.png" type="Texture" id=1]
 [ext_resource path="res://assets/PNG/Light/texture_02.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Light.gd" type="Script" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 4, 0.125, 2 )
@@ -23,6 +24,7 @@ emission_operator = 0
 emission_on_uv2 = false
 
 [node name="Light" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
