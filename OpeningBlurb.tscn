@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Fonts/DefaultFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://OpeningBlurb.gd" type="Script" id=2]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Blurb"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlurbCenter/Blurb:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3, 1.5, 2.5, 2.7, 4, 5.5, 9.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.144882, 0.144882, 0.202835, 0.202835, 0.362205, 0.362205, 1.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Tagline"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TaglineCenter/Tagline:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 2.2, 2.4, 3.4, 3.6, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.25, 0.25, 0.4, 0.4, 0.7, 0.7, 1.0 ]
+}
+
+[node name="OpeningBlurb" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlurbCenter" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blurb" type="RichTextLabel" parent="BlurbCenter"]
+margin_left = 202.0
+margin_top = 250.0
+margin_right = 822.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 620, 100 )
+text = "Object Permanence /noun/ ob·jec·t per·ma·nence
+
+The understanding that objects continue to exist even when they cannot be observed."
+scroll_active = false
+
+[node name="TaglineCenter" type="CenterContainer" parent="."]
+margin_left = 387.0
+margin_top = 285.0
+margin_right = 637.0
+margin_bottom = 315.0
+theme = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tagline" type="RichTextLabel" parent="TaglineCenter"]
+visible = false
+margin_right = 250.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 250, 30 )
+text = "It. 	Is.	 Not.	 Real."
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Blurb = SubResource( 3 )
+anims/Tagline = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
