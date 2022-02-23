@@ -1,9 +1,8 @@
-extends MarginContainer
+extends PanelContainer
 
-
-onready var play = $PanelContainer/VBoxContainer/Play
-onready var credits = $PanelContainer/VBoxContainer/Credits
-onready var quit = $PanelContainer/VBoxContainer/Quit
+onready var play = $ButtonContainer/Play
+onready var credits = $ButtonContainer/Credits
+onready var quit = $ButtonContainer/Quit
 
 onready var credits_panel = get_parent().get_node("CreditsPanel")
 

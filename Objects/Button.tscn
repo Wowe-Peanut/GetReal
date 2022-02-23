@@ -28,7 +28,8 @@ material = SubResource( 5 )
 
 [node name="CSGTorus" type="CSGTorus" parent="CSGBox"]
 operation = 2
-outer_radius = 3.25
+inner_radius = 1.5
+outer_radius = 3.5
 ring_sides = 3
 material = SubResource( 6 )
 

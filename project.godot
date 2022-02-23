@@ -14,11 +14,6 @@ config/name="Get Real"
 run/main_scene="res://MainMenu.tscn"
 config/icon="res://assets/icon.png"
 
-[display]
-
-window/size/fullscreen=true
-window/stretch/mode="viewport"
-
 [input]
 
 move_forward={
