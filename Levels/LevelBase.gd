@@ -3,18 +3,29 @@ extends Spatial
 export var next_level: PackedScene
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for button in get_node("Buttons").get_children():
 		button.connect("triggered", self, "_on_button_triggered")
 	get_node("Barriers/Door").connect("player_entered", self, "_on_player_complete")
 	
+	setup_transparent_barriers()
+	
+	
+func setup_transparent_barriers():
+	var transparent_barriers = []
+	for barrier in get_node("Barriers").get_children():
+		if "transparent" in barrier and barrier.transparent:
+			transparent_barriers.append(barrier)
+			
+	for box in get_node("Boxes").get_children():
+		box.set_transparent_barriers(transparent_barriers)
 	
 func _process(delta):
 	if Input.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
 	
-
 func _on_button_triggered():
 	for barrier in get_node("Barriers").get_children():
 		#For each barrier, if all the connected buttons are in the correct states, change barrier from default state
@@ -25,8 +36,6 @@ func _on_button_triggered():
 			elif barrier.id in button.unpowers:
 				power = power and not button.triggered
 		barrier.power(power)
-	
-	
 		
 func _on_player_complete():
 	get_tree().change_scene_to(next_level)

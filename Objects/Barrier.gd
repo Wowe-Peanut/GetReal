@@ -3,12 +3,18 @@ extends StaticBody
 onready var animation = $AnimationPlayer
 
 export var open_default: bool = false
+export var transparent: bool = false
 export var id: int = 1
 var open: bool = true
 
-
-
 func _ready():
+	
+	if transparent:
+		var transparent_barrier = SpatialMaterial.new()
+		transparent_barrier.flags_transparent = true
+		transparent_barrier.albedo_color = Color(1, 1, 1, 0.1)
+		$MeshInstance.material_override = transparent_barrier
+	
 	open = open_default
 	if open:
 		animation.play("open")

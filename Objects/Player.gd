@@ -56,7 +56,6 @@ func _process(delta):
 				held_object.mode = RigidBody.MODE_KINEMATIC
 				held_object.collision_mask = 0
 				held_object.held = true
-		
 			
 	if is_instance_valid(held_object) and held_object:
 		held_object.global_transform.origin = hold_position.global_transform.origin
