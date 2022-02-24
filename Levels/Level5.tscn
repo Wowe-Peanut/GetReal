@@ -67,7 +67,7 @@ depth = 1.0
 material = SubResource( 4 )
 
 [node name="Box" parent="Boxes" index="0" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -5.5, 3 )
 
 [node name="Button" parent="Buttons" index="0" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -6, 0 )
@@ -75,7 +75,7 @@ powers = [ 0 ]
 
 [node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0100002, 0 )
-points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -11.8 ), Vector3( 8, 0, -11.8 ) ]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 4 ), Vector3( 8, 0, 4 ), Vector3( 8, 0, 0 ), Vector3( 8, 2, 0 ), Vector3( 8, 2, -2 ), Vector3( 8, 4, -2 ), Vector3( 8, 4, -4 ), Vector3( 8, 0, -4 ), Vector3( 8, 0, -12 ) ]
 power_wire = true
 
 [node name="Door" parent="Barriers" index="0"]

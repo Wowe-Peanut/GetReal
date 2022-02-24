@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Objects/Box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Light.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Level5.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Wire.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
@@ -46,6 +47,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -8 )
 [node name="Button" parent="Buttons" index="0" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 4 )
 powers = [ 0 ]
+
+[node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 7 )]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -6 ), Vector3( 0, 2, -6 ), Vector3( 0, 2, -8 ), Vector3( 0, 4, -8 ), Vector3( 0, 4, -20 ) ]
 
 [node name="Light" parent="Lights" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.85, 8 )

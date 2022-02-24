@@ -79,7 +79,7 @@ func draw_lines():
 func _on_button_triggered():
 	is_on = not is_on
 	for w in get_children():
-		yield(get_tree().create_timer(segment_delay), "timeout")
+		#yield(get_tree().create_timer(segment_delay), "timeout")
 		w.material_override.emission_enabled = is_on == power_wire
 		w.material_override.albedo_color = on_color if is_on == power_wire else off_color
 		
