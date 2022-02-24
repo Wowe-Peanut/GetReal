@@ -8,7 +8,7 @@ onready var hold_position = $Camera/HoldPosition
 var mouse_sensitivity = 0.002 
 var gravity = -30
 var max_speed = 8
-var jump = 15
+var jump = 10
 var velocity = Vector3()
 var held_object: Object = null
 
