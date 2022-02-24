@@ -21,13 +21,13 @@ func _process(delta):
 		played_hints[2] = true
 	._process(delta)
 	
-func _on_box_hint_2_triggered(body):
+func _on_box_hint_2_triggered(_body):
 	if !played_hints[1]:
 		hide_hints()
 		hint_player.play("BoxHint2")
 		played_hints[1] = true
 		
-func _on_button_hint_triggered(body):
+func _on_button_hint_triggered(_body):
 	if !played_hints[3]:
 		hide_hints()
 		hint_player.play("ButtonHint")

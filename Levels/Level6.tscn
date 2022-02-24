@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Barrier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Level7.tscn" type="PackedScene" id=5]
+
+[node name="Level6" instance=ExtResource( 2 )]
+next_level = ExtResource( 5 )
+
+[node name="Room" parent="Level" index="0"]
+depth = 24.0
+
+[node name="Box" parent="Boxes" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 2 )
+
+[node name="Button" parent="Buttons" index="0" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -6, 2 )
+powers = [ 0 ]
+
+[node name="Door" parent="Barriers" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -12 )
+open_default = true
+
+[node name="Barrier" parent="Barriers" index="1" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.9, -3 )
+id = 0
+
+[node name="Player" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 10 )

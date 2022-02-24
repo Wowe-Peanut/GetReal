@@ -10,6 +10,3 @@ extends Camera
 func _ready():
 	$AnimationPlayer.play("move")
 
-
-#func _process(delta):
-#	pass

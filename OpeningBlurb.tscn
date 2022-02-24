@@ -15,6 +15,7 @@ default_font = ExtResource( 1 )
 [sub_resource type="Animation" id=6]
 resource_name = "Skip"
 length = 4.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -66,10 +67,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 1.2, 2.2, 2.4, 3.4, 3.6, 4.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 4.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.25, 0.25, 0.4, 0.4, 0.7, 0.7, 1.0 ]
+"values": [ 0.0, 1.0 ]
 }
 
 [node name="OpeningBlurb" type="Control"]
@@ -121,13 +122,11 @@ __meta__ = {
 }
 
 [node name="Tagline" type="RichTextLabel" parent="TaglineCenter"]
-margin_left = 387.0
-margin_right = 637.0
+margin_left = 247.0
+margin_right = 777.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 250, 30 )
-visible_characters = 0
-percent_visible = 0.0
-text = "It. 	Is.	 Not.	 Real."
+rect_min_size = Vector2( 530, 30 )
+text = "But permanence does not equal reality."
 scroll_active = false
 
 [node name="Skip" type="Label" parent="."]
