@@ -31,7 +31,7 @@ func draw_lines():
 		segment.translate((points[i]+points[i+1])/2)
 		
 		if points[i].x - points[i+1].x != 0: #Then X is changing
-			segment.scale.x = .5*points[i].distance_to(points[i+1])+width
+			segment.scale.x = .5*points[i].distance_to(points[i+1]) + stick_out
 			
 			if up == 1:
 				up = last_dir
@@ -45,7 +45,7 @@ func draw_lines():
 				
 			last_dir = 1
 		elif points[i].z - points[i+1].z != 0: #Then Z is changing
-			segment.scale.z = .5*points[i].distance_to(points[i+1])+width
+			segment.scale.z = .5*points[i].distance_to(points[i+1]) + stick_out
 			
 			if up == 3:
 				up = last_dir
@@ -60,7 +60,7 @@ func draw_lines():
 				
 			last_dir = 3
 		elif points[i].y - points[i+1].y != 0: #Then Y is changing
-			segment.scale.y = .5*points[i].distance_to(points[i+1])+width
+			segment.scale.y = .5*points[i].distance_to(points[i+1]) + stick_out
 			
 			if up == 2:
 				up = last_dir

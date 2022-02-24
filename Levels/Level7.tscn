@@ -19,11 +19,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -4 )
 powers = [ 0 ]
 
 [node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 5 )]
-points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -8.2 ) ]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -8 ) ]
 power_wire = true
 
 [node name="Wire2" parent="Buttons/Button" index="5" instance=ExtResource( 5 )]
-points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 6.2 ) ]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 6 ) ]
 power_wire = true
 
 [node name="Door" parent="Barriers" index="0"]

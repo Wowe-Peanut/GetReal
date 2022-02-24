@@ -50,6 +50,7 @@ powers = [ 0 ]
 
 [node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 7 )]
 points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -6 ), Vector3( 0, 2, -6 ), Vector3( 0, 2, -8 ), Vector3( 0, 4, -8 ), Vector3( 0, 4, -20 ) ]
+power_wire = true
 
 [node name="Light" parent="Lights" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.85, 8 )
