@@ -1,16 +1,16 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Objects/Light.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/Level1.gd" type="Script" id=3]
-[ext_resource path="res://assets/Fonts/DefaultFont.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Levels/Level2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Level1.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts/DefaultFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Levels/Tutorial2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Light.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 7.9, 4.9, 1 )
 
 [sub_resource type="Theme" id=1]
-default_font = ExtResource( 4 )
+default_font = ExtResource( 2 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "DoorHint"
@@ -76,9 +76,9 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="Level1" instance=ExtResource( 1 )]
-script = ExtResource( 3 )
-next_level = ExtResource( 5 )
+[node name="Tutorial1" instance=ExtResource( 4 )]
+script = ExtResource( 1 )
+next_level = ExtResource( 3 )
 
 [node name="Room" parent="Level" index="0"]
 width = 16.0
@@ -106,10 +106,10 @@ shape = SubResource( 6 )
 [node name="Light" parent="Lights" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
 
-[node name="Light2" parent="Lights" index="2" instance=ExtResource( 2 )]
+[node name="Light2" parent="Lights" index="2" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 10 )
 
-[node name="Light3" parent="Lights" index="3" instance=ExtResource( 2 )]
+[node name="Light3" parent="Lights" index="3" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -10 )
 
 [node name="Door" parent="Barriers" index="0"]

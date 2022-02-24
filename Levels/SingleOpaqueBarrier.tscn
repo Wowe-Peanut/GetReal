@@ -5,9 +5,9 @@
 [ext_resource path="res://Objects/Box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Wire.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Levels/Level8.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/TwoButtons.tscn" type="PackedScene" id=6]
 
-[node name="Level7" instance=ExtResource( 1 )]
+[node name="SingleOpaqueBarrier" instance=ExtResource( 1 )]
 next_level = ExtResource( 6 )
 
 [node name="Room" parent="Level" index="0"]
