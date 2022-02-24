@@ -1,13 +1,48 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Wire.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Box.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Barrier.tscn" type="PackedScene" id=5]
 
 [node name="LevelBase" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00955248, -0.0249972, 8.37755 )
 
+[node name="Box" parent="Boxes" index="0" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00858, -4.97643, 3.62047 )
+
+[node name="Box2" parent="Boxes" index="1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25995, -4.97643, 3.62047 )
+
 [node name="Button" parent="Buttons" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -6, 5 )
+powers = [ 0 ]
+
+[node name="Wire" parent="Buttons/Button" index="3" instance=ExtResource( 3 )]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -14 ), Vector3( 4, 0, -14 ) ]
+power_wire = true
+
+[node name="Button2" parent="Buttons" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -6, 5 )
+powers = [ 1 ]
+unpowers = [ 0 ]
+
+[node name="Wire" parent="Buttons/Button2" index="3" instance=ExtResource( 3 )]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -14 ), Vector3( -4, 0, -14 ) ]
+
+[node name="Wire2" parent="Buttons/Button2" index="4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0100002, 0 )
+points = [ Vector3( 0, 0, 0 ), Vector3( -4, 0, 0 ), Vector3( -4, 0, -5 ) ]
+power_wire = true
+
+[node name="Barrier" parent="Barriers" index="1" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.9, 0 )
+open_default = true
+transparent = true
 
 [node name="Player" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7688, 0 )
+
+[node name="Wire" parent="." index="7" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -5.89361, -7.2916 )

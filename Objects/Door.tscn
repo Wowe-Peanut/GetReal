@@ -101,7 +101,7 @@ height = 6.0
 depth = 1.0
 material = SubResource( 4 )
 
-[node name="CSGBox" type="CSGBox" parent="Frame"]
+[node name="Cutout" type="CSGBox" parent="Frame"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0.25 )
 operation = 2
 width = 3.0

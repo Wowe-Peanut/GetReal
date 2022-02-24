@@ -8,6 +8,11 @@ export var next_level: PackedScene
 func _ready():
 	for button in get_node("Buttons").get_children():
 		button.connect("triggered", self, "_on_button_triggered")
+		
+		for child in button.get_children():
+			if "Wire" in child.name:
+				button.connect("triggered", child, "_on_button_triggered")
+			
 	get_node("Barriers/Door").connect("player_entered", self, "_on_player_complete")
 	
 	setup_transparent_barriers()
