@@ -15,7 +15,6 @@ func _input(event):
 			pause()
 		else:
 			unpause()
-		get_tree().paused = !get_tree().paused
 		print(get_tree().paused)
 		
 func pause():
