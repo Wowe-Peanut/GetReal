@@ -33,8 +33,6 @@ func get_input():
 		input_dir += -global_transform.basis.x
 	if Input.is_action_pressed("strafe_right"):
 		input_dir += global_transform.basis.x
-	if Input.is_action_pressed("ui_cancel"):
-		get_tree().quit()
 	return input_dir.normalized()
 	
 func _process(delta):
