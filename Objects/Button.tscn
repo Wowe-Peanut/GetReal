@@ -17,7 +17,7 @@ uv1_triplanar = true
 
 [sub_resource type="CylinderShape" id=7]
 radius = 2.0
-height = 0.25
+height = 0.5
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 1.5, 0.5, 1.5 )
