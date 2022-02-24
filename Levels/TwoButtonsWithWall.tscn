@@ -17,6 +17,9 @@ uv1_triplanar = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.65827, 0 )
 next_level = ExtResource( 6 )
 
+[node name="Room" parent="Level" index="0"]
+depth = 26.0
+
 [node name="Wall" type="CSGBox" parent="Level" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0 )
 height = 5.0
@@ -34,8 +37,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -6, -2 )
 powers = [ 0 ]
 
 [node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0724201, -0.0964179, -0.0775666 )
-points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -7 ), Vector3( 3, 0, -7 ) ]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -11 ), Vector3( 3, 0, -11 ) ]
 power_wire = true
 
 [node name="Button2" parent="Buttons" index="1" instance=ExtResource( 4 )]
@@ -43,8 +46,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -6, -2 )
 powers = [ 0 ]
 
 [node name="Wire" parent="Buttons/Button2" index="4" instance=ExtResource( 3 )]
-points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -7 ), Vector3( -3, 0, -7 ) ]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -11 ), Vector3( -3, 0, -11 ) ]
 power_wire = true
 
+[node name="Door" parent="Barriers" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -13 )
+
 [node name="Player" parent="." index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 8.7926 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 12 )

@@ -10,6 +10,10 @@
 [node name="TwoButtonsOneBarrier" instance=ExtResource( 1 )]
 next_level = ExtResource( 6 )
 
+[node name="Room" parent="Level" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+depth = 24.0
+
 [node name="Box" parent="Boxes" index="0" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -5.5, 2 )
 
@@ -44,4 +48,4 @@ transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.9, -3 )
 transparent = true
 
 [node name="Player" parent="." index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 8.06239 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 12 )

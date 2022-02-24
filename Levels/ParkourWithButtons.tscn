@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Wire.tscn" type="PackedScene" id=2]
@@ -14,11 +14,6 @@ uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.25, 0.25, 0.25 )
-uv1_triplanar = true
-
-[sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 1 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
@@ -56,13 +51,6 @@ width = 20.0
 height = 4.0
 depth = 6.0
 material = SubResource( 1 )
-
-[node name="CSGBox" type="CSGBox" parent="Level/CSGCombiner/FloorDoor" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2 )
-operation = 2
-width = 10.0
-height = 4.0
-material = SubResource( 3 )
 
 [node name="CSGBox" type="CSGBox" parent="Level/CSGCombiner" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -4, 3 )

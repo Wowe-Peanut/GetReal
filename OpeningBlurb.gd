@@ -24,7 +24,7 @@ func _ready():
 	animation_player.play("Tagline")
 	yield(animation_player, "animation_finished")
 	
-	get_tree().change_scene("res://Levels/Level1.tscn")
+	get_tree().change_scene("res://Levels/Tutorial1.tscn")
 	
 func stagger_skip_prompt():
 	yield(get_tree().create_timer(4.7), "timeout")
