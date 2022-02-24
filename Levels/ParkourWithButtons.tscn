@@ -1,32 +1,35 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=2]
-[ext_resource path="res://Objects/Light.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Levels/ParkourWithButtons.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Wire.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Box.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Light.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/BoxEraseBox.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_texture = ExtResource( 2 )
+albedo_texture = ExtResource( 1 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_texture = ExtResource( 2 )
-uv1_scale = Vector3( 0.25, 0.25, 0.25 )
-uv1_triplanar = true
-
-[sub_resource type="SpatialMaterial" id=4]
-albedo_texture = ExtResource( 2 )
+albedo_texture = ExtResource( 1 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
 
 [sub_resource type="SpatialMaterial" id=3]
-albedo_texture = ExtResource( 2 )
+albedo_texture = ExtResource( 1 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
 
-[node name="Parkour" instance=ExtResource( 1 )]
-next_level = ExtResource( 4 )
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 0.25, 0.25, 0.25 )
+uv1_triplanar = true
+
+[node name="ParkourWithButtons" instance=ExtResource( 4 )]
+next_level = ExtResource( 7 )
 
 [node name="Room" parent="Level" index="0"]
 depth = 28.0
@@ -59,37 +62,47 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2 )
 operation = 2
 width = 10.0
 height = 4.0
-material = SubResource( 4 )
+material = SubResource( 3 )
 
 [node name="CSGBox" type="CSGBox" parent="Level/CSGCombiner" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -4, 3 )
 height = 4.0
-material = SubResource( 3 )
+material = SubResource( 4 )
 
 [node name="CSGBox2" type="CSGBox" parent="Level/CSGCombiner" index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -4, 1 )
 height = 4.0
-material = SubResource( 3 )
+material = SubResource( 4 )
 
 [node name="CSGBox3" type="CSGBox" parent="Level/CSGCombiner" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -4, -3 )
 height = 4.0
-material = SubResource( 3 )
+material = SubResource( 4 )
 
 [node name="CSGBox4" type="CSGBox" parent="Level/CSGCombiner" index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -4, -7 )
 height = 4.0
-material = SubResource( 3 )
+material = SubResource( 4 )
 
-[node name="Light2" parent="Lights" index="2" instance=ExtResource( 3 )]
+[node name="Box" parent="Boxes" index="0" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, -10 )
+
+[node name="Button" parent="Buttons" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, -10 )
+powers = [ 0 ]
+
+[node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 2 )]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -4 ), Vector3( 6, 0, -4 ) ]
+power_wire = true
+
+[node name="Light2" parent="Lights" index="2" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.85, 8 )
 
-[node name="Light3" parent="Lights" index="3" instance=ExtResource( 3 )]
+[node name="Light3" parent="Lights" index="3" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.85, -8 )
 
 [node name="Door" parent="Barriers" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -14 )
-open_default = true
 
 [node name="Player" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12 )

@@ -32,4 +32,4 @@ func stagger_skip_prompt():
 	
 func _process(delta):
 	if Input.is_action_pressed("interact"):
-		get_tree().change_scene("res://Levels/Level1.tscn")
+		get_tree().change_scene("res://Levels/Tutorial1.tscn")
