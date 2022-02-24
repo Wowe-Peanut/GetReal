@@ -110,7 +110,6 @@ texture = ExtResource( 6 )
 
 [node name="PauseMenu" type="CenterContainer" parent="HUD"]
 pause_mode = 2
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -119,6 +118,12 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="HUD/PauseMenu"]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1024, 600 )
+color = Color( 0, 0, 0, 0.501961 )
 
 [node name="Panel" type="PanelContainer" parent="HUD/PauseMenu"]
 margin_left = 362.0
