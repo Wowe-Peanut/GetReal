@@ -59,6 +59,8 @@ tracks/1/keys = {
 [sub_resource type="CubeMesh" id=3]
 
 [sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.666667 )
 
 [sub_resource type="BoxShape" id=5]
 
