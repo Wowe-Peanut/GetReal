@@ -16,6 +16,8 @@ func _physics_process(_delta):
 		#Raycasts from all vertices 
 		var space_state = get_world().direct_space_state
 		for vertex in mesh.get_mesh().get_faces():
+			if hidden:
+				return
 			var result = space_state.intersect_ray(mesh.global_transform.xform(vertex), get_viewport().get_camera().global_transform.origin, transparent_barriers)
 			if result.size() <= 0 or result.collider.name == "Player":
 				return
