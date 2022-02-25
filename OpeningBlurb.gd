@@ -7,7 +7,7 @@ onready var timer = $Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$BlurbCenter/Blurb.percent_visible = 0.0
 	$TaglineCenter/Tagline.percent_visible = 0.0
 	
