@@ -81,7 +81,8 @@ anchor_bottom = 1.0
 margin_left = -273.0
 margin_top = -25.0
 theme = SubResource( 3 )
-text = "Press 'E' to continue..."
+text = "Press 'E' to finish..."
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
