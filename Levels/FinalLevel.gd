@@ -22,4 +22,4 @@ func _on_fake_outside_hidden():
 
 
 func get_drunk():
-	get_tree().change_scene("res://Levels/LevelBase.tscn")
+	get_tree().change_scene("res://EndingScreen.tscn")

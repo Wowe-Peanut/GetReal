@@ -9,6 +9,7 @@ onready var credits_panel = get_parent().get_node("CreditsPanel")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	play.connect("pressed", self, "_on_play_pressed")
 	credits.connect("pressed", self, "_on_credits_pressed")
 	quit.connect("pressed", self, "_on_quit_pressed")
