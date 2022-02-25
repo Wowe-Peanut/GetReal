@@ -6,7 +6,7 @@
 [ext_resource path="res://Levels/Level2.gd" type="Script" id=4]
 [ext_resource path="res://assets/Fonts/DefaultFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=6]
-[ext_resource path="res://Levels/Tutorial3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/SingleButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Wire.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=2]

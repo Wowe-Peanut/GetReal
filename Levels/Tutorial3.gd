@@ -8,17 +8,7 @@ onready var hint_player: AnimationPlayer = $HUD/AnimationPlayer
 func _ready():
 	hide_hints()
 	
-	hint_player.play("BarrierHint")
-	yield(get_tree().create_timer(3), "timeout")
-	hide_hints()
-	
-	hint_player.play("TransBarrierHint")
-	yield(get_tree().create_timer(3), "timeout")
-	hide_hints()
-	
 	hint_player.play("BoxesDestroyHint")
-	yield(get_tree().create_timer(3), "timeout")
-	hide_hints()
 
 
 func hide_hints():

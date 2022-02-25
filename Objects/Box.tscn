@@ -9,7 +9,7 @@
 
 [sub_resource type="SpatialMaterial" id=3]
 flags_transparent = true
-albedo_color = Color( 1, 1, 1, 0.501961 )
+albedo_color = Color( 1, 1, 1, 0.776471 )
 albedo_texture = ExtResource( 2 )
 emission_enabled = true
 emission = Color( 0.0862745, 0.705882, 0.357353, 1 )

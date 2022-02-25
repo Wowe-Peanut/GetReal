@@ -6,7 +6,7 @@
 [ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Light.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Levels/BoxEraseBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Tutorial3.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -94,3 +94,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -14 )
 
 [node name="Player" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12 )
+
+[node name="Paused" parent="HUD/PauseMenu/Panel/Align" index="0"]
+align = 1
