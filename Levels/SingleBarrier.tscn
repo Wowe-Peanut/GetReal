@@ -33,6 +33,7 @@ open_default = true
 
 [node name="Barrier" parent="Barriers" index="1" instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.9, -3 )
+transparent = true
 id = 0
 
 [node name="Player" parent="." index="5"]

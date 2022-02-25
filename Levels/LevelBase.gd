@@ -28,7 +28,7 @@ func setup_transparent_barriers():
 		box.set_transparent_barriers(transparent_barriers)
 	
 func _process(delta):
-	if Input.is_action_pressed("reset"):
+	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 	
 func _on_button_triggered():
