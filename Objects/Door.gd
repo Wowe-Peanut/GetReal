@@ -1,10 +1,16 @@
 extends StaticBody
 
-onready var animation = $AnimationPlayer
 export var open_default: bool  = false
 export var id: int = 0
+
+onready var animation = $AnimationPlayer
+onready var tween = $Tween
+onready var dr = $DoorRight
+onready var dl = $DoorLeft
+
 var open: bool = false
 var player_in: bool = false
+var animation_time: float = 0.5
 
 signal player_entered()
 
@@ -14,9 +20,9 @@ func _ready():
 	$Area.connect("body_exited", self, "_on_body_exit")
 	open = open_default
 	if open:
-		animation.play("open")
+		open()
 	else:
-		animation.play("close")
+		close()
 
 func _on_body_entered(body):
 	if "Player" in body.name:
@@ -32,18 +38,45 @@ func power(on):
 	if on:
 		#Go to non-default
 		if open_default and open:
-			animation.play("close")
+			close()
 			open = false
 		elif (not open_default) and (not open):
-			animation.play("open")
+			open()
 			if player_in:
 				emit_signal("player_entered")
 			open = true
 	else:
 		#Go to default
 		if open_default and not open:
-			animation.play("open")
+			open()
 			open = true
 		elif (not open_default) and open:
-			animation.play("close")
+			close()
 			open = false
+			
+
+func open():
+	#Scale.x 0.75 --> 0
+	#Transform.x -0.78 -->  -1.5
+	tween.stop_all()
+	var length = animation_time*(dl.scale.x/0.75)
+	#Door Left
+	tween.interpolate_property(dl,"scale",dl.scale,Vector3(0, 2.75, 0.1),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	tween.interpolate_property(dl,"translation",dl.translation,Vector3(-1.5,2.75,0.3),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	#Door Right
+	tween.interpolate_property(dr,"scale",dr.scale,Vector3(0, 2.75, 0.1),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	tween.interpolate_property(dr,"translation",dr.translation,Vector3(1.5,2.75,0.3),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	tween.start()
+	
+func close():
+	#Scale.x 0 --> 0.75
+	#Transform.x -1.5 --> -0.78
+	tween.stop_all()
+	var length = animation_time*((0.75-dl.scale.x)/0.75)
+	#Door Left
+	tween.interpolate_property(dl,"scale",dl.scale,Vector3(0.75, 2.75, 0.1),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	tween.interpolate_property(dl,"translation",dl.translation,Vector3(-0.78,2.75,0.3),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	#Door Right
+	tween.interpolate_property(dr,"scale",dr.scale,Vector3(0.75, 2.75, 0.1),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	tween.interpolate_property(dr,"translation",dr.translation,Vector3(0.78,2.75,0.3),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	tween.start()

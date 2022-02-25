@@ -17,13 +17,13 @@ func _ready():
 func _on_area_entered(body):
 	if "Box" in body.name:
 		trigger_count += 1
-		triggered = true
-		if trigger_count == 1:
+		if trigger_count == 1: 
+			triggered = true   
 			emit_signal("triggered")
 
 func _on_area_exited(body):
 	if "Box" in body.name:
 		trigger_count -= 1
-		triggered = false
 		if trigger_count == 0:
+			triggered = false
 			emit_signal("triggered")
