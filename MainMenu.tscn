@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Fonts/TitleFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/PNG/Dark/texture_02.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Objects/Box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://MainMenuCamera.gd" type="Script" id=6]
 [ext_resource path="res://MenuButtons.gd" type="Script" id=7]
+[ext_resource path="res://assets/Fonts/DefaultFont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/icon.png" type="Texture" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 3 )
@@ -76,24 +78,32 @@ default_font = ExtResource( 1 )
 
 [sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.913725, 0.788235, 1, 0.235294 )
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.85098, 0.498039, 0.901961, 0.501961 )
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color( 0.733333, 0.572549, 0.94902, 1 )
+border_color = Color( 0.882353, 0.509804, 0.956863, 1 )
 
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.305882, 0.247059, 0.309804, 1 )
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color( 0.733333, 0.572549, 0.94902, 1 )
+border_color = Color( 0.831373, 0.486275, 0.92549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.92549, 0.701961, 0.94902, 0.25098 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.85098, 0.572549, 0.976471, 1 )
 
 [sub_resource type="Theme" id=14]
-default_font = ExtResource( 1 )
+default_font = ExtResource( 8 )
 
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.866667, 0.694118, 0.960784, 0.235294 )
@@ -233,7 +243,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13 )
 [node name="Boxes" type="Node" parent="."]
 
 [node name="Box" parent="Boxes" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79765, 0.026251, -0.231897 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68773, 0.026251, -1.6942 )
 mass = 0.5
 gravity_scale = 2.5
 
@@ -286,25 +296,31 @@ __meta__ = {
 margin_top = 61.0
 margin_right = 353.0
 margin_bottom = 124.0
-custom_styles/hover = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
 text = "Play"
 
 [node name="Credits" type="Button" parent="Menu/MenuButtons/ButtonContainer"]
 margin_top = 128.0
 margin_right = 353.0
 margin_bottom = 191.0
-custom_styles/hover = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
 text = "Credits"
 
 [node name="Quit" type="Button" parent="Menu/MenuButtons/ButtonContainer"]
 margin_top = 195.0
 margin_right = 353.0
 margin_bottom = 258.0
-custom_styles/hover = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
-text = "Quit"
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
+text = "quit"
 
 [node name="CreditsPanel" type="PanelContainer" parent="Menu"]
 anchor_left = 0.5
@@ -325,25 +341,60 @@ margin_bottom = 267.0
 alignment = 1
 
 [node name="Title" type="Label" parent="Menu/CreditsPanel/CreditsContainer"]
-margin_top = 12.0
+margin_top = 5.0
 margin_right = 454.0
-margin_bottom = 69.0
+margin_bottom = 30.0
+size_flags_vertical = 6
 text = "Credits:"
+align = 1
 
 [node name="Code" type="Label" parent="Menu/CreditsPanel/CreditsContainer"]
-margin_top = 73.0
+margin_top = 45.0
 margin_right = 454.0
-margin_bottom = 130.0
-text = "Code"
+margin_bottom = 70.0
+size_flags_vertical = 6
+text = "Code: ThirstyBrain and co."
+
+[node name="Levels" type="Label" parent="Menu/CreditsPanel/CreditsContainer"]
+margin_top = 85.0
+margin_right = 454.0
+margin_bottom = 110.0
+size_flags_vertical = 6
+text = "Level Design: ThirstyBrain and co."
 
 [node name="Art" type="Label" parent="Menu/CreditsPanel/CreditsContainer"]
-margin_top = 134.0
+margin_top = 125.0
 margin_right = 454.0
-margin_bottom = 191.0
-text = "Art"
+margin_bottom = 150.0
+size_flags_vertical = 6
+text = "Art: www.kenney.nl"
 
 [node name="Music" type="Label" parent="Menu/CreditsPanel/CreditsContainer"]
-margin_top = 195.0
+margin_top = 165.0
 margin_right = 454.0
-margin_bottom = 252.0
-text = "Music"
+margin_bottom = 190.0
+size_flags_vertical = 6
+text = "Music: Brollow"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/CreditsPanel/CreditsContainer"]
+margin_top = 200.0
+margin_right = 454.0
+margin_bottom = 264.0
+size_flags_vertical = 6
+
+[node name="Godot" type="Label" parent="Menu/CreditsPanel/CreditsContainer/HBoxContainer"]
+margin_top = 19.0
+margin_right = 225.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "Made with Godot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Menu/CreditsPanel/CreditsContainer/HBoxContainer"]
+margin_left = 229.0
+margin_right = 454.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+texture = ExtResource( 9 )
