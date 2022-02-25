@@ -25,7 +25,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -6, 2 )
 powers = [ 0 ]
 
 [node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -10.5 ), Vector3( 2, 0, -10.5 ) ]
 power_wire = true
 
@@ -35,16 +34,14 @@ powers = [ 1 ]
 unpowers = [ 0 ]
 
 [node name="Wire" parent="Buttons/Button2" index="4" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 points = [ Vector3( 0, 0, 0 ), Vector3( -4, 0, 0 ), Vector3( -4, 0, -4 ) ]
 power_wire = true
 
 [node name="Wire2" parent="Buttons/Button2" index="5" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -10.5 ), Vector3( -2, 0, -10.5 ) ]
 
 [node name="Barrier" parent="Barriers" index="1" instance=ExtResource( 2 )]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.9, -3 )
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.99, -3 )
 transparent = true
 
 [node name="Player" parent="." index="5"]

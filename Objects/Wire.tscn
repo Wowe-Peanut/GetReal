@@ -3,5 +3,4 @@
 [ext_resource path="res://Objects/Wire.gd" type="Script" id=1]
 
 [node name="Wire" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
 script = ExtResource( 1 )

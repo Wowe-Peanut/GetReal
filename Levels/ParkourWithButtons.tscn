@@ -18,7 +18,7 @@ albedo_texture = ExtResource( 1 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 1 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
@@ -55,22 +55,22 @@ material = SubResource( 1 )
 [node name="CSGBox" type="CSGBox" parent="Level/CSGCombiner" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -4, 3 )
 height = 4.0
-material = SubResource( 4 )
+material = SubResource( 3 )
 
 [node name="CSGBox2" type="CSGBox" parent="Level/CSGCombiner" index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -4, 1 )
 height = 4.0
-material = SubResource( 4 )
+material = SubResource( 3 )
 
 [node name="CSGBox3" type="CSGBox" parent="Level/CSGCombiner" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -4, -3 )
 height = 4.0
-material = SubResource( 4 )
+material = SubResource( 3 )
 
 [node name="CSGBox4" type="CSGBox" parent="Level/CSGCombiner" index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -4, -7 )
 height = 4.0
-material = SubResource( 4 )
+material = SubResource( 3 )
 
 [node name="Box" parent="Boxes" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, -10 )

@@ -9,22 +9,21 @@
 [ext_resource path="res://Levels/SingleButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Wire.tscn" type="PackedScene" id=8]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 6 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_triplanar = true
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=2]
 extents = Vector3( 9.9, 5.9, 0.9 )
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 9.9, 5.9, 0.9 )
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="Theme" id=4]
 default_font = ExtResource( 5 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "BoxHint"
+[sub_resource type="Animation" id=5]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("BoxHint:modulate")
@@ -39,8 +38,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "BoxHint2"
+[sub_resource type="Animation" id=6]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("BoxHint2:modulate")
@@ -55,8 +53,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "ButtonHint"
+[sub_resource type="Animation" id=7]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ButtonHint:modulate")
@@ -71,8 +68,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "ResetHint"
+[sub_resource type="Animation" id=8]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ResetHint:modulate")
@@ -99,19 +95,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -4, -2 )
 use_collision = true
 height = 4.0
 depth = 8.0
-material = SubResource( 2 )
+material = SubResource( 1 )
 
 [node name="BoxHint2" type="Area" parent="Level" index="2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/BoxHint2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="ButtonHint" type="Area" parent="Level" index="3"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/ButtonHint" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7 )
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Box" parent="Boxes" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -2 )
@@ -135,7 +131,7 @@ anchor_top = 0.2
 anchor_right = 1.0
 anchor_bottom = 0.2
 margin_bottom = 25.0
-theme = SubResource( 1 )
+theme = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -169,7 +165,7 @@ text = "Put the box on the button to proceed. "
 
 [node name="HintAnimationPlayer" type="AnimationPlayer" parent="HUD" index="2"]
 root_node = NodePath("../HintContainer")
-anims/BoxHint = SubResource( 3 )
-anims/BoxHint2 = SubResource( 4 )
-anims/ButtonHint = SubResource( 5 )
-anims/ResetHint = SubResource( 6 )
+anims/BoxHint = SubResource( 5 )
+anims/BoxHint2 = SubResource( 6 )
+anims/ButtonHint = SubResource( 7 )
+anims/ResetHint = SubResource( 8 )

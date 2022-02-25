@@ -12,7 +12,7 @@
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 6 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "BoxesDestroyHint"
 length = 1.5
 tracks/0/type = "value"
@@ -101,4 +101,4 @@ margin_bottom = 25.0
 text = "Boxes can not be seen through other boxes."
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD" index="3"]
-anims/BoxesDestroyHint = SubResource( 3 )
+anims/BoxesDestroyHint = SubResource( 2 )
