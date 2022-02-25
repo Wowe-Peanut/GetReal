@@ -3,6 +3,7 @@ extends RigidBody
 onready var mesh = $MeshInstance
 onready var audio = $AudioStreamPlayer3D
 var held: bool = false
+var hidden = false
 
 var transparent_barriers = [self]
 
@@ -18,16 +19,20 @@ func _physics_process(_delta):
 			var result = space_state.intersect_ray(mesh.global_transform.xform(vertex), get_viewport().get_camera().global_transform.origin, transparent_barriers)
 			if result.size() <= 0 or result.collider.name == "Player":
 				return
-		vanish()
+		if not hidden:
+			vanish()
 		
 func set_transparent_barriers(barriers):
 	transparent_barriers += barriers
 		
 func _on_screen_exited():
-	vanish()
+	if not hidden:
+		vanish()
 
 func vanish():
 	hide()
+	remove_child($CollisionShape)
+	hidden = true
 	audio.play()
 	yield(audio,"finished")
 	queue_free()
