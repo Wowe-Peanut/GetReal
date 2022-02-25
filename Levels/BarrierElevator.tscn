@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Barrier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Box.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Wire.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/BarrierElevatorTwo.tscn" type="PackedScene" id=7]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 0.25, 0.25, 0.25 )
+uv1_offset = Vector3( 0, 0.25, 0 )
+uv1_triplanar = true
+
+[node name="BarrierElevator" instance=ExtResource( 1 )]
+next_level = ExtResource( 7 )
+
+[node name="Room" parent="Level" index="0"]
+width = 16.0
+height = 24.0
+
+[node name="CSGBox" type="CSGBox" parent="Level" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -8 )
+use_collision = true
+width = 16.0
+height = 10.0
+depth = 4.0
+material = SubResource( 1 )
+
+[node name="Box" parent="Boxes" index="0" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -11.5, 0 )
+
+[node name="Button" parent="Buttons" index="0" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0 )
+powers = [ 1 ]
+
+[node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 6 )]
+points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -4 ) ]
+power_wire = true
+
+[node name="Button2" parent="Buttons" index="1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0 )
+powers = [ 0 ]
+
+[node name="Light" parent="Lights" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.85, 0 )
+
+[node name="Door" parent="Barriers" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -10 )
+open_default = true
+
+[node name="Barrier" parent="Barriers" index="1" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.9, -5 )
+open_default = true
+
+[node name="Player" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 8 )
