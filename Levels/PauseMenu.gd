@@ -3,6 +3,7 @@ extends CenterContainer
 
 onready var resume = $Panel/Align/Resume
 onready var quit = $Panel/Align/Quit
+onready var dim = get_parent().get_node("Dim")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +20,7 @@ func _input(event):
 		
 func pause():
 	visible = true
+	dim.visible = true
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	for button in get_node("Panel/Align").get_children():
@@ -26,6 +28,7 @@ func pause():
 
 func unpause():
 	visible = false
+	dim.visible = false
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	for button in get_node("Panel/Align").get_children():
