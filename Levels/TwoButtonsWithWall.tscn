@@ -22,6 +22,7 @@ depth = 26.0
 
 [node name="Wall" type="CSGBox" parent="Level" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0 )
+use_collision = true
 height = 5.0
 depth = 6.0
 material = SubResource( 1 )
@@ -37,7 +38,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -6, -2 )
 powers = [ 0 ]
 
 [node name="Wire" parent="Buttons/Button" index="4" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -11 ), Vector3( 3, 0, -11 ) ]
 power_wire = true
 
