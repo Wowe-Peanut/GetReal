@@ -16,12 +16,12 @@ func _input(event):
 			pause()
 		else:
 			unpause()
-		print(get_tree().paused)
 		
 func pause():
 	visible = true
 	dim.visible = true
 	get_tree().paused = true
+	get_parent().get_node("CrosshairContainer").visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	for button in get_node("Panel/Align").get_children():
 		button.mouse_filter = MOUSE_FILTER_PASS
@@ -30,6 +30,7 @@ func unpause():
 	visible = false
 	dim.visible = false
 	get_tree().paused = false
+	get_parent().get_node("CrosshairContainer").visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	for button in get_node("Panel/Align").get_children():
 		button.mouse_filter = MOUSE_FILTER_IGNORE

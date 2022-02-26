@@ -22,6 +22,7 @@ uv1_triplanar = true
 [node name="Box" type="RigidBody"]
 collision_layer = 2
 mass = 7.0
+can_sleep = false
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
