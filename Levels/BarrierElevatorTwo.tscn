@@ -51,6 +51,9 @@ powers = [ 0 ]
 points = [ Vector3( 0, 0, 0 ), Vector3( 4, 0, 0 ), Vector3( 4, 14, 0 ), Vector3( 4, 14, -16 ), Vector3( -2, 14, -16 ) ]
 power_wire = true
 
+[node name="Light" parent="Lights" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8504, 0 )
+
 [node name="Door" parent="Barriers" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -12 )
 
