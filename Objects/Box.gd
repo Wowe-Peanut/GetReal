@@ -1,5 +1,7 @@
 extends RigidBody
 
+export var destroy_sound: AudioStreamSample
+
 onready var mesh = $MeshInstance
 var held: bool = false
 var hidden = false
@@ -18,11 +20,20 @@ func _physics_process(_delta):
 			var result = space_state.intersect_ray(mesh.global_transform.xform(vertex), get_viewport().get_camera().global_transform.origin, transparent_barriers)
 			if result.size() <= 0 or result.collider.name == "Player":
 				return
-		queue_free()
+		destroy()
 		
 func set_transparent_barriers(barriers):
 	transparent_barriers += barriers
+	
+func destroy():
+	var sound: AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+	sound.bus = AudioServer.get_bus_name(1)
+	sound.stream = destroy_sound
+	sound.global_transform = global_transform
+	get_parent().add_child(sound)
+	sound.play()
+	queue_free()
 		
 func _on_screen_exited():
-	queue_free()
+	destroy()
 

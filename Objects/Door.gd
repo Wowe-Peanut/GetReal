@@ -1,5 +1,8 @@
 extends StaticBody
 
+const OPEN_SOUND = preload("res://assets/Noise/DoorOpen.wav")
+const CLOSE_SOUND = preload("res://assets/Noise/DoorClose.wav")
+
 export var open_default: bool  = false
 export var id: int = 0
 
@@ -7,6 +10,7 @@ onready var animation = $AnimationPlayer
 onready var tween = $Tween
 onready var dr = $DoorRight
 onready var dl = $DoorLeft
+onready var sound = $AudioStreamPlayer3D
 
 var open: bool = false
 var player_in: bool = false
@@ -67,6 +71,8 @@ func open():
 	tween.interpolate_property(dr,"scale",dr.scale,Vector3(0, 2.75, 0.1),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	tween.interpolate_property(dr,"translation",dr.translation,Vector3(1.5,2.75,0.3),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	tween.start()
+	sound.stream = OPEN_SOUND
+	sound.play()
 	
 func close():
 	#Scale.x 0 --> 0.75
@@ -80,3 +86,5 @@ func close():
 	tween.interpolate_property(dr,"scale",dr.scale,Vector3(0.75, 2.75, 0.1),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	tween.interpolate_property(dr,"translation",dr.translation,Vector3(0.78,2.75,0.3),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	tween.start()
+	#sound.stream = CLOSE_SOUND
+	sound.play()
