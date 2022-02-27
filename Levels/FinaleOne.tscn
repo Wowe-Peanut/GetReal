@@ -114,6 +114,10 @@ powers = [ 1 ]
 [node name="Wire" parent="Buttons/Button2" index="4" instance=ExtResource( 3 )]
 points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -8 ), Vector3( 0, 16, -8 ), Vector3( 0, 16, -4 ), Vector3( -4, 16, -4 ), Vector3( -4, 16, 0 ), Vector3( -26, 16, 0 ), Vector3( -26, 12, 0 ), Vector3( -26, 12, 8 ), Vector3( -26, 8, 8 ) ]
 
+[node name="Wire2" parent="Buttons/Button2" index="5" instance=ExtResource( 3 )]
+points = [ Vector3( 0, 0, 0 ), Vector3( -8, 0, 0 ) ]
+power_wire = true
+
 [node name="Button3" parent="Buttons" index="2" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -8, 8 )
 powers = [ 0, 2 ]

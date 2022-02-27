@@ -52,8 +52,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -10 )
 open_default = true
 
 [node name="Barrier" parent="Barriers" index="1" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.9, -5 )
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.99, -5 )
 open_default = true
+open_height = 11.0
 
 [node name="Player" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 8 )

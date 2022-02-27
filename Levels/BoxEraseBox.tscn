@@ -55,7 +55,7 @@ points = [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -11 ), Vector3( -2.5, 0, -11 ) ]
 power_wire = true
 
 [node name="Barrier" parent="Barriers" index="1" instance=ExtResource( 3 )]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.9, -3 )
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.99, -3 )
 transparent = true
 
 [node name="Player" parent="." index="5"]
