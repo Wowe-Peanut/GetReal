@@ -30,7 +30,7 @@ func destroy():
 	sound.bus = AudioServer.get_bus_name(1)
 	sound.stream = destroy_sound
 	sound.global_transform = global_transform
-	get_parent().add_child(sound)
+	get_tree().root.add_child(sound)
 	sound.play()
 	queue_free()
 		

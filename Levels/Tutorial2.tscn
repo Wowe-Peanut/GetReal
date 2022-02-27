@@ -137,7 +137,6 @@ __meta__ = {
 }
 
 [node name="BoxHint" type="Label" parent="HUD/HintContainer" index="0"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 174.0
 margin_right = 850.0
 margin_bottom = 25.0
