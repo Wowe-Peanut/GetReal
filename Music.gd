@@ -1,6 +1,6 @@
 extends Node
 
-onready var Permanence = load("res://assets/Noise/Permanence.mp3")
+onready var Permanence = load("res://assets/Noise/PermanenceFix.mp3")
 var AudioPlayer: AudioStreamPlayer
 
 func _ready():

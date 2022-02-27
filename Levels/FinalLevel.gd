@@ -14,6 +14,7 @@ var dont_turn_triggered: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	$Level/FakeOutside/VisibilityNotifier.connect("screen_exited", self, "_on_fake_outside_hidden")
 	$Barriers/Door.connect("player_entered", self, "get_drunk")
 	$Level/DisappearTrigger.connect("body_entered", self, "_on_disappear_trigger")

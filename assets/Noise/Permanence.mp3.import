@@ -12,4 +12,4 @@ dest_files=[ "res://.import/Permanence.mp3-0c0bcd70dc946049b2df3dc194efdb19.mp3s
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=1.0
