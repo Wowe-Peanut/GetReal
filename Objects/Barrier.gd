@@ -2,6 +2,8 @@ extends StaticBody
 
 export var open_default: bool = false
 export var transparent: bool = false
+export var open_height: float = 10
+
 export var id: int = 1
 var open: bool = true
 var open_time:float = 1
@@ -41,12 +43,12 @@ func power(on):
 
 func open():
 	$Tween.stop_all()
-	$Tween.interpolate_property(self, "scale", scale, Vector3(scale.x, 1, scale.z), open_time*(scale.y/10.0),Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "scale", scale, Vector3(scale.x, 1, scale.z), open_time*(scale.y/open_height),Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	$Tween.start()
 	
 func close():
 	$Tween.stop_all()
-	$Tween.interpolate_property(self, "scale", scale, Vector3(scale.x, 10, scale.z), open_time*((10.0-scale.y)/10.0), Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "scale", scale, Vector3(scale.x, open_height, scale.z), open_time*((open_height-scale.y)/open_height), Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	$Tween.start()
 
 

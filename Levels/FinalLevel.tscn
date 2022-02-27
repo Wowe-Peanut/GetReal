@@ -14,23 +14,22 @@ extents = Vector3( 10, 12, 1 )
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 4.9, 5.7, 1.9 )
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 4, 5, 1 )
 
-[sub_resource type="CubeMesh" id=8]
+[sub_resource type="CubeMesh" id=4]
 size = Vector3( 8, 10, 2 )
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 7 )
 uv1_scale = Vector3( 0.25, 0.25, 0.25 )
 uv1_offset = Vector3( 0, 0, 0.25 )
 uv1_triplanar = true
 
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=6]
 default_font = ExtResource( 6 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "DontTurn"
+[sub_resource type="Animation" id=7]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("DontTurn/DontTurn:modulate")
@@ -45,8 +44,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "DontTurnFlash"
+[sub_resource type="Animation" id=8]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -62,8 +60,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.866667, 0.396078, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "TooLate"
+[sub_resource type="Animation" id=9]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("DontTurn/TooLate:modulate")
@@ -248,11 +245,11 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/ExtraWall" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/ExtraWall" index="1"]
-mesh = SubResource( 8 )
-material/0 = SubResource( 9 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="Light" parent="Lights" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.85, 0 )
@@ -298,7 +295,7 @@ anchor_right = 1.0
 anchor_bottom = 0.8
 margin_top = -28.5
 margin_bottom = 28.5
-theme = SubResource( 3 )
+theme = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -311,16 +308,16 @@ margin_bottom = 87.0
 text = "Don't turn around."
 
 [node name="TooLate" type="Label" parent="HUD/DontTurn" index="1"]
-margin_left = 65.0
-margin_right = 958.0
+margin_left = 64.0
+margin_right = 959.0
 margin_bottom = 117.0
 text = "Out of sight, out of mind.
 Or was it ever really there?"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD" index="4"]
-anims/DontTurn = SubResource( 4 )
-anims/DontTurnFlash = SubResource( 5 )
-anims/TooLate = SubResource( 6 )
+anims/DontTurn = SubResource( 7 )
+anims/DontTurnFlash = SubResource( 8 )
+anims/TooLate = SubResource( 9 )
 
 [editable path="Barriers/Door"]

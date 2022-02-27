@@ -13,9 +13,8 @@ func _ready():
 	play.connect("pressed", self, "_on_play_pressed")
 	credits.connect("pressed", self, "_on_credits_pressed")
 	quit.connect("pressed", self, "_on_quit_pressed")
-	
 	credits_panel.visible = false
-
+	
 func _on_play_pressed():
 	get_tree().change_scene("res://OpeningBlurb.tscn")
 	

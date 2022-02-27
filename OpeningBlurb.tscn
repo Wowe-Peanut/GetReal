@@ -9,10 +9,10 @@ default_font = ExtResource( 1 )
 [sub_resource type="Theme" id=2]
 default_font = ExtResource( 1 )
 
-[sub_resource type="Theme" id=5]
+[sub_resource type="Theme" id=3]
 default_font = ExtResource( 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "Skip"
 length = 4.0
 loop = true
@@ -29,8 +29,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Blurb"
+[sub_resource type="Animation" id=5]
 length = 15.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("BlurbCenter/Blurb:percent_visible")
@@ -57,8 +56,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Tagline"
+[sub_resource type="Animation" id=6]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("TaglineCenter/Tagline:percent_visible")
@@ -137,17 +135,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -194.0
 margin_top = -25.0
-theme = SubResource( 5 )
+theme = SubResource( 3 )
 text = "Press 'E' to skip"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skip"]
-anims/Skip = SubResource( 6 )
+anims/Skip = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Blurb = SubResource( 3 )
-anims/Tagline = SubResource( 4 )
+anims/Blurb = SubResource( 5 )
+anims/Tagline = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]

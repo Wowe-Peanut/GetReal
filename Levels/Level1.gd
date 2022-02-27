@@ -6,7 +6,7 @@ var hints_triggered = [false, false, false]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	Music.play()
 	$Level/LookHintArea.connect("body_entered", self, "_on_look_hint_triggered")
 	$Level/JumpHintArea.connect("body_entered", self, "_on_jump_hint_triggered")
 	$Level/ContinueHintArea.connect("body_entered", self, "_on_continue_hint_triggered")

@@ -6,14 +6,13 @@
 [ext_resource path="res://Levels/LevelBase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Light.tscn" type="PackedScene" id=5]
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 7.9, 4.9, 1 )
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="Theme" id=2]
 default_font = ExtResource( 2 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "DoorHint"
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Continue:modulate")
@@ -28,8 +27,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "JumpHint"
+[sub_resource type="Animation" id=4]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Jump:modulate")
@@ -44,8 +42,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "LookHint"
+[sub_resource type="Animation" id=5]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Look:modulate")
@@ -60,8 +57,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "MoveHint"
+[sub_resource type="Animation" id=6]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Move:modulate")
@@ -89,19 +85,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/LookHintArea" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="JumpHintArea" type="Area" parent="Level" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/JumpHintArea" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="ContinueHintArea" type="Area" parent="Level" index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/ContinueHintArea" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="Light" parent="Lights" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
@@ -125,7 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 0.2
 margin_top = -17.0
 margin_bottom = 17.0
-theme = SubResource( 1 )
+theme = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -164,7 +160,7 @@ text = "Enter the Door to continue"
 
 [node name="HintAnimationPlayer" type="AnimationPlayer" parent="HUD" index="2"]
 root_node = NodePath("../MovementHints")
-anims/DoorHint = SubResource( 2 )
-anims/JumpHint = SubResource( 3 )
-anims/LookHint = SubResource( 4 )
-anims/MoveHint = SubResource( 5 )
+anims/DoorHint = SubResource( 3 )
+anims/JumpHint = SubResource( 4 )
+anims/LookHint = SubResource( 5 )
+anims/MoveHint = SubResource( 6 )
