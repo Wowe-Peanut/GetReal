@@ -11,7 +11,7 @@ onready var sound = $AudioStreamPlayer3D
 
 var open: bool = false
 var player_in: bool = false
-var animation_time: float = 0.5
+var animation_time: float = 0.75
 
 signal player_entered()
 
@@ -43,8 +43,6 @@ func power(on):
 			open = false
 		elif (not open_default) and (not open):
 			open()
-			if player_in:
-				emit_signal("player_entered")
 			open = true
 	else:
 		#Go to default
@@ -69,6 +67,11 @@ func open():
 	tween.interpolate_property(dr,"translation",dr.translation,Vector3(1.5,2.75,0.3),length,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	tween.start()
 	sound.play()
+	
+	if player_in:
+		yield(tween,"tween_all_completed")
+		emit_signal("player_entered")
+
 	
 func close():
 	#Scale.x 0 --> 0.75

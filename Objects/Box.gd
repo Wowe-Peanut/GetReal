@@ -3,14 +3,14 @@ extends RigidBody
 export var destroy_sound: AudioStreamSample
 
 onready var mesh = $MeshInstance
+onready var visibility = $VisibilityNotifier
 var held: bool = false
 var hidden = false
-
 var transparent_barriers = [self]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$VisibilityNotifier.connect("screen_exited", self, "_on_screen_exited")
+	visibility.connect("screen_exited", self, "_on_screen_exited")
 	
 func _physics_process(_delta):
 	if !held:

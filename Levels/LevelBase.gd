@@ -26,9 +26,14 @@ func setup_transparent_barriers():
 			
 	for box in get_node("Boxes").get_children():
 		box.set_transparent_barriers(transparent_barriers)
-	
+
+func disable_boxs():
+	for box in get_node("Boxes").get_children():
+		box.visibility.disconnect("screen_exited", box, "_on_screen_exited")
+
 func _process(delta):
 	if Input.is_action_just_pressed("reset"):
+		disable_boxs()
 		get_tree().reload_current_scene()
 	
 func _on_button_triggered():
@@ -41,8 +46,9 @@ func _on_button_triggered():
 			elif barrier.id in button.unpowers:
 				power = power and not button.triggered
 		barrier.power(power)
-		
+
 func _on_player_complete():
+	disable_boxs()
 	get_tree().change_scene_to(next_level)
 
 
