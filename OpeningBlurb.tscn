@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Fonts/DefaultFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://OpeningBlurb.gd" type="Script" id=2]
+[ext_resource path="res://assets/Noise/typewriter.wav" type="AudioStream" id=3]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
@@ -55,9 +56,35 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 25.0593,
+"start_offset": 1.0,
+"stream": ExtResource( 3 )
+}, {
+"end_offset": 19.2943,
+"start_offset": 5.6,
+"stream": ExtResource( 3 )
+}, {
+"end_offset": 19.3324,
+"start_offset": 5.5,
+"stream": ExtResource( 3 )
+}, {
+"end_offset": 16.9002,
+"start_offset": 9.3,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0, 1.5, 5.5, 8.2 )
+}
 
 [sub_resource type="Animation" id=6]
-length = 6.0
+length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("TaglineCenter/Tagline:percent_visible")
 tracks/0/interp = 1
@@ -69,6 +96,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 8.79657,
+"start_offset": 14.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [node name="OpeningBlurb" type="Control"]
@@ -149,3 +190,7 @@ anims/Blurb = SubResource( 5 )
 anims/Tagline = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Typewriter"

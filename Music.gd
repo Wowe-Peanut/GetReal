@@ -12,3 +12,6 @@ func _ready():
 
 func play():
 	AudioPlayer.play()
+
+func stop():
+	AudioPlayer.stop()
