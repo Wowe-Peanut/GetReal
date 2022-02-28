@@ -11,8 +11,19 @@ config_version=4
 [application]
 
 config/name="Get Real"
-run/main_scene="res://MainMenu.tscn"
 config/icon="res://assets/icon.png"
+
+[audio]
+
+default_bus_layout=""
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-openxr/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://addons/godot-openxr/config/godot_openxr.gdnlib" ]
 
 [input]
 
