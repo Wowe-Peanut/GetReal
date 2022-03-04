@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://addons/godot-openxr/scenes/first_person_controller_vr.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=2]
 [ext_resource path="res://addons/godot-xr-tools/assets/PlayerBody.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/godot-xr-tools/assets/LeftHand.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Direct_movement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Teleport.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Pickup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/godot-xr-tools/assets/RightHand.tscn" type="PackedScene" id=9]
 
-[sub_resource type="CubeMesh" id=3]
-size = Vector3( 0.1, 0.1, 0.1 )
+[sub_resource type="CapsuleMesh" id=3]
+radius = 0.5
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
@@ -17,8 +19,8 @@ uv1_scale = Vector3( 0.5, 0.5, 0.5 )
 uv1_triplanar = true
 
 [sub_resource type="Environment" id=2]
-ambient_light_color = Color( 0.796078, 0.541176, 0.929412, 1 )
-ambient_light_energy = 0.6
+ambient_light_color = Color( 0.898039, 0.698039, 1, 1 )
+ambient_light_energy = 1.5
 
 [node name="Main" type="Spatial"]
 
@@ -30,54 +32,46 @@ color_space = 0
 refresh_rate = 0.0
 
 [node name="LeftHandController" parent="FPController" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 visible = true
 
-[node name="MeshInstance" type="MeshInstance" parent="FPController/LeftHandController" index="0"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="Function_Direct_movement" parent="FPController/LeftHandController" index="1" instance=ExtResource( 5 )]
-enabled = true
+[node name="Function_Direct_movement" parent="FPController/LeftHandController" index="0" instance=ExtResource( 5 )]
 order = 15
-smooth_rotation = false
-smooth_turn_speed = 2.0
-step_turn_delay = 0.2
-step_turn_angle = 20.0
 max_speed = 2.5
 move_type = 1
 canFly = false
-fly_move_button_id = 15
-fly_activate_button_id = 2
 
-[node name="Function_Pickup" parent="FPController/LeftHandController" index="2" instance=ExtResource( 8 )]
+[node name="Function_Pickup" parent="FPController/LeftHandController" index="1" instance=ExtResource( 8 )]
+pickup_range = 0.01
+
+[node name="LeftHand" parent="FPController/LeftHandController" index="2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15 )
 
 [node name="RightHandController" parent="FPController" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 visible = true
 
-[node name="MeshInstance2" type="MeshInstance" parent="FPController/RightHandController" index="0"]
-mesh = SubResource( 3 )
-skeleton = NodePath("../../LeftHandController")
-material/0 = null
-
-[node name="Function_Teleport" parent="FPController/RightHandController" index="1" instance=ExtResource( 6 )]
+[node name="Function_Teleport" parent="FPController/RightHandController" index="0" instance=ExtResource( 6 )]
 camera = NodePath("../../ARVRCamera")
 
-[node name="Function_Direct_movement" parent="FPController/RightHandController" index="2" instance=ExtResource( 5 )]
-enabled = true
-order = 10
-smooth_rotation = false
-smooth_turn_speed = 2.0
-step_turn_delay = 0.2
+[node name="Function_Direct_movement" parent="FPController/RightHandController" index="1" instance=ExtResource( 5 )]
+step_turn_delay = 0.1
 step_turn_angle = 30.0
 max_speed = 0.0
-move_type = 0
 canFly = false
-fly_move_button_id = 15
-fly_activate_button_id = 2
 
-[node name="Function_Pickup" parent="FPController/RightHandController" index="3" instance=ExtResource( 8 )]
+[node name="Function_Pickup" parent="FPController/RightHandController" index="2" instance=ExtResource( 8 )]
+
+[node name="RightHand" parent="FPController/RightHandController" index="3" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15 )
 
 [node name="PlayerBody" parent="FPController" instance=ExtResource( 3 )]
+player_radius = 0.36
+
+[node name="PlayerMesh" type="MeshInstance" parent="FPController"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+mesh = SubResource( 3 )
+material/0 = null
 
 [node name="CSGBox" type="CSGBox" parent="."]
 use_collision = true
@@ -87,11 +81,24 @@ height = 8.0
 depth = 10.0
 material = SubResource( 1 )
 
+[node name="CSGBox2" type="CSGBox" parent="."]
+use_collision = true
+material = SubResource( 1 )
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
 [node name="Box" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -3 )
+
+[node name="Box4" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -3, 0 )
+
+[node name="Box5" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -3, 0 )
+
+[node name="Box6" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3, 2 )
 
 [node name="Box2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -3, -3 )
