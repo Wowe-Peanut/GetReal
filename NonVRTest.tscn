@@ -6,7 +6,7 @@
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
-albedo_color = Color( 1, 1, 1, 0.403922 )
+albedo_color = Color( 1, 1, 1, 0.796078 )
 albedo_texture = ExtResource( 1 )
 uv1_triplanar = true
 

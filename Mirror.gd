@@ -50,10 +50,13 @@ func update_view_cone(mirror_cam_pos):
 	vertices.remove(3)
 	for vertex in vertices:
 		view_cone_collision_shape.append(mirror_cam.to_local(global_transform.xform(vertex)))
+	
 	for vertex in vertices:
 		var direction = mirror_cam.to_local(to_global(vertex))
 		direction *= far_clip_plane_distance
 		view_cone_collision_shape.append(direction)
+	
+	view_cone_collision_shape.append(Vector3.ZERO)
 	view_cone_shape.shape.points = PoolVector3Array(view_cone_collision_shape)
 	
 func set_mirror_size(new_size):
