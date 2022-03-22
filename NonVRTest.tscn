@@ -5,6 +5,8 @@
 [ext_resource path="res://Mirror.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.403922 )
 albedo_texture = ExtResource( 1 )
 uv1_triplanar = true
 
@@ -50,10 +52,12 @@ fov = 65.0
 input_ray_pickable = false
 
 [node name="ViewconeShape" type="CollisionShape" parent="Player/Camera/HeadsetViewcone"]
+visible = false
 shape = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+visible = false
 shape = SubResource( 3 )
 
 [node name="Mirror" parent="." instance=ExtResource( 3 )]

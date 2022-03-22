@@ -1,10 +1,19 @@
 extends MeshInstance
 
+const NEAR = 0
+const FAR = 1
+const LEFT = 2
+const TOP = 3
+const RIGHT = 4
+const BOTTOM = 5
+
 export(Vector2) var size = Vector2(1, 1) setget set_mirror_size
 export(int) var pixels_per_unit = 200
 
 onready var mirror_viewport = $Viewport
 onready var mirror_origin = $MirrorOrigin
+
+var far_clip_plane_distance = 100.0
 
 var main_cam = null
 var mirror_cam = null
@@ -31,13 +40,21 @@ func _process(_delta):
 	var offset = reflection_transform.xform_inv(main_cam_pos)
 	offset = Vector2(offset.x, offset.y)
 	
-	mirror_cam.set_frustum(mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), 100.0)
-	update_view_cone()
+	mirror_cam.set_frustum(mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), far_clip_plane_distance)
+	update_view_cone(mirrored_cam_pos)
 	
-func update_view_cone():
-	view_cone_shape.shape.points = PoolVector3Array([
-		Vector3(0, 0, 0), Vector3(1, 1, -5), Vector3(-1, 1, -5), Vector3(-1, -1, -5), Vector3(1, -1, -5)
-	])
+func update_view_cone(mirror_cam_pos):
+	var view_cone_collision_shape = []
+	var vertices = mesh.get_faces()
+	vertices.remove(3)
+	vertices.remove(3)
+	for vertex in vertices:
+		view_cone_collision_shape.append(mirror_cam.to_local(global_transform.xform(vertex)))
+	for vertex in vertices:
+		var direction = mirror_cam.to_local(to_global(vertex))
+		direction *= far_clip_plane_distance
+		view_cone_collision_shape.append(direction)
+	view_cone_shape.shape.points = PoolVector3Array(view_cone_collision_shape)
 	
 func set_mirror_size(new_size):
 	size = new_size
@@ -45,7 +62,7 @@ func set_mirror_size(new_size):
 	init_cam()
 
 func init_cam():
-	if !is_inside_tree() or Engine.editor_hint:
+	if !is_inside_tree():
 		return
 		
 	main_cam = get_tree().root.get_camera()
