@@ -3,10 +3,12 @@ extends ARVRController
 signal activated
 signal deactivated
 
-onready var mirror = $Mirror
+var mirror = null
 
 func _ready():
 	connect("button_pressed", self, "_on_button_pressed")
+	if name == "LeftHandController":
+		mirror = get_node("Mirror")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

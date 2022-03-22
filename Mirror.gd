@@ -8,11 +8,12 @@ onready var mirror_origin = $MirrorOrigin
 
 var main_cam = null
 var mirror_cam = null
+var view_cone_shape = null
 
 func _ready():
 	init_cam()
 	
-func _process(delta):
+func _process(_delta):
 	var plane_origin = mirror_origin.global_transform.origin
 	var plane_normal = mirror_origin.global_transform.basis.z.normalized()
 	var reflection_plane = Plane(plane_normal, plane_origin.dot(plane_normal))
@@ -31,6 +32,10 @@ func _process(delta):
 	offset = Vector2(offset.x, offset.y)
 	
 	mirror_cam.set_frustum(mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), 100.0)
+	update_view_cone()
+	
+func update_view_cone():
+	pass
 	
 func set_mirror_size(new_size):
 	size = new_size
@@ -51,6 +56,13 @@ func init_cam():
 	mirror_viewport.add_child(mirror_cam)
 	mirror_cam.keep_aspect = Camera.KEEP_WIDTH
 	mirror_cam.current = true
+	
+	var view_cone = Area.new()
+	var view_cone_collision = CollisionShape.new()
+	view_cone.add_child(view_cone_collision)
+	mirror_cam.add_child(view_cone)
+	view_cone_shape = view_cone_collision
+	
 	
 	mirror_viewport.size = mesh.size * pixels_per_unit
 	

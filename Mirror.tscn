@@ -10,7 +10,7 @@ flags_albedo_tex_force_srgb = true
 metallic_specular = 0.27
 roughness = 0.42
 
-[node name="Mirror" type="MeshInstance"]
+[node name="Mirror" type="MeshInstance" groups=["mirror"]]
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 script = ExtResource( 1 )

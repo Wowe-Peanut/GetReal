@@ -1,15 +1,20 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://addons/godot-openxr/scenes/first_person_controller_vr.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=2]
 [ext_resource path="res://addons/godot-xr-tools/assets/PlayerBody.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/godot-xr-tools/assets/LeftHand.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Direct_movement.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Pickup.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/godot-xr-tools/assets/RightHand.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Mirror.tscn" type="PackedScene" id=10]
 [ext_resource path="res://addons/godot-xr-tools/misc/VR_Common_Shader_Cache.tscn" type="PackedScene" id=11]
+[ext_resource path="res://MirrorUI.tscn" type="PackedScene" id=12]
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( 0, 0, 0, 64, 64, -100, -64, 64, -100, -64, -64, -100, 64, -64, -100 )
 
 [sub_resource type="SpatialMaterial" id=3]
 resource_local_to_scene = true
@@ -28,8 +33,13 @@ ambient_light_energy = 1.5
 
 [node name="Main" type="Spatial"]
 
+[node name="Viewport2Din3D" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, -2.75, 0 )
+screen_size = Vector2( 0.5, 0.5 )
+scene = ExtResource( 12 )
+
 [node name="FPController" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4 )
 
 [node name="Configuration" parent="FPController" index="0"]
 color_space = 0
@@ -40,12 +50,19 @@ current = true
 
 [node name="vr_common_shader_cache" parent="FPController/ARVRCamera" index="0" instance=ExtResource( 11 )]
 
+[node name="HeadsetViewcone" type="Area" parent="FPController/ARVRCamera" index="1"]
+input_ray_pickable = false
+
+[node name="ViewconeShape" type="CollisionShape" parent="FPController/ARVRCamera/HeadsetViewcone"]
+visible = false
+shape = SubResource( 4 )
+
 [node name="LeftHandController" parent="FPController" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 visible = true
 
 [node name="Mirror" parent="FPController/LeftHandController" index="0" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0.25, 0 )
+transform = Transform( 1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0.25, -0.25 )
 skeleton = NodePath("../../..")
 material/0 = SubResource( 3 )
 size = Vector2( 0.5, 0.5 )
