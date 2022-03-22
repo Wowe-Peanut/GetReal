@@ -35,7 +35,9 @@ func _process(_delta):
 	update_view_cone()
 	
 func update_view_cone():
-	pass
+	view_cone_shape.shape.points = PoolVector3Array([
+		Vector3(0, 0, 0), Vector3(1, 1, -5), Vector3(-1, 1, -5), Vector3(-1, -1, -5), Vector3(1, -1, -5)
+	])
 	
 func set_mirror_size(new_size):
 	size = new_size
@@ -59,6 +61,7 @@ func init_cam():
 	
 	var view_cone = Area.new()
 	var view_cone_collision = CollisionShape.new()
+	view_cone_collision.shape = ConvexPolygonShape.new()
 	view_cone.add_child(view_cone_collision)
 	mirror_cam.add_child(view_cone)
 	view_cone_shape = view_cone_collision
