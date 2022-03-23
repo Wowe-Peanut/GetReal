@@ -4,9 +4,13 @@ var seen_by: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("VisibilityNotifier").connect("camera_entered", self, "_on_camera_enter")
-	get_node("VisibilityNotifier").connect("camera_exited", self, "_on_camera_exit")
+	#get_node("VisibilityNotifier").connect("camera_entered", self, "_on_camera_enter")
+	#get_node("VisibilityNotifier").connect("camera_exited", self, "_on_camera_exit")
 	#get_node("VisibilityNotifier").connect("screen_exited", self, "_on_screen_exit")
+	
+	for view_cone in get_tree().get_nodes_in_group("view_cones"):
+		view_cone.connect("body_entered", self, "_on_entered_view_cone")
+		view_cone.connect("body_exited", self, "_on_exited_view_cone")
 
 func _on_camera_enter(camera):
 	if not camera in seen_by:
@@ -24,8 +28,16 @@ func _on_screen_exit():
 	if not is_picked_up():
 		disappear()
 
+func _on_entered_view_cone(body):
+	if body == self:
+		print("in sight")
+
+func _on_exited_view_cone(body):
+	if body == self:
+		print("out of sight")
 
 func _physics_process(_delta):
+	"""
 	var space_state = get_world().direct_space_state
 	for vertex in $BoxMesh.get_mesh().get_faces():
 		var result = space_state.intersect_ray($BoxMesh.global_transform.xform(vertex), get_tree().root.get_camera().global_transform.origin, [self])
@@ -35,7 +47,7 @@ func _physics_process(_delta):
 	#no vertex can see player
 	print(name, " can't see player")
 	disappear()
-
+	"""
 
 func disappear():
 	queue_free()

@@ -3,6 +3,7 @@
 [ext_resource path="res://Mirror.gd" type="Script" id=1]
 
 [sub_resource type="QuadMesh" id=1]
+size = Vector2( 2, 1 )
 
 [sub_resource type="SpatialMaterial" id=2]
 resource_local_to_scene = true

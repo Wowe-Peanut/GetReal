@@ -1,11 +1,5 @@
+tool
 extends MeshInstance
-
-const NEAR = 0
-const FAR = 1
-const LEFT = 2
-const TOP = 3
-const RIGHT = 4
-const BOTTOM = 5
 
 export(Vector2) var size = Vector2(1, 1) setget set_mirror_size
 export(int) var pixels_per_unit = 200
@@ -20,9 +14,14 @@ var mirror_cam = null
 var view_cone_shape = null
 
 func _ready():
+	if Engine.editor_hint:
+		return
 	init_cam()
 	
-func _process(_delta):
+func _physics_process(_delta):
+	if Engine.editor_hint:
+		return
+		
 	var plane_origin = mirror_origin.global_transform.origin
 	var plane_normal = mirror_origin.global_transform.basis.z.normalized()
 	var reflection_plane = Plane(plane_normal, plane_origin.dot(plane_normal))
@@ -41,22 +40,21 @@ func _process(_delta):
 	offset = Vector2(offset.x, offset.y)
 	
 	mirror_cam.set_frustum(mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), far_clip_plane_distance)
-	update_view_cone(mirrored_cam_pos)
+	update_view_cone()
 	
-func update_view_cone(mirror_cam_pos):
+func update_view_cone():
 	var view_cone_collision_shape = []
 	var vertices = mesh.get_faces()
 	vertices.remove(3)
 	vertices.remove(3)
 	for vertex in vertices:
 		view_cone_collision_shape.append(mirror_cam.to_local(global_transform.xform(vertex)))
-	
+		
 	for vertex in vertices:
-		var direction = mirror_cam.to_local(to_global(vertex))
+		var direction = mirror_cam.to_local(global_transform.xform(vertex))
 		direction *= far_clip_plane_distance
 		view_cone_collision_shape.append(direction)
-	
-	view_cone_collision_shape.append(Vector3.ZERO)
+	#WORKS! doesn't look like it does, though!
 	view_cone_shape.shape.points = PoolVector3Array(view_cone_collision_shape)
 	
 func set_mirror_size(new_size):
@@ -65,7 +63,7 @@ func set_mirror_size(new_size):
 	init_cam()
 
 func init_cam():
-	if !is_inside_tree():
+	if !is_inside_tree() || Engine.editor_hint:
 		return
 		
 	main_cam = get_tree().root.get_camera()
@@ -79,7 +77,14 @@ func init_cam():
 	mirror_cam.keep_aspect = Camera.KEEP_WIDTH
 	mirror_cam.current = true
 	
+	var camera_mesh = MeshInstance.new()
+	camera_mesh.mesh = CubeMesh.new()
+	camera_mesh.mesh.size = Vector3(0.05, 0.05, 0.05)
+	mirror_cam.add_child(camera_mesh)
+	
 	var view_cone = Area.new()
+	view_cone.monitorable = false
+	view_cone.add_to_group("view_cones")
 	var view_cone_collision = CollisionShape.new()
 	view_cone_collision.shape = ConvexPolygonShape.new()
 	view_cone.add_child(view_cone_collision)
@@ -90,3 +95,5 @@ func init_cam():
 	mirror_viewport.size = mesh.size * pixels_per_unit
 	
 	get_surface_material(0).albedo_texture = mirror_viewport.get_texture()
+
+

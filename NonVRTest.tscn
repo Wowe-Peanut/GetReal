@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/PNG/Dark/texture_01.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Mirror.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Box.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
-albedo_color = Color( 1, 1, 1, 0.796078 )
+albedo_color = Color( 1, 1, 1, 0.607843 )
 albedo_texture = ExtResource( 1 )
 uv1_triplanar = true
 
@@ -40,7 +41,7 @@ material = SubResource( 1 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
-[node name="Player" type="KinematicBody" parent="."]
+[node name="Player" type="KinematicBody" parent="." groups=["player_body"]]
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="Player"]
@@ -49,7 +50,9 @@ current = true
 fov = 65.0
 
 [node name="HeadsetViewcone" type="Area" parent="Player/Camera"]
+visible = false
 input_ray_pickable = false
+monitorable = false
 
 [node name="ViewconeShape" type="CollisionShape" parent="Player/Camera/HeadsetViewcone"]
 visible = false
@@ -63,4 +66,8 @@ shape = SubResource( 3 )
 [node name="Mirror" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1.9 )
 material/0 = SubResource( 4 )
+size = Vector2( 2, 1 )
 pixels_per_unit = 500
+
+[node name="Box" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1 )
