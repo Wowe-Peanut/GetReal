@@ -77,11 +77,6 @@ func init_cam():
 	mirror_cam.keep_aspect = Camera.KEEP_WIDTH
 	mirror_cam.current = true
 	
-	var camera_mesh = MeshInstance.new()
-	camera_mesh.mesh = CubeMesh.new()
-	camera_mesh.mesh.size = Vector3(0.05, 0.05, 0.05)
-	mirror_cam.add_child(camera_mesh)
-	
 	var view_cone = Area.new()
 	view_cone.monitorable = false
 	view_cone.add_to_group("view_cones")

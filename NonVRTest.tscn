@@ -49,7 +49,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
 current = true
 fov = 65.0
 
-[node name="HeadsetViewcone" type="Area" parent="Player/Camera"]
+[node name="HeadsetViewcone" type="Area" parent="Player/Camera" groups=["view_cones"]]
 visible = false
 input_ray_pickable = false
 monitorable = false
@@ -67,7 +67,7 @@ shape = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1.9 )
 material/0 = SubResource( 4 )
 size = Vector2( 2, 1 )
-pixels_per_unit = 500
+pixels_per_unit = 700
 
 [node name="Box" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1 )

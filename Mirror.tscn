@@ -8,8 +8,8 @@ size = Vector2( 2, 1 )
 [sub_resource type="SpatialMaterial" id=2]
 resource_local_to_scene = true
 flags_albedo_tex_force_srgb = true
-metallic_specular = 0.27
-roughness = 0.42
+metallic_specular = 0.24
+roughness = 0.46
 
 [node name="Mirror" type="MeshInstance" groups=["mirror"]]
 mesh = SubResource( 1 )
