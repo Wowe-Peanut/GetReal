@@ -1,5 +1,7 @@
 extends "res://addons/godot-xr-tools/objects/Object_pickable.gd"
 
+onready var mesh = $BoxMesh
+
 var seen_by: Array = []
 
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +14,7 @@ func _on_entered_view_cone(body, view_cone):
 	if body == self:
 		if not view_cone in seen_by:
 			seen_by.append(view_cone)
-			print("in sight ", seen_by)
+		print("in sight ", seen_by)
 
 func _on_exited_view_cone(body, view_cone):
 	if body == self:
@@ -23,20 +25,19 @@ func _on_exited_view_cone(body, view_cone):
 				disappear()
 
 func _physics_process(_delta):
-	
 	var space_state = get_world().direct_space_state
-	#for view_cone in seen_by: (to be completed later)
-	for vertex in $BoxMesh.get_mesh().get_faces():
-		var result = space_state.intersect_ray($BoxMesh.global_transform.xform(vertex), get_tree().root.get_camera().global_transform.origin, [self])
+	for view_cone in seen_by:
+		if check_obscured(space_state, view_cone):
+			print("obscured ", view_cone)
+	
+func check_obscured(space_state, view_cone):
+	var is_player_cam = view_cone.get_parent().name == "ARVRCamera"
+	var cast_to = view_cone.get_parent().global_transform.origin if is_player_cam else view_cone.get_node("../../../MirrorOrigin").global_transform.origin
+	for vertex in mesh.get_mesh().get_faces():
+		var result = space_state.intersect_ray(mesh.global_transform.xform(vertex), cast_to, [self])
 		if result.size() <= 0 or result.collider.is_in_group("player_body"):
-			#vertex can see player
-			return
-	#no vertex can see player
-	print(name, " can't see player")
-	
-	
-	disappear()
-	
+			return false
+	return true
 
 func disappear():
 	queue_free()

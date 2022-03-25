@@ -1,7 +1,7 @@
 extends KinematicBody
 
 
-onready var camera = $Camera
+onready var camera = $ARVRCamera
 var mouse_sensitivity = 0.002 
 var gravity = -30
 var max_speed = 2
@@ -15,8 +15,8 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		$Camera.rotate_x(-event.relative.y * mouse_sensitivity)
-		$Camera.rotation.x = clamp($Camera.rotation.x, -1.2, 1.2)
+		camera.rotate_x(-event.relative.y * mouse_sensitivity)
+		camera.rotation.x = clamp(camera.rotation.x, -1.2, 1.2)
 	
 func get_input():
 	if Input.is_action_just_released("ui_cancel"):
