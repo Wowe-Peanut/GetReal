@@ -4,7 +4,6 @@
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Mirror.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Box.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/mirror_material.tres" type="Material" id=5]
 
 [sub_resource type="Environment" id=2]
 ambient_light_color = Color( 0.898039, 0.698039, 1, 1 )
@@ -20,11 +19,15 @@ height = 0.5
 [sub_resource type="QuadMesh" id=6]
 resource_local_to_scene = true
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=9]
 resource_local_to_scene = true
+flags_unshaded = true
 flags_albedo_tex_force_srgb = true
-metallic_specular = 0.24
-roughness = 0.46
+
+[sub_resource type="SpatialMaterial" id=8]
+resource_local_to_scene = true
+flags_unshaded = true
+flags_albedo_tex_force_srgb = true
 
 [node name="NonVRTest" type="Spatial"]
 
@@ -69,12 +72,12 @@ shape = SubResource( 3 )
 [node name="Mirror" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, -1.9 )
 mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 9 )
 
 [node name="Mirror2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 2.68221e-07, 0, 1, 0, -2.68221e-07, 0, 1, 1, -2, -1.9 )
 mesh = SubResource( 6 )
-material/0 = ExtResource( 5 )
+material/0 = SubResource( 8 )
 
 [node name="Box" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1 )
