@@ -7,7 +7,10 @@
 
 [sub_resource type="Environment" id=2]
 ambient_light_color = Color( 0.898039, 0.698039, 1, 1 )
-ambient_light_energy = 1.5
+ambient_light_energy = 2.0
+ssao_enabled = true
+ssao_radius = 0.25
+ssao_intensity = 0.75
 
 [sub_resource type="ConvexPolygonShape" id=5]
 points = PoolVector3Array( 0, 0, 0, 64, 64, -100, -64, 64, -100, -64, -64, -100, 64, -64, -100 )
