@@ -27,11 +27,11 @@ func _on_exited_view_cone(body, view_cone):
 func _physics_process(_delta):
 	var space_state = get_world().direct_space_state
 	for view_cone in seen_by:
-		if check_obscured(space_state, view_cone):
+		var is_player_cam = view_cone.name == "HeadsetViewcone"
+		if check_obscured(space_state, view_cone, is_player_cam):
 			print("obscured ", view_cone)
 	
-func check_obscured(space_state, view_cone):
-	var is_player_cam = view_cone.get_parent().name == "ARVRCamera"
+func check_obscured(space_state, view_cone, is_player_cam):
 	var cast_to = view_cone.get_parent().global_transform.origin if is_player_cam else view_cone.get_node("../../../MirrorOrigin").global_transform.origin
 	for vertex in mesh.get_mesh().get_faces():
 		var result = space_state.intersect_ray(mesh.global_transform.xform(vertex), cast_to, [self])

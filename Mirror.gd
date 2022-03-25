@@ -60,6 +60,7 @@ func update_view_cone():
 func set_mirror_size(new_size):
 	size = new_size
 	mesh.size = new_size
+	get_node("Border").mesh.size = Vector2(new_size.x + 0.05, new_size.y + 0.05)
 	init_cam()
 
 func init_cam():

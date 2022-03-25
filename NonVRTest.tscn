@@ -76,6 +76,7 @@ shape = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, -1.9 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 9 )
+pixels_per_unit = 500
 
 [node name="Mirror2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 2.68221e-07, 0, 1, 0, -2.68221e-07, 0, 1, 1, -2, -1.9 )
