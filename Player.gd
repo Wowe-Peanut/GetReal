@@ -5,7 +5,7 @@ onready var camera = $ARVRCamera
 var mouse_sensitivity = 0.002 
 var gravity = -30
 var max_speed = 2
-var jump = 5
+var jump = 10
 var velocity = Vector3()
 
 

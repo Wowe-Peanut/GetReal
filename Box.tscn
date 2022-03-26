@@ -14,7 +14,7 @@ size = Vector3( 0.3, 0.3, 0.3 )
 albedo_texture = ExtResource( 3 )
 uv1_triplanar = true
 
-[node name="Box" instance=ExtResource( 1 )]
+[node name="Box" groups=["boxes"] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 highlight_mesh_instance = NodePath("")
 

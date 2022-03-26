@@ -61,6 +61,7 @@ func set_mirror_size(new_size):
 	size = new_size
 	mesh.size = new_size
 	get_node("Border").mesh.size = Vector2(new_size.x + 0.05, new_size.y + 0.05)
+	get_node("Area/CollisionShape").shape.extents = Vector3(new_size.x, new_size.y, 0.001)
 	init_cam()
 
 func init_cam():
@@ -81,6 +82,8 @@ func init_cam():
 	var view_cone = Area.new()
 	view_cone.monitorable = false
 	view_cone.add_to_group("view_cones")
+	view_cone.collision_layer = 8388609
+	view_cone.collision_mask = 8388609
 	var view_cone_collision = CollisionShape.new()
 	view_cone_collision.shape = ConvexPolygonShape.new()
 	view_cone.add_child(view_cone_collision)
