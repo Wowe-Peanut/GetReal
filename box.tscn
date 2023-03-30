@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhjwqyoj7abl6"]
+
+[ext_resource type="Script" path="res://box.gd" id="1_i1m6m"]
+[ext_resource type="Texture2D" uid="uid://c5itxchop28jh" path="res://assets/PNG/Green/texture_10.png" id="1_lm71a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_roxks"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wjjqy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mr6w1"]
+albedo_texture = ExtResource("1_lm71a")
+uv1_triplanar = true
+
+[node name="Box" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 3
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("1_i1m6m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_roxks")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_wjjqy")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_mr6w1")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.75, -0.75, -0.75, 1.5, 1.5, 1.5)

@@ -1,3 +1,4 @@
-res://Player.tscn
-res://Player.gd
+res://box.tscn
+res://player.tscn
 res://test.tscn
+res://player.gd

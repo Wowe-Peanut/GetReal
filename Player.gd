@@ -8,7 +8,7 @@ var raycast = $Camera/RayCast
 var hold_position = $Camera/HoldPosition
 
 
-var mouse_sensitivity = 0.002 
+var mouse_sensitivity = 0.001 
 var gravity = -30
 var max_speed = 8
 var jump = 10
@@ -25,7 +25,7 @@ func _unhandled_input(event):
 		$Camera.rotation.x = clamp($Camera.rotation.x, -1.2, 1.2)
 		
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().exit()
+		get_tree().quit()
 	
 func get_input():
 	var input_dir = Vector3()
@@ -56,7 +56,6 @@ func _process(delta):
 		else:
 			if raycast.get_collider():
 				held_object = raycast.get_collider()
-				held_object.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 				held_object.freeze = true
 				held_object.collision_mask = 0
 				held_object.held = true

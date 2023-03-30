@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxke8tpau83hm"]
+[gd_scene load_steps=5 format=3 uid="uid://co4acx6evcw4h"]
 
 [ext_resource type="Texture2D" uid="uid://dkq718kn1fttw" path="res://assets/PNG/Dark/texture_02.png" id="1_xbi5x"]
-[ext_resource type="PackedScene" uid="uid://dhof7s4ctw0vv" path="res://Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dhjwqyoj7abl6" path="res://box.tscn" id="3_vp7v6"]
+[ext_resource type="PackedScene" uid="uid://cjvjue7id3hjv" path="res://player.tscn" id="4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuguk"]
 albedo_texture = ExtResource("1_xbi5x")
 uv1_triplanar = true
+uv1_world_triplanar = true
 
 [node name="Node3D" type="Node3D"]
 
@@ -16,3 +18,8 @@ size = Vector3(6, 4, 6)
 material = SubResource("StandardMaterial3D_iuguk")
 
 [node name="Player" parent="." instance=ExtResource("4")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, -0.224144, 0.12941, 0, 0.5, 0.866025, -0.258819, -0.836516, 0.482963, 0, 0, 0)
+
+[node name="Box" parent="." instance=ExtResource("3_vp7v6")]
