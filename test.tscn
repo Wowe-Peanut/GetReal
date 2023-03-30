@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3jr12ajd7mo4"]
+
+[ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
+[ext_resource type="Texture2D" uid="uid://52avwqwg6gxo" path="res://PNG/Dark/texture_06.png" id="2_h77vt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o35qo"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2b212"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u00es"]
+albedo_texture = ExtResource("2_h77vt")
+uv1_triplanar = true
+
+[node name="test" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_a76g4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_o35qo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_2b212")
+surface_material_override/0 = SubResource("StandardMaterial3D_u00es")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 6, 0)

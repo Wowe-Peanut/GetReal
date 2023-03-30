@@ -1,6 +1,9 @@
-VisibleOnScreenNotifier3D
-CollisionShape3D
-RigidBody3D
-MeshInstance3D
 DirectionalLight3D
+MeshInstance3D
+CollisionShape3D
+StaticBody3D
+Camera3D
+CharacterBody3D
+VisibleOnScreenNotifier3D
+RigidBody3D
 CSGBox3D
