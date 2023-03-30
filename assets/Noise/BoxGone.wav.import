@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/BoxGone.wav-567747d345ef6450bfbadf2af579c9d3.sample"
+type="AudioStreamWAV"
+uid="uid://b37lsps0pi6n4"
+path="res://.godot/imported/BoxGone.wav-567747d345ef6450bfbadf2af579c9d3.sample"
 
 [deps]
 
 source_file="res://assets/Noise/BoxGone.wav"
-dest_files=[ "res://.import/BoxGone.wav-567747d345ef6450bfbadf2af579c9d3.sample" ]
+dest_files=["res://.godot/imported/BoxGone.wav-567747d345ef6450bfbadf2af579c9d3.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0
