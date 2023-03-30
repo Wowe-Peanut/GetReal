@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3jr12ajd7mo4"]
+[gd_scene load_steps=10 format=3 uid="uid://c3jr12ajd7mo4"]
 
 [ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
 [ext_resource type="Texture2D" uid="uid://52avwqwg6gxo" path="res://PNG/Dark/texture_06.png" id="2_h77vt"]
+[ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="3_cus30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o35qo"]
 size = Vector3(20, 1, 20)
@@ -22,14 +23,13 @@ sky_material = SubResource("ProceduralSkyMaterial_avhxm")
 background_mode = 2
 sky = SubResource("Sky_v4ln1")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fsolg"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_tcafk"]
-
 [node name="test" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_a76g4")]
 jump_height = 1.5
+
+[node name="Box" parent="." instance=ExtResource("3_cus30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -40,19 +40,8 @@ shape = SubResource("BoxShape3D_o35qo")
 mesh = SubResource("BoxMesh_2b212")
 surface_material_override/0 = SubResource("StandardMaterial3D_u00es")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 6, 0)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4nkms")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0)
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_fsolg")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("BoxMesh_tcafk")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 6, 0)

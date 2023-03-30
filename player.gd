@@ -20,6 +20,10 @@ var grav_vel: Vector3 # Gravity velocity
 var jump_vel: Vector3 # Jumping velocity
 
 @onready var camera: Camera3D = $Camera
+@onready var held_position: Marker3D = $Camera/HeldObjectPosition
+@onready var look_ray: RayCast3D = $Camera/LookRay
+
+var held_object: RigidBody3D = null
 
 func _ready() -> void:
 	capture_mouse()
@@ -27,10 +31,12 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
 	if Input.is_action_just_pressed("jump"): jumping = true
+	if Input.is_action_just_pressed("interact"): toggle_interact()
 	if Input.is_action_just_pressed("ui_cancel"): get_tree().quit()
 
 func _process(delta: float) -> void:
 	if mouse_captured: _rotate_camera(delta)
+	if held_object: held_object.global_transform = held_position.global_transform
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
 
@@ -66,3 +72,15 @@ func _jump(delta: float) -> Vector3:
 		return jump_vel
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
+
+func toggle_interact() -> void:
+	if held_object:
+		held_object.freeze = false
+		held_object = null
+	else:
+		var collider = look_ray.get_collider() as Node3D
+		if collider and collider.is_in_group("box"):
+			held_object = collider as RigidBody3D
+			held_object.freeze = true
+			
+

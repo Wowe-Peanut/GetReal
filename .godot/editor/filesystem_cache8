@@ -1,11 +1,11 @@
 2a60927148abd1d33b818b535e306557
-::res://::1680158853
+::res://::1680193142
 default_bus_layout.tres::AudioBusLayout::-1::1680151175::0::1::::<><>::
 default_env.tres::Environment::-1::1680151175::0::1::::<><>::
 icon.png::CompressedTexture2D::1094102631817786952::1645390901::1680154179::1::::<><>::
-player.gd::GDScript::-1::1680155668::0::1::::<>CharacterBody3D<>::
-player.tscn::PackedScene::3032007212897135758::1680155882::0::1::::<><>::res://player.gd
-test.tscn::PackedScene::6757788427100857849::1680155882::0::1::::<><>::uid://bjgyylqm3xc11<>uid://52avwqwg6gxo
+player.gd::GDScript::-1::1680159062::0::1::::<>CharacterBody3D<>::
+player.tscn::PackedScene::3032007212897135758::1680159663::0::1::::<><>::res://player.gd
+test.tscn::PackedScene::6757788427100857849::1680159662::0::1::::<><>::uid://bjgyylqm3xc11<>uid://52avwqwg6gxo
 ::res://PNG/::1645398673
 ::res://PNG/Dark/::1680155870
 texture_01.png::CompressedTexture2D::4157480774862037064::1645398671::1680154183::1::::<><>::
