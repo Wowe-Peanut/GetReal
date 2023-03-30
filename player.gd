@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("jump"): jumping = true
 	if Input.is_action_just_pressed("ui_cancel"): get_tree().quit()
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if mouse_captured: _rotate_camera(delta)
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
