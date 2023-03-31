@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6t43xntvjerc"]
+[gd_scene load_steps=5 format=3 uid="uid://c6t43xntvjerc"]
+
+[ext_resource type="Script" path="res://box.gd" id="1_odnql"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtxx0"]
 friction = 2.0
@@ -16,9 +18,17 @@ collision_mask = 3
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_dtxx0")
 freeze_mode = 1
+script = ExtResource("1_odnql")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_fsolg")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_tcafk")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.375, -0.375, -0.375, 0.75, 0.75, 0.75)
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

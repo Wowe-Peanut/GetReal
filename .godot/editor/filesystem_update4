@@ -1,4 +1,5 @@
 res://test.tscn
 res://player.tscn
-res://player.gd
 res://box.tscn
+res://box.gd
+res://default_environment_texture.tres

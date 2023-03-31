@@ -1,18 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3jr12ajd7mo4"]
+[gd_scene load_steps=11 format=3 uid="uid://c3jr12ajd7mo4"]
 
 [ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
-[ext_resource type="Texture2D" uid="uid://52avwqwg6gxo" path="res://PNG/Dark/texture_06.png" id="2_h77vt"]
 [ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="3_cus30"]
+[ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="3_duvdi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_smomk"]
+size = Vector3(1, 2, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6puv6"]
+size = Vector3(1, 2, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o35qo"]
 size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2b212"]
 size = Vector3(20, 1, 20)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u00es"]
-albedo_texture = ExtResource("2_h77vt")
-uv1_triplanar = true
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avhxm"]
 
@@ -29,16 +31,27 @@ sky = SubResource("Sky_v4ln1")
 jump_height = 1.5
 
 [node name="Box" parent="." instance=ExtResource("3_cus30")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_smomk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_6puv6")
+surface_material_override/0 = ExtResource("3_duvdi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_o35qo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_2b212")
-surface_material_override/0 = SubResource("StandardMaterial3D_u00es")
+surface_material_override/0 = ExtResource("3_duvdi")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4nkms")
