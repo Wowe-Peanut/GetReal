@@ -14,7 +14,7 @@ func _ready() -> void:
 	coyote_timer.timeout.connect(destroy_self)
 	observers = get_tree().get_nodes_in_group("observer")
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# if off screen and ct off: start coyote timer
 	if !visibility_check.is_on_screen() and coyote_timer.is_stopped():
 		coyote_timer.start()

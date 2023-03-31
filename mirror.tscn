@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b41j52vgwvasr"]
+
+[ext_resource type="Script" path="res://mirror.gd" id="1_23741"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlu30"]
+resource_local_to_scene = true
+
+[node name="Mirror" type="Node3D"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+script = ExtResource("1_23741")
+
+[node name="View" type="SubViewport" parent="."]
+
+[node name="MirrorCam" type="Camera3D" parent="View"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_5n1ph")
+surface_material_override/0 = SubResource("StandardMaterial3D_wlu30")
+
+[node name="MirrorOrigin" type="Marker3D" parent="Mesh"]

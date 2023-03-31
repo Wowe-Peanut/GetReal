@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3jr12ajd7mo4"]
+[gd_scene load_steps=12 format=3 uid="uid://c3jr12ajd7mo4"]
 
 [ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
 [ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="3_cus30"]
 [ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="3_duvdi"]
+[ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="4_b72i0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_smomk"]
 size = Vector3(1, 2, 7)
@@ -58,3 +59,6 @@ environment = SubResource("Environment_4nkms")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 6, 0)
+
+[node name="Mirror" parent="." instance=ExtResource("4_b72i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)

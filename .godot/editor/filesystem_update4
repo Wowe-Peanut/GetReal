@@ -1,5 +1,5 @@
+res://mirror.tscn
 res://test.tscn
 res://player.tscn
-res://box.tscn
+res://mirror.gd
 res://box.gd
-res://default_environment_texture.tres

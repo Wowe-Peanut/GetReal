@@ -1,11 +1,12 @@
-Timer
+Camera3D
+Marker3D
+SubViewport
 MeshInstance3D
+Node3D
+Timer
 CollisionShape3D
 StaticBody3D
-SubViewport
-Camera3D
 VisibleOnScreenNotifier3D
-Marker3D
 RayCast3D
 RigidBody3D
 WorldEnvironment
