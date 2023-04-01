@@ -2,4 +2,4 @@ res://mirror.tscn
 res://test.tscn
 res://player.tscn
 res://mirror.gd
-res://box.gd
+res://mirror.gdshader

@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b41j52vgwvasr"]
+[gd_scene load_steps=5 format=3 uid="uid://b41j52vgwvasr"]
 
 [ext_resource type="Script" path="res://mirror.gd" id="1_23741"]
+[ext_resource type="Shader" path="res://mirror.gdshader" id="2_hyqdn"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlu30"]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pd161"]
+render_priority = 0
+shader = ExtResource("2_hyqdn")
 
 [node name="Mirror" type="Node3D"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 script = ExtResource("1_23741")
 
 [node name="View" type="SubViewport" parent="."]
@@ -18,6 +19,7 @@ script = ExtResource("1_23741")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_5n1ph")
-surface_material_override/0 = SubResource("StandardMaterial3D_wlu30")
+surface_material_override/0 = SubResource("ShaderMaterial_pd161")
 
-[node name="MirrorOrigin" type="Marker3D" parent="Mesh"]
+[node name="MirrorOrigin" type="Marker3D" parent="."]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0, -8.74228e-08, 7.64274e-15, -1, 0, 0, 0)
