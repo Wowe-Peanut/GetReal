@@ -1,8 +1,9 @@
-MeshInstance3D
-CSGBox3D
-Camera3D
-Marker3D
 SubViewport
+Camera3D
+MeshInstance3D
+Sprite3D
+CSGBox3D
+Marker3D
 Node3D
 Timer
 CollisionShape3D

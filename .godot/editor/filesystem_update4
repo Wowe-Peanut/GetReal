@@ -1,4 +1,5 @@
-res://test.tscn
 res://player.tscn
+res://picture.tscn
+res://test.tscn
 res://mirror.tscn
-res://mirror.gdshader
+res://picture.gd

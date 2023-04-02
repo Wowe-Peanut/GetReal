@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
 [ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="3_duvdi"]
 [ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="4_b72i0"]
+[ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="4_i4ok3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avhxm"]
 
@@ -12,9 +13,6 @@ sky_material = SubResource("ProceduralSkyMaterial_avhxm")
 [sub_resource type="Environment" id="Environment_4nkms"]
 background_mode = 2
 sky = SubResource("Sky_v4ln1")
-
-[sub_resource type="BoxMesh" id="BoxMesh_em268"]
-size = Vector3(0.5, 0.5, 0.5)
 
 [node name="test" type="Node3D"]
 
@@ -34,9 +32,8 @@ transform = Transform3D(0.707107, 0, -0.707106, 0, 1, 0, 0.707107, 0, 0.707106, 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
 flip_faces = true
-size = Vector3(4, 5, 4)
+size = Vector3(6, 5, 6)
 material = ExtResource("3_duvdi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.4, -0.9)
-mesh = SubResource("BoxMesh_em268")
+[node name="Box" parent="." instance=ExtResource("4_i4ok3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, -1)
