@@ -19,12 +19,17 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	# if off screen and ct off: start coyote timer
 	if !visibility_check.is_on_screen() and coyote_timer.is_stopped():
+		print("off screen")
 		coyote_timer.start()
 	# if on screen and ct off, and obscured, ct on
+	print("check one")
 	if visibility_check.is_on_screen() and is_obscured(get_world_3d().direct_space_state) and coyote_timer.is_stopped():
+		print("on screen, obscured")
 		coyote_timer.start()
 	# if on screen and unobscured stop and ct on, don't delete ct off
+	print("check two")
 	if visibility_check.is_on_screen() and !is_obscured(get_world_3d().direct_space_state) and !coyote_timer.is_stopped():
+		print("on screen not obscured")
 		coyote_timer.stop()
 
 
@@ -43,9 +48,14 @@ func is_obscured(state: PhysicsDirectSpaceState3D) -> bool:
 
 
 func cast_ray(state: PhysicsDirectSpaceState3D, vertex: Vector3, observer_position: Vector3) -> Dictionary:
-	var from = mesh.global_transform.basis * vertex + mesh.global_position
+	# I THINK ISSUE IS HERE, corner of the box is not correct in world space
+	var from = mesh.global_transform * vertex + mesh.global_position
 	var query = PhysicsRayQueryParameters3D.create(from, observer_position)
 	query.exclude = [self] # this should change as more types of colliders are added
+	
+	print(from)
+	print(observer_position)
+	
 	return state.intersect_ray(query)
 
 

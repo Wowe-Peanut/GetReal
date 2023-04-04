@@ -1,8 +1,8 @@
+MeshInstance3D
 Area3D
 CollisionShape3D
 SubViewport
 Camera3D
-MeshInstance3D
 Sprite3D
 CSGBox3D
 Marker3D

@@ -14,7 +14,7 @@ shader = ExtResource("2_hyqdn")
 size = Vector3(1.1, 1.1, 0.01)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bh318"]
-size = Vector3(1, 1, 0.01)
+size = Vector3(1, 1, 0.1)
 
 [node name="Mirror" type="Node3D"]
 script = ExtResource("1_23741")
