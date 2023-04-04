@@ -16,20 +16,21 @@ collision_layer = 2
 script = ExtResource("1_16goh")
 camera_sens = 10.0
 
-[node name="Camera" type="Camera3D" parent="." groups=["observer"]]
+[node name="PlayerCam" type="Camera3D" parent="." groups=["observer"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 current = true
 
-[node name="LookRay" type="RayCast3D" parent="Camera"]
+[node name="LookRay" type="RayCast3D" parent="PlayerCam"]
 exclude_parent = false
 target_position = Vector3(0, 0, -3)
 collision_mask = 4
 
-[node name="HeldObjectPosition" type="Marker3D" parent="Camera"]
+[node name="HeldObjectPosition" type="Marker3D" parent="PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.5, -1.5)
 
-[node name="Picture" parent="Camera" instance=ExtResource("2_f2ycu")]
+[node name="Picture" parent="PlayerCam" instance=ExtResource("2_f2ycu")]
 transform = Transform3D(0.984808, 0.0449435, -0.167731, 0, 0.965926, 0.258819, 0.173648, -0.254887, 0.951251, 0.3, -0.1, -0.4)
+visible = false
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)

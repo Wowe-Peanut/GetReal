@@ -19,9 +19,9 @@ var walk_vel: Vector3 # Walking velocity
 var grav_vel: Vector3 # Gravity velocity 
 var jump_vel: Vector3 # Jumping velocity
 
-@onready var camera: Camera3D = $Camera
-@onready var held_position: Marker3D = $Camera/HeldObjectPosition
-@onready var look_ray: RayCast3D = $Camera/LookRay
+@onready var camera: Camera3D = $PlayerCam
+@onready var held_position: Marker3D = $PlayerCam/HeldObjectPosition
+@onready var look_ray: RayCast3D = $PlayerCam/LookRay
 
 var held_object: RigidBody3D = null
 

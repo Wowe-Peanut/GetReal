@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1680411896
+::res://::1680580841
 box.gd::GDScript::-1::1680318390::0::1::::<>RigidBody3D<>::
 box.tscn::PackedScene::6989730721523112076::1680318390::0::1::::<><>::res://box.gd
 default_bus_layout.tres::AudioBusLayout::-1::1680318390::0::1::::<><>::
@@ -8,10 +8,12 @@ default_environment_texture.tres::StandardMaterial3D::4109468711723149129::16803
 icon.png::CompressedTexture2D::1094102631817786952::1680318390::1680318390::1::::<><>::
 mirror.gd::GDScript::-1::1680380249::0::1::::<>Node3D<>::
 mirror.gdshader::Shader::-1::1680380416::0::1::::<><>::
-mirror.tscn::PackedScene::4476172448427823997::1680411016::0::1::::<><>::res://mirror.gd<>res://mirror.gdshader
+mirror.tscn::PackedScene::4476172448427823997::1680568301::0::1::::<><>::res://mirror.gd<>res://mirror.gdshader
+picture.gd::GDScript::-1::1680414971::0::1::::<>Node3D<>::
+picture.tscn::PackedScene::2301186555890409942::1680414986::0::1::::<><>::res://picture.gd
 player.gd::GDScript::-1::1680318390::0::1::::<>CharacterBody3D<>::
-player.tscn::PackedScene::3032007212897135758::1680411016::0::1::::<><>::res://player.gd
-test.tscn::PackedScene::6757788427100857849::1680411016::0::1::::<><>::uid://bjgyylqm3xc11<>uid://byswl41fa324d<>uid://b41j52vgwvasr<>uid://c6t43xntvjerc
+player.tscn::PackedScene::3032007212897135758::1680414985::0::1::::<><>::res://player.gd<>uid://71yhatc6m7hy
+test.tscn::PackedScene::6757788427100857849::1680414985::0::1::::<><>::uid://bjgyylqm3xc11<>uid://byswl41fa324d<>uid://b41j52vgwvasr<>uid://c6t43xntvjerc
 ::res://PNG/::1680318389
 ::res://PNG/Dark/::1680318389
 texture_01.png::CompressedTexture2D::4157480774862037064::1680318389::1680318389::1::::<><>::
