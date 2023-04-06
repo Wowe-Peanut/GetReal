@@ -1,3 +1,4 @@
+RigidBody3D
 MeshInstance3D
 Area3D
 CollisionShape3D
@@ -11,7 +12,6 @@ Timer
 StaticBody3D
 VisibleOnScreenNotifier3D
 RayCast3D
-RigidBody3D
 WorldEnvironment
 DirectionalLight3D
 CharacterBody3D

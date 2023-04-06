@@ -50,5 +50,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, -1.4, -0.9)
 mesh = SubResource("BoxMesh_qertm")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.375, -1.633, -6.25)
 mesh = SubResource("BoxMesh_qertm")

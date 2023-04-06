@@ -35,9 +35,10 @@ mesh = SubResource("BoxMesh_tx3na")
 [node name="MirrorOrigin" type="Marker3D" parent="."]
 transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0, -8.74228e-08, 7.64274e-15, -1, 0, 0, 0)
 
-[node name="Mirror" type="Area3D" parent="."]
+[node name="Mirror" type="RigidBody3D" parent="."]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 13
+gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mirror"]
 shape = SubResource("BoxShape3D_bh318")

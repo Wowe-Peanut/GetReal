@@ -22,40 +22,40 @@ func _physics_process(_delta: float) -> void:
 		print("off screen")
 		coyote_timer.start()
 	# if on screen and ct off, and obscured, ct on
-	print("check one")
 	if visibility_check.is_on_screen() and is_obscured(get_world_3d().direct_space_state) and coyote_timer.is_stopped():
 		print("on screen, obscured")
 		coyote_timer.start()
 	# if on screen and unobscured stop and ct on, don't delete ct off
-	print("check two")
 	if visibility_check.is_on_screen() and !is_obscured(get_world_3d().direct_space_state) and !coyote_timer.is_stopped():
 		print("on screen not obscured")
 		coyote_timer.stop()
 
 
 func is_obscured(state: PhysicsDirectSpaceState3D) -> bool:
+	var player_obscured = null
+	var mirror_obscured = null
 	for observer in observers:
 		if observer == "PlayerCam":
-			if is_obscured_player(state):
-				return true
-
+			player_obscured = is_obscured_player(state)
+			
 		if observer == "MirrorCam":
-			if is_obscured_mirror(state):
-				return true
-				
-	return false
+			mirror_obscured = is_obscured_mirror(state)
+			
+	if player_obscured != null and player_obscured:
+		if mirror_obscured != null and mirror_obscured:
+			return true
+		else:
+			return false
+	else:
+		return false
 
 
 
 func cast_ray(state: PhysicsDirectSpaceState3D, vertex: Vector3, observer_position: Vector3) -> Dictionary:
 	# I THINK ISSUE IS HERE, corner of the box is not correct in world space
-	var from = mesh.global_transform * vertex + mesh.global_position
+	var from = mesh.global_transform * vertex
 	var query = PhysicsRayQueryParameters3D.create(from, observer_position)
 	query.exclude = [self] # this should change as more types of colliders are added
-	
-	print(from)
-	print(observer_position)
-	
 	return state.intersect_ray(query)
 
 
@@ -74,18 +74,12 @@ func is_obscured_player(state: PhysicsDirectSpaceState3D) -> bool:
 
 func is_obscured_mirror(state: PhysicsDirectSpaceState3D) -> bool:
 	# if the mirror is not even facing the box, do not even check for obscurity (you can't see the box)
-	if observers["MirrorCam"].global_transform.basis.z.normalized().dot(global_position) < 0:
-		print("mirror can't see box") 
-		return true
-	# if the player is not looking at the mirror, do not even check for obscurity (you can't see the mirror, therefore box in mirror)
-	if observers["PlayerCam"].global_transform.basis.z.normalized().dot(observers["MirrorCam"].global_transform.basis.z.normalized()) > 0: 
-		print("player can't see mirror")
+	if observers["MirrorCam"].global_transform.basis.z.normalized().dot(global_position) > 0:
 		return true
 	# loop through all the corners of the box and cast a ray to the mirror cam (rotation of cam does not matter if position is correct [it is])
 	for vertex in mesh.get_mesh().get_faces():
 		var result = cast_ray(state, vertex, observers["MirrorCam"].global_position)
 		# if we hit the mirror, immediately cast to the player to see if the player can see the reflected position of the box
-		print(result)
 		if result and result.collider.name == "Mirror":
 			result = cast_ray(state, result.position, observers["PlayerCam"].global_position)
 			# if the player can see the box corner in the mirror, we can see the box

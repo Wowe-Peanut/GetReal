@@ -38,4 +38,5 @@ shape = SubResource("CapsuleShape3D_2huvx")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_vj0us")
