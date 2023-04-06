@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3jr12ajd7mo4"]
+[gd_scene load_steps=8 format=3 uid="uid://c3jr12ajd7mo4"]
 
 [ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
 [ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="3_duvdi"]
@@ -13,13 +13,6 @@ sky_material = SubResource("ProceduralSkyMaterial_avhxm")
 [sub_resource type="Environment" id="Environment_4nkms"]
 background_mode = 2
 sky = SubResource("Sky_v4ln1")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14dre"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qertm"]
-material = SubResource("StandardMaterial3D_14dre")
-size = Vector3(0.1, 0.1, 0.1)
 
 [node name="test" type="Node3D"]
 
@@ -44,10 +37,3 @@ material = ExtResource("3_duvdi")
 
 [node name="Box" parent="." instance=ExtResource("4_i4ok3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, -1)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, -1.4, -0.9)
-mesh = SubResource("BoxMesh_qertm")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_qertm")

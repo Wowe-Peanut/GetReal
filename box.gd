@@ -68,7 +68,6 @@ func is_obscured_player(state: PhysicsDirectSpaceState3D) -> bool:
 		if result and result.collider.name == "Player":
 			return false
 	# if all the corners are accounted for and not returned true, we can't see the box
-	print("player obscured")
 	return true
 
 
@@ -86,7 +85,6 @@ func is_obscured_mirror(state: PhysicsDirectSpaceState3D) -> bool:
 			if result and result.collider.name == "Player":
 				return false
 	# if all the corners are accounted for and not returned true, we can't see the box
-	print("mirror obscured")
 	return true
 
 
