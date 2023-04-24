@@ -1,11 +1,9 @@
 extends Node3D
 
-@onready var view = $View
 @onready var mesh = $Mesh
 @onready var mirror_cam: Camera3D = $View/MirrorCam
 @onready var mirror_origin = $MirrorOrigin
-
-@export var pixels_per_unit: int = 100
+@onready var observer = $View/MirrorCam/MirrorObserver
 
 var player_cam: Camera3D
 
@@ -13,7 +11,7 @@ var player_cam: Camera3D
 func _ready() -> void:
 	player_cam = get_tree().root.get_camera_3d()
 
-	mesh.get_surface_override_material(0).set_shader_parameter("mirrorCamTex", view.get_texture())
+	mesh.get_surface_override_material(0).set_shader_parameter("mirrorCamTex", $View.get_texture())
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float):
@@ -35,3 +33,20 @@ func _process(_delta: float):
 	offset = Vector2(offset.x, offset.y)
 	
 	mirror_cam.set_frustum(mesh.mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), 100)
+	update_view_cone()
+	
+func update_view_cone() -> void:
+	var points: Array[Vector3] = []
+	
+	var mirror_corners = mesh.mesh.get_faces()
+	mirror_corners.remove_at(3)
+	mirror_corners.remove_at(4)
+	
+	for corner in mirror_corners: 
+		points.append(mirror_cam.to_local(to_global(corner)))
+	
+	for corner in mirror_corners:
+		var point = mirror_cam.to_local(to_global(corner)).normalized() * 100
+		points.append(point)
+		
+	observer.set_points(points)

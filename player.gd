@@ -27,12 +27,14 @@ var held_object: RigidBody3D = null
 
 func _ready() -> void:
 	capture_mouse()
+	set_observer_points()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
-	if Input.is_action_just_pressed("jump"): jumping = true
-	if Input.is_action_just_pressed("interact"): toggle_interact()
-	if Input.is_action_just_pressed("ui_cancel"): get_tree().quit()
+	
+	if event.is_action_pressed("jump"): jumping = true
+	if event.is_action_pressed("interact"): toggle_interact()
+	if event.is_action_pressed("ui_cancel"): get_tree().quit()
 
 func _process(delta: float) -> void:
 	if mouse_captured: _rotate_camera(delta)
@@ -84,3 +86,25 @@ func toggle_interact() -> void:
 			held_object.freeze = true
 			
 
+func set_observer_points():
+	var planes: Array[Plane] = camera.get_frustum()
+	var points = []
+	# near, far, left, top, right, bottom
+	#near left top; 0, 2, 3
+	#near left bottom; 0, 2, 5
+	#near right top; 0, 4, 3
+	#near right bottom; 0, 4, 5
+	#far left top; 1, 2, 3
+	#far left bottom; 1, 2, 5
+	#far right top; 1, 4, 3
+	#far right bottom; 1, 4, 5
+	for i in range(8):
+		var point = $PlayerCam/PlayerObserver.to_local(planes[1 if (int(i) / 4 == 1) else 0].intersect_3(planes[2 if (int(i / 2) % 2 == 0) else 4], planes[3 if (i % 2 == 0) else 5]))
+		points.append(point)
+		print(point)
+			
+	# $PlayerCam/PlayerObserver.set_points(points)
+	for i in range(len($PlayerCam/PlayerObserver/CollisionShape3D.shape.points)):
+		print($PlayerCam/PlayerObserver/CollisionShape3D.shape.points[i], points[i])
+		print($PlayerCam/PlayerObserver/CollisionShape3D.shape.points[i] == points[i])
+	print($PlayerCam/PlayerObserver/CollisionShape3D.shape.points)

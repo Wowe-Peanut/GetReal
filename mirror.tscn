@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b41j52vgwvasr"]
+[gd_scene load_steps=8 format=3 uid="uid://b41j52vgwvasr"]
 
 [ext_resource type="Script" path="res://mirror.gd" id="1_23741"]
 [ext_resource type="Shader" path="res://mirror.gdshader" id="2_hyqdn"]
+[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="2_mb142"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
 resource_local_to_scene = true
@@ -22,7 +23,9 @@ script = ExtResource("1_23741")
 [node name="View" type="SubViewport" parent="."]
 size = Vector2i(1024, 1024)
 
-[node name="MirrorCam" type="Camera3D" parent="View" groups=["observer"]]
+[node name="MirrorCam" type="Camera3D" parent="View"]
+
+[node name="MirrorObserver" parent="View/MirrorCam" instance=ExtResource("2_mb142")]
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_5n1ph")
@@ -39,6 +42,7 @@ transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0, -8.7
 collision_layer = 8
 collision_mask = 13
 gravity_scale = 0.0
+freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mirror"]
 shape = SubResource("BoxShape3D_bh318")

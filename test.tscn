@@ -27,7 +27,7 @@ environment = SubResource("Environment_4nkms")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 6, 0)
 
 [node name="Mirror" parent="." instance=ExtResource("4_b72i0")]
-transform = Transform3D(0.707107, 0, -0.707106, 0, 1, 0, 0.707107, 0, 0.707106, 0, -1.4, -0.9)
+transform = Transform3D(0.707107, 2.98023e-08, -0.707106, -5.45421e-09, 1, -5.4542e-09, 0.707107, 7.71341e-09, 0.707106, 0, -1.4, -1)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true

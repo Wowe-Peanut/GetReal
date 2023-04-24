@@ -15,6 +15,10 @@ run/main_scene="res://test.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
+[autoload]
+
+LosChecker="*res://los_checker.gd"
+
 [input]
 
 move_forward={
@@ -63,7 +67,10 @@ take_picture={
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Boxes"
-3d_physics/layer_4="Mirror"
+3d_physics/layer_4="Observers"
+3d_physics/layer_5="Mirror"
+3d_physics/layer_6="Polaroid"
+3d_physics/layer_7="Proxy Boxes"
 
 [physics]
 
