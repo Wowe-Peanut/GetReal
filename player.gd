@@ -27,7 +27,7 @@ var held_object: RigidBody3D = null
 
 func _ready() -> void:
 	capture_mouse()
-	set_observer_points()
+	#set_observer_points()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
@@ -104,7 +104,4 @@ func set_observer_points():
 		print(point)
 			
 	# $PlayerCam/PlayerObserver.set_points(points)
-	for i in range(len($PlayerCam/PlayerObserver/CollisionShape3D.shape.points)):
-		print($PlayerCam/PlayerObserver/CollisionShape3D.shape.points[i], points[i])
-		print($PlayerCam/PlayerObserver/CollisionShape3D.shape.points[i] == points[i])
-	print($PlayerCam/PlayerObserver/CollisionShape3D.shape.points)
+

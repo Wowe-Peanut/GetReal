@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3jr12ajd7mo4"]
+[gd_scene load_steps=7 format=3 uid="uid://c3jr12ajd7mo4"]
 
 [ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
 [ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="3_duvdi"]
-[ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="4_b72i0"]
 [ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="4_i4ok3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avhxm"]
@@ -26,13 +25,17 @@ environment = SubResource("Environment_4nkms")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 6, 0)
 
-[node name="Mirror" parent="." instance=ExtResource("4_b72i0")]
-transform = Transform3D(0.707107, 2.98023e-08, -0.707106, -5.45421e-09, 1, -5.4542e-09, 0.707107, 7.71341e-09, 0.707106, 0, -1.4, -1)
-
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
 flip_faces = true
 size = Vector3(6, 5, 6)
+material = ExtResource("3_duvdi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+use_collision = true
+collision_mask = 7
+size = Vector3(4, 0.5, 0.5)
 material = ExtResource("3_duvdi")
 
 [node name="Box" parent="." instance=ExtResource("4_i4ok3")]

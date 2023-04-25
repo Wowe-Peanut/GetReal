@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 
 @onready var mesh = $Mesh
 @onready var mirror_cam: Camera3D = $View/MirrorCam
