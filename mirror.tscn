@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b41j52vgwvasr"]
 
 [ext_resource type="Script" path="res://mirror.gd" id="1_23741"]
+[ext_resource type="PackedScene" uid="uid://bvn4e80dw8ksb" path="res://mirror_observer.tscn" id="2_dpbau"]
 [ext_resource type="Shader" path="res://mirror.gdshader" id="2_hyqdn"]
-[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="2_mb142"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
 resource_local_to_scene = true
@@ -28,7 +28,7 @@ size = Vector2i(1024, 1024)
 
 [node name="MirrorCam" type="Camera3D" parent="View"]
 
-[node name="MirrorObserver" parent="View/MirrorCam" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_mb142")]
+[node name="MirrorObserver" parent="View/MirrorCam" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_dpbau")]
 camera = NodePath("..")
 self_collider = NodePath("../../..")
 
