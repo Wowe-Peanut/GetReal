@@ -9,7 +9,6 @@ extends Area3D
 
 
 var seen: Array = []
-var observed: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,8 +37,6 @@ func _on_body_entered(body) -> void:
 		LosChecker.emit_signal("observer_state_changed")
 
 func _on_body_exited(body) -> void:
-	if body in observed:
-		observed.erase(body)
 	if body in seen:
 		seen.erase(body)
 		LosChecker.emit_signal("observer_state_changed")

@@ -29,6 +29,7 @@ func _on_observer_state_changed():
 		
 	for box in boxes:
 		box.coyote_timer.start()
+		pass
 	
 
 

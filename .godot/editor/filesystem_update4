@@ -3,10 +3,9 @@ res://player.tscn
 res://mirror.tscn
 res://box.tscn
 res://observer.tscn
-res://observer.gd
-res://player_observer.gd
 res://player_observer.tscn
-res://player.gd
-res://mirror.gd
-res://mirror_observer.gd
 res://mirror_observer.tscn
+res://los_checker.gd
+res://player_observer.gd
+res://mirror_observer.gd
+res://observer.gd
