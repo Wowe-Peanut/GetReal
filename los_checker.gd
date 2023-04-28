@@ -16,39 +16,18 @@ func _ready():
 	connect("observer_state_changed", _on_observer_state_changed)
 
 func _on_observer_state_changed():
-	print("state_changed")
+	# get all boxes in the scene
 	var boxes = get_tree().get_nodes_in_group("box")
 	
-	
-	print("seen: ", player_observer.seen)
-	print("observed: ", player_observer.observed)
+	# iterate in all the boxes the player can see (even through other observers)
 	for box in player_observer.observed:
+		# stop coyote time if started
 		if !box.coyote_timer.is_stopped():
 			box.coyote_timer.stop()
+		# remove box from list of all boxes in scene
 		boxes.erase(box)
-		
+	
+	# any remaining boxes must not be able to be seen. start coyote time for them
 	for box in boxes:
 		box.coyote_timer.start()
 		pass
-	
-
-
-
-
-""" ALGORITHM
-
-What we can detect: when an observers state changes (when what it can see changes)
-
-if player changed: deal with immeditely (1)
-else: update observer
-
-(1): 
-	if new box in view_cone: check obscured
-	if new observer: check check line of sight from observer to player
-		if los: (2)
-		else: end
-(2):
-	check los from all seen in observer to player
-
-
-"""

@@ -4,9 +4,7 @@ extends Area3D
 @export var camera: Camera3D = get_parent()
 @export var self_collider: PhysicsBody3D
 
-
 @onready var shape: CollisionShape3D = $CollisionShape3D
-
 
 var seen: Array = []
 
@@ -26,9 +24,15 @@ func remove_duplicate(array: Array) -> Array:
 func set_points(points) -> void:
 	shape.shape.points = points
 
-func cast_ray(state: PhysicsDirectSpaceState3D, box: RigidBody3D, vertex: Vector3, camera_position: Vector3) -> Dictionary:
-	var query = PhysicsRayQueryParameters3D.create(box.global_transform * vertex, camera_position)
-	query.exclude = [box] # this should change as more types of colliders are added
+func cast_ray(state: PhysicsDirectSpaceState3D, start_global_position: Vector3, end_global_position: Vector3, exclude: Array[PhysicsBody3D]) -> Dictionary:
+	var query = PhysicsRayQueryParameters3D.create(start_global_position, end_global_position)
+	
+	# convert objects to RIDs, because reasons
+	var exclude_rid: Array[RID] = []
+	for object in exclude:
+		exclude_rid.append(object.get_rid())
+	query.exclude = exclude_rid
+	
 	return state.intersect_ray(query)
 
 func _on_body_entered(body) -> void:

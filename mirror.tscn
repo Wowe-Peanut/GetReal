@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b41j52vgwvasr"]
+[gd_scene load_steps=9 format=3 uid="uid://b41j52vgwvasr"]
 
 [ext_resource type="Script" path="res://mirror.gd" id="1_23741"]
-[ext_resource type="PackedScene" uid="uid://bvn4e80dw8ksb" path="res://mirror_observer.tscn" id="2_dpbau"]
 [ext_resource type="Shader" path="res://mirror.gdshader" id="2_hyqdn"]
+[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="2_tte1p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l6uc4"]
+points = PackedVector3Array(0, 0, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
 resource_local_to_scene = true
@@ -28,9 +31,12 @@ size = Vector2i(1024, 1024)
 
 [node name="MirrorCam" type="Camera3D" parent="View"]
 
-[node name="MirrorObserver" parent="View/MirrorCam" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_dpbau")]
+[node name="MirrorObserver" parent="View/MirrorCam" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_tte1p")]
 camera = NodePath("..")
 self_collider = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="View/MirrorCam/MirrorObserver"]
+shape = SubResource("ConvexPolygonShape3D_l6uc4")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_5n1ph")

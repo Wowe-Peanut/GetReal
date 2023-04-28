@@ -1,11 +1,13 @@
+res://player_observer.tscn
+res://player_observer.gd
 res://test.tscn
 res://player.tscn
 res://mirror.tscn
 res://box.tscn
 res://observer.tscn
-res://player_observer.tscn
 res://mirror_observer.tscn
-res://los_checker.gd
-res://player_observer.gd
-res://mirror_observer.gd
 res://observer.gd
+res://mirror_observer.gd
+res://player.gd
+res://box.gd
+res://los_checker.gd
