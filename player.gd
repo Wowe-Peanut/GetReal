@@ -38,7 +38,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if mouse_captured: _rotate_camera(delta)
-	if held_object: held_object.global_transform = held_position.global_transform
+	if is_instance_valid(held_object) and held_object: held_object.global_transform = held_position.global_transform
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
 

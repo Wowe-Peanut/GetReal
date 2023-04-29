@@ -1,4 +1,13 @@
+@tool
 extends RigidBody3D
+
+@export var pixels_per_unit: int = 10
+@export var size: Vector2 = Vector2(1, 1):
+	set(value):
+		update_size(value)
+		size = value
+
+	
 
 @onready var mesh = $Mesh
 @onready var mirror_cam: Camera3D = $View/MirrorCam
@@ -15,6 +24,10 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float):
+	if not Engine.is_editor_hint():
+		render()
+	
+func render():
 	var plane_origin = mirror_origin.global_transform.origin
 	var plane_normal = mirror_origin.global_transform.basis.z.normalized()
 	var reflection_plane = Plane(plane_normal, plane_origin.dot(plane_normal))
@@ -34,7 +47,13 @@ func _process(_delta: float):
 	
 	mirror_cam.set_frustum(mesh.mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), 100)
 	update_view_cone()
-	
+
+func update_size(new_size: Vector2) -> void:
+	$Mesh.mesh.size = new_size
+	$Border.mesh.size = Vector3(new_size.x + 0.1, new_size.y + 0.1, 0.01)
+	$CollisionShape3D.shape.size = Vector3(new_size.x, new_size.y, 0.1)
+	$View.size = new_size * pixels_per_unit
+
 func update_view_cone() -> void:
 	var points: Array[Vector3] = []
 	

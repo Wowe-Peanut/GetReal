@@ -19,6 +19,7 @@ func _on_observer_state_changed():
 	# get all boxes in the scene
 	var boxes = get_tree().get_nodes_in_group("box")
 	
+	print("seen: ", player_observer.seen)
 	# iterate in all the boxes the player can see (even through other observers)
 	for box in player_observer.observed:
 		# stop coyote time if started

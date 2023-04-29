@@ -43,4 +43,6 @@ material = ExtResource("3_duvdi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, -1)
 
 [node name="Mirror" parent="." instance=ExtResource("4_5022i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9)
+pixels_per_unit = 512
+size = Vector2(6, 5)
