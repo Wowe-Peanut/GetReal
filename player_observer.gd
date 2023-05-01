@@ -3,23 +3,37 @@ extends Observer
 var observed: Array = []
 
 func _physics_process(_delta) -> void:
+	var boxes = get_tree().get_nodes_in_group("box")
+	
 	var state = get_world_3d().direct_space_state
+	print(seen)
 	for observed_object in seen:
 		if observed_object.is_in_group("box"):
 			var obscured = is_obscured(state, observed_object)
-			modify_observed(observed_object, obscured)
+			modify_observed(observed_object, obscured, true)
 		else:
 			check_observer(state, observed_object.observer)
+	
+	print(observed)
+	# iterate in all the boxes the player can see (even through other observers)
+	for box in observed:
+		# stop coyote time if started
+		if !box.coyote_timer.is_stopped():
+			box.coyote_timer.stop()
+		# remove box from list of all boxes in scene
+		boxes.erase(box)
 
-func modify_observed(observed_object: RigidBody3D, obscured: bool) -> void:
+	# any remaining boxes must not be able to be seen. start coyote time for them
+	for box in boxes:
+		if box.coyote_timer.is_stopped(): box.coyote_timer.start()
+		pass
+
+func modify_observed(observed_object: RigidBody3D, obscured: bool, direct_player) -> void:
 	if obscured:
-		var observed_len = len(observed)
+		#print("direct player ", direct_player)
 		observed.erase(observed_object)
-		if len(observed) != observed_len:
-			LosChecker.emit_signal("observer_state_changed")
 	elif not observed.has(observed_object):
 		observed.append(observed_object)
-		LosChecker.emit_signal("observer_state_changed")
 
 
 func is_obscured(state: PhysicsDirectSpaceState3D, box: RigidBody3D) -> bool:
@@ -35,7 +49,7 @@ func check_observer(state: PhysicsDirectSpaceState3D, observer: Observer) -> voi
 	for observed_object in observer.seen:
 		if observed_object.is_in_group("box"):
 			var obscured = is_obscured_through_observer(state, observer, observed_object)
-			modify_observed(observed_object, obscured)
+			modify_observed(observed_object, obscured, false)
 
 
 func is_obscured_through_observer(state: PhysicsDirectSpaceState3D, observer: Observer, box: RigidBody3D) -> bool:

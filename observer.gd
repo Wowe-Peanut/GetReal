@@ -37,12 +37,12 @@ func cast_ray(state: PhysicsDirectSpaceState3D, start_global_position: Vector3, 
 
 func _on_body_entered(body) -> void:
 	if not body in seen:
+		print(self, "enter: ", body)
 		seen.append(body)
-		LosChecker.emit_signal("observer_state_changed")
 
 func _on_body_exited(body) -> void:
 	if body in seen:
+		print(self, "exit: ", body)
 		seen.erase(body)
-		LosChecker.emit_signal("observer_state_changed")
 
 

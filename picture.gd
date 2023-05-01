@@ -17,9 +17,13 @@ func take_picture() -> void:
 	viewport.add_child(camera)
 	
 	camera.global_transform = get_tree().root.get_camera_3d().global_transform
-
+	
+	visible = false
 	texture.texture = viewport.get_texture()
 	await RenderingServer.frame_post_draw
 	viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 	
+	viewport.remove_child(camera)
+	
 	picture_taken = true
+	visible = true
