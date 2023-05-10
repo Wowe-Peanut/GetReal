@@ -10,12 +10,12 @@ points = PackedVector3Array(0, 0, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
 resource_local_to_scene = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dgsv8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dwq22"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pd161"]
 render_priority = 0
 shader = ExtResource("2_hyqdn")
-shader_parameter/mirrorCamTex = SubResource("ViewportTexture_dgsv8")
+shader_parameter/mirrorCamTex = SubResource("ViewportTexture_dwq22")
 
 [sub_resource type="BoxMesh" id="BoxMesh_tx3na"]
 resource_local_to_scene = true
