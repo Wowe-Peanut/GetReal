@@ -1,4 +1,5 @@
 res://test.tscn
+res://player_observer.gd
 res://player.tscn
 res://mirror.tscn
 res://box.tscn
