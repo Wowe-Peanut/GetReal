@@ -15,7 +15,7 @@ func _physics_process(_delta) -> void:
 	for observed_object in seen:
 		if observed_object.is_in_group("box"):
 			var obscured = is_obscured(state, observed_object)
-			modify_observed(observed_object, obscured, true)
+			modify_observed(observed_object, obscured)
 		else:
 			is_observer_obscured(state, observed_object.observer)
 	
@@ -44,10 +44,11 @@ func is_obscured(state: PhysicsDirectSpaceState3D, box: RigidBody3D) -> bool:
 	return true
 		
 func is_observer_obscured(state: PhysicsDirectSpaceState3D, observer: Observer) -> void:
+	#print(observer.name + " seen: ", observer.seen)
 	for observed_object in observer.seen:
 		if observed_object.is_in_group("box"):
 			var obscured = is_obscured_through_observer(state, observer, observed_object)
-			modify_observed(observed_object, obscured, false)
+			modify_observed(observed_object, obscured)
 
 func is_obscured_through_observer(state: PhysicsDirectSpaceState3D, observer: Observer, box: RigidBody3D) -> bool:
 	
@@ -67,9 +68,11 @@ func is_obscured_through_observer(state: PhysicsDirectSpaceState3D, observer: Ob
 				corners_obscured.append(false)
 	# if all corners are off screen, obscured
 	if corners_on_screen.all(func(a): return !a): 
+		print("all corners off screen")
 		return true
 	# if all corners obscured, obscured
 	elif corners_obscured.all(func(a): return a): 
+		print("all corners obscured")
 		return true
 	# otherwise, we can see the box!
 	else:
@@ -84,7 +87,7 @@ func is_corner_observed(state: PhysicsDirectSpaceState3D, observer: Observer, po
 	var result = state.intersect_point(point_query)
 	return not result.is_empty()
 
-func modify_observed(observed_object: RigidBody3D, obscured: bool, direct_player) -> void:
+func modify_observed(observed_object: RigidBody3D, obscured: bool) -> void:
 	if not obscured and not observed.has(observed_object):
 		observed.append(observed_object)
 

@@ -1,8 +1,12 @@
-res://test.tscn
-res://player_observer.gd
-res://player.tscn
 res://mirror.tscn
+res://mirror.gd
+res://player.tscn
+res://test.tscn
 res://box.tscn
 res://observer.tscn
 res://player_observer.tscn
-res://observer.gd
+res://picture.tscn
+res://player_observer.gd
+res://mirror_reflection.tscn
+res://mirror_reflection.gd
+res://picture.gd

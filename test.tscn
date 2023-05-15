@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
 [ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="3_duvdi"]
-[ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="4_5022i"]
-[ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="4_i4ok3"]
+[ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="3_vc5nl"]
+[ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="4_gqi4l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avhxm"]
 
@@ -39,13 +39,9 @@ collision_mask = 7
 size = Vector3(4, 2, 0.5)
 material = ExtResource("3_duvdi")
 
-[node name="Box" parent="." instance=ExtResource("4_i4ok3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, -1)
+[node name="Mirror" parent="." instance=ExtResource("3_vc5nl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -4)
+size = Vector2(3, 3)
 
-[node name="Box2" parent="." instance=ExtResource("4_i4ok3")]
+[node name="Box" parent="." instance=ExtResource("4_gqi4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1)
-
-[node name="Mirror" parent="." instance=ExtResource("4_5022i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9)
-pixels_per_unit = 512
-size = Vector2(6, 5)

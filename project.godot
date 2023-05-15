@@ -60,6 +60,9 @@ take_picture={
 
 [layer_names]
 
+3d_render/layer_1="Default"
+3d_render/layer_2="Player Mirror Reflection"
+3d_render/layer_3="Polaroid Mirror Reflection"
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Boxes"

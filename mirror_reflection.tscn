@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://r2w0qysvtd6"]
+
+[ext_resource type="Shader" path="res://mirror.gdshader" id="1_gk6t6"]
+[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="2_etq7b"]
+[ext_resource type="Script" path="res://mirror_reflection.gd" id="2_nbqyc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
+resource_local_to_scene = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_x2vjq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pd161"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_gk6t6")
+shader_parameter/mirrorCamTex = SubResource("ViewportTexture_x2vjq")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l6uc4"]
+points = PackedVector3Array(0, 0, 0)
+
+[node name="ReflectionMesh" type="MeshInstance3D"]
+layers = 2
+mesh = SubResource("QuadMesh_5n1ph")
+surface_material_override/0 = SubResource("ShaderMaterial_pd161")
+script = ExtResource("2_nbqyc")
+
+[node name="View" type="SubViewport" parent="."]
+size = Vector2i(1024, 1024)
+
+[node name="MirrorCam" type="Camera3D" parent="View"]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0, 0, -1)
+keep_aspect = 0
+projection = 2
+
+[node name="MirrorObserver" parent="View/MirrorCam" node_paths=PackedStringArray("camera") instance=ExtResource("2_etq7b")]
+camera = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="View/MirrorCam/MirrorObserver"]
+shape = SubResource("ConvexPolygonShape3D_l6uc4")

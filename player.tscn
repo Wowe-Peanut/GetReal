@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjgyylqm3xc11"]
+[gd_scene load_steps=6 format=3 uid="uid://bjgyylqm3xc11"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_16goh"]
 [ext_resource type="PackedScene" uid="uid://bjgk6csfxdc76" path="res://player_observer.tscn" id="2_teo3p"]
+[ext_resource type="PackedScene" uid="uid://71yhatc6m7hy" path="res://picture.tscn" id="3_7mtva"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2huvx"]
 radius = 0.25
@@ -18,6 +19,7 @@ camera_sens = 10.0
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+cull_mask = 1048571
 current = true
 far = 100.0
 
@@ -34,6 +36,9 @@ visible = false
 [node name="PlayerObserver" parent="PlayerCam" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_teo3p")]
 camera = NodePath("..")
 self_collider = NodePath("../..")
+
+[node name="Picture" parent="PlayerCam" instance=ExtResource("3_7mtva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -0.6)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
