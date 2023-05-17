@@ -1,24 +1,32 @@
 @tool
-extends MeshInstance3D
+extends Node3D
 
-@export_flags_3d_render var mirror_cam_cull_mask = 0
+@export_flags_3d_render var mirror_cam_cull_mask = 1
 @export_flags_3d_render var render_layer = 0
+@export var disabled: bool = false:
+	set(value):
+		update_viewport(value)
+		disabled = value
 
+@onready var reflection_mesh: MeshInstance3D = $ReflectionMesh
 @onready var view: SubViewport = $View
 @onready var mirror_cam: Camera3D = $View/MirrorCam
 @onready var observer: Observer = $View/MirrorCam/MirrorObserver
 
 var camera_to_reflect: Camera3D = null
+var pixels_per_unit: int = 1024
+var recursive_reflections_handled: Array = []
 
 func _ready():
 	mirror_cam.cull_mask = mirror_cam_cull_mask
-	layers = render_layer
-	get_surface_override_material(0).set_shader_parameter("mirrorCamTex", $View.get_texture())
+	reflection_mesh.layers = render_layer
+	reflection_mesh.get_surface_override_material(0).set_shader_parameter("mirrorCamTex", $View.get_texture())
+	update_viewport(disabled)
 
 func render(mirror_transform: Transform3D) -> void:
 	
-	if camera_to_reflect == null:
-		return
+	if disabled: return
+	if camera_to_reflect == null: return
 	
 	var plane_origin = mirror_transform.origin
 	var plane_normal = mirror_transform.basis.z.normalized()
@@ -37,13 +45,14 @@ func render(mirror_transform: Transform3D) -> void:
 	var offset = reflection_transform.inverse() * main_cam_pos
 	offset = Vector2(offset.x, offset.y)
 	
-	mirror_cam.set_frustum(mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), 100)
+	mirror_cam.set_frustum(reflection_mesh.mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), 100)
 	update_view_cone()
+
 
 func update_view_cone() -> void:
 	var points: Array[Vector3] = []
 	
-	var mirror_corners = mesh.get_faces()
+	var mirror_corners = reflection_mesh.mesh.get_faces()
 	mirror_corners.remove_at(3)
 	mirror_corners.remove_at(4)
 	
@@ -57,6 +66,14 @@ func update_view_cone() -> void:
 	observer.set_points(points)
 
 
-func set_size(new_size) -> void:
-	mesh.size = new_size
-	view.size = new_size * get_parent().get_parent().pixels_per_unit
+func update_viewport(to_disable: bool) -> void:
+	if !is_inside_tree(): return
+	if to_disable:
+		view.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	else:
+		view.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
+
+
+func set_size(new_size: Vector2) -> void:
+	reflection_mesh.mesh.size = new_size
+	view.size = new_size * pixels_per_unit

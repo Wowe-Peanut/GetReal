@@ -4,28 +4,24 @@
 [ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="2_etq7b"]
 [ext_resource type="Script" path="res://mirror_reflection.gd" id="2_nbqyc"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l6uc4"]
+resource_local_to_scene = true
+points = PackedVector3Array(0, 0, 0)
+
 [sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
 resource_local_to_scene = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2bdlu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_17kb5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pd161"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_gk6t6")
-shader_parameter/mirrorCamTex = SubResource("ViewportTexture_2bdlu")
+shader_parameter/mirrorCamTex = SubResource("ViewportTexture_17kb5")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l6uc4"]
-resource_local_to_scene = true
-points = PackedVector3Array(0, 0, 0)
-
-[node name="ReflectionMesh" type="MeshInstance3D"]
-layers = 2
-mesh = SubResource("QuadMesh_5n1ph")
-surface_material_override/0 = SubResource("ShaderMaterial_pd161")
+[node name="MirrorReflection" type="Node3D"]
 script = ExtResource("2_nbqyc")
-mirror_cam_cull_mask = null
-render_layer = null
+mirror_cam_cull_mask = 0
 
 [node name="View" type="SubViewport" parent="."]
 size = Vector2i(1024, 1024)
@@ -41,3 +37,8 @@ camera = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="View/MirrorCam/MirrorObserver"]
 shape = SubResource("ConvexPolygonShape3D_l6uc4")
+
+[node name="ReflectionMesh" type="MeshInstance3D" parent="."]
+layers = 0
+mesh = SubResource("QuadMesh_5n1ph")
+surface_material_override/0 = SubResource("ShaderMaterial_pd161")

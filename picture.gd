@@ -9,7 +9,7 @@ var mirror
 
 func _ready() -> void:
 	mirror = get_tree().root.get_node("test/Mirror")
-	mirror.get_node("Reflections/PolaroidReflectionMesh").camera_to_reflect = camera
+	#mirror.get_node("Reflections/PolaroidReflectionMesh").camera_to_reflect = camera
 
 	
 func _input(event: InputEvent) -> void:

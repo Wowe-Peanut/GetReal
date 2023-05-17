@@ -1,5 +1,6 @@
 extends Node
 
+var MAX_REFLECTIONS = 100
 var used_layers = [1, 2, 4]
 
 func get_next_layer() -> int:
@@ -15,3 +16,6 @@ func is_in_used_layers(layer) -> bool:
 	for layer_to_check in used_layers:
 		if layer == layer_to_check: return true
 	return false
+
+func layer_int_to_layer_num(layer) -> int:
+	return log(layer) / log(2)

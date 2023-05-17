@@ -14,6 +14,7 @@ points = PackedVector3Array(0.038, 0.038, 0, -0.038, 0.038, 0, 0.038, -0.038, 0,
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5jilb"]
+resource_local_to_scene = false
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_26gyi"]

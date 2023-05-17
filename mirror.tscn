@@ -1,32 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b41j52vgwvasr"]
+[gd_scene load_steps=5 format=3 uid="uid://b41j52vgwvasr"]
 
 [ext_resource type="Script" path="res://mirror.gd" id="1_23741"]
-[ext_resource type="Shader" path="res://mirror.gdshader" id="2_hyqdn"]
 [ext_resource type="PackedScene" uid="uid://r2w0qysvtd6" path="res://mirror_reflection.tscn" id="2_vl1m7"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_nb87i"]
-resource_local_to_scene = true
-size = Vector2(2, 2)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_klal3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6gqc"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_hyqdn")
-shader_parameter/mirrorCamTex = SubResource("ViewportTexture_klal3")
-
-[sub_resource type="QuadMesh" id="QuadMesh_8kwcm"]
-resource_local_to_scene = true
-size = Vector2(2, 2)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_mk55f"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ay7p"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_hyqdn")
-shader_parameter/mirrorCamTex = SubResource("ViewportTexture_mk55f")
 
 [sub_resource type="BoxMesh" id="BoxMesh_tx3na"]
 resource_local_to_scene = true
@@ -40,24 +15,18 @@ collision_layer = 16
 collision_mask = 7
 freeze = true
 script = ExtResource("1_23741")
-pixels_per_unit = 1024
 size = Vector2(2, 2)
 
 [node name="Reflections" type="Node3D" parent="."]
 
 [node name="PlayerReflectionMesh" parent="Reflections" instance=ExtResource("2_vl1m7")]
-mesh = SubResource("QuadMesh_nb87i")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_p6gqc")
 mirror_cam_cull_mask = 3
 render_layer = 2
 
 [node name="PolaroidReflectionMesh" parent="Reflections" instance=ExtResource("2_vl1m7")]
-layers = 4
-mesh = SubResource("QuadMesh_8kwcm")
-surface_material_override/0 = SubResource("ShaderMaterial_8ay7p")
 mirror_cam_cull_mask = 5
 render_layer = 4
+disabled = true
 
 [node name="Border" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)

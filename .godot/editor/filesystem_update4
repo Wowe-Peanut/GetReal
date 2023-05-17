@@ -1,13 +1,11 @@
-res://mirror_reflection.tscn
+res://mirror.tscn
+res://mirror.gd
 res://test.tscn
 res://player.tscn
 res://box.tscn
 res://observer.tscn
 res://player_observer.tscn
 res://picture.tscn
-res://mirror.tscn
-res://mirror_reflection.gd
-res://mirror.gd
-res://observer.gd
+res://mirror_reflection.tscn
 res://mirror_controller.gd
-res://player.gd
+res://mirror_reflection.gd

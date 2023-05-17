@@ -59,7 +59,7 @@ func is_obscured_through_observer(state: PhysicsDirectSpaceState3D, observer: Ob
 		# cast a ray from the box to the observer
 		var result = cast_ray(state, box.global_transform * vertex, observer.camera.global_position, [box])
 		# check if the corner is even on screen (for very large mirrors)
-		corners_on_screen.append(is_corner_observed(state, observer, result.position))
+		corners_on_screen.append(is_corner_observed(state, observer, result.posidtion))
 		if result and result.collider == observer.self_collider:
 			# if we hit the observer, then cast another ray from the observer to the player cam
 			result = cast_ray(state, result.position, camera.global_position, [observer.self_collider])
