@@ -1,15 +1,14 @@
 extends Node
 
-var MAX_REFLECTIONS = 100
+var MAX_REFLECTIONS = 20
 var used_layers = [1, 2, 4]
 
 func get_next_layer() -> int:
-	for i in range(100):
+	for i in range(MAX_REFLECTIONS):
 		var layer = pow(2, i)
 		if not is_in_used_layers(layer):
 			used_layers.append(layer)
 			return layer
-	push_error("Too many layers used")
 	return -1
 	
 func is_in_used_layers(layer) -> bool:

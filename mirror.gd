@@ -24,7 +24,7 @@ func _ready() -> void:
 		reflection_mesh.observer.self_collider = self
 		reflection_mesh.pixels_per_unit = pixels_per_unit
 		
-	size = size
+	update_size(size)
 
 
 func _process(_delta: float):
@@ -39,25 +39,23 @@ func _process(_delta: float):
 						continue
 					
 					var render_layer = MirrorController.get_next_layer()
-					if MirrorController.layer_int_to_layer_num(render_layer) > MirrorController.MAX_REFLECTIONS:
-							continue
+					if render_layer < 0:
+						continue
 					reflection_mesh.observer.camera.cull_mask += render_layer
-					print("parent: ", reflection_mesh.name)
-					seen_object.add_reflection(reflection_mesh.mirror_cam, render_layer, reflection_mesh.pixels_per_unit)
+					seen_object.add_reflection(reflection_mesh.mirror_cam, render_layer)
 					reflection_mesh.recursive_reflections_handled.append(seen_object)
 
 
-func add_reflection(camera_to_reflect, render_layer, pixels_per_unit) -> void:
+func add_reflection(camera_to_reflect, render_layer) -> void:
 	var new_reflection = reflection.instantiate()
 	new_reflection.render_layer = render_layer
 	new_reflection.mirror_cam_cull_mask = 1
-	new_reflection.pixels_per_unit = pixels_per_unit / 2
+	new_reflection.pixels_per_unit = pixels_per_unit / 4
 	new_reflection.camera_to_reflect = camera_to_reflect
 	new_reflection.translate(Vector3(0, 0, 0.01))
 	reflections.add_child(new_reflection)
 	new_reflection.observer.self_collider = self
 	new_reflection.set_size(size)
-	print("child: ", new_reflection.name)
 
 
 func update_size(new_size: Vector2) -> void:
