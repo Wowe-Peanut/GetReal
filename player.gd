@@ -27,7 +27,6 @@ var held_object: RigidBody3D = null
 
 func _ready() -> void:
 	capture_mouse()
-	set_observer_points()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01

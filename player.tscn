@@ -19,7 +19,7 @@ camera_sens = 10.0
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-cull_mask = 1048571
+cull_mask = 3
 current = true
 far = 100.0
 
@@ -39,6 +39,7 @@ self_collider = NodePath("../..")
 
 [node name="Picture" parent="PlayerCam" instance=ExtResource("3_7mtva")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -0.6)
+visible = false
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)

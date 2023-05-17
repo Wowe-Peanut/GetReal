@@ -36,6 +36,7 @@ func cast_ray(state: PhysicsDirectSpaceState3D, start_global_position: Vector3, 
 	return state.intersect_ray(query)
 
 func _on_body_entered(body) -> void:
+	if body == self_collider: return
 	if not body in seen:
 		seen.append(body)
 

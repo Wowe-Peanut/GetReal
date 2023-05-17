@@ -1,6 +1,9 @@
 @tool
 extends MeshInstance3D
 
+@export_flags_3d_render var mirror_cam_cull_mask = 0
+@export_flags_3d_render var render_layer = 0
+
 @onready var view: SubViewport = $View
 @onready var mirror_cam: Camera3D = $View/MirrorCam
 @onready var observer: Observer = $View/MirrorCam/MirrorObserver
@@ -8,6 +11,8 @@ extends MeshInstance3D
 var camera_to_reflect: Camera3D = null
 
 func _ready():
+	mirror_cam.cull_mask = mirror_cam_cull_mask
+	layers = render_layer
 	get_surface_override_material(0).set_shader_parameter("mirrorCamTex", $View.get_texture())
 
 func render(mirror_transform: Transform3D) -> void:
@@ -54,4 +59,4 @@ func update_view_cone() -> void:
 
 func set_size(new_size) -> void:
 	mesh.size = new_size
-	view.size = new_size * get_parent().pixels_per_unit
+	view.size = new_size * get_parent().get_parent().pixels_per_unit
