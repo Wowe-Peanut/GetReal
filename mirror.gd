@@ -11,14 +11,12 @@ var reflection = preload("res://mirror_reflection.tscn")
 
 @onready var mirror_transform: Transform3D = $MirrorOrigin.global_transform
 @onready var reflections = $Reflections
+@onready var player_reflection = $Reflections/PlayerReflectionMesh
 @onready var observer: Observer = $Reflections/PlayerReflectionMesh.observer
-
-var player_cam: Camera3D
-var other_mirror_reflections: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Reflections/PlayerReflectionMesh.camera_to_reflect = get_tree().root.get_camera_3d()
+	player_reflection.camera_to_reflect = get_tree().root.get_camera_3d()
 	
 	for reflection_mesh in reflections.get_children():
 		reflection_mesh.observer.self_collider = self
@@ -30,32 +28,41 @@ func _ready() -> void:
 func _process(_delta: float):
 	if not Engine.is_editor_hint():
 		for reflection_mesh in reflections.get_children():
-			reflection_mesh.render(mirror_transform)
 			
-			for seen_object in reflection_mesh.observer.seen:
-				if seen_object.is_in_group("mirror"):
-					
-					if seen_object in reflection_mesh.recursive_reflections_handled: 
-						continue
-					
-					var render_layer = MirrorController.get_next_layer()
-					if render_layer < 0:
-						continue
-					reflection_mesh.observer.camera.cull_mask += render_layer
-					seen_object.add_reflection(reflection_mesh.mirror_cam, render_layer)
-					reflection_mesh.recursive_reflections_handled.append(seen_object)
+			reflection_mesh.render(mirror_transform)
+			handle_recursive_reflections(reflection_mesh)
+			
 
 
-func add_reflection(camera_to_reflect, render_layer) -> void:
+func handle_recursive_reflections(reflection_mesh) -> void:
+	for seen_object in reflection_mesh.observer.seen:
+		if seen_object.is_in_group("mirror"):
+			
+			if seen_object in reflection_mesh.recursive_reflections_handled: 
+				continue
+			
+			var render_layer = MirrorController.get_next_layer()
+			if render_layer < 0:
+				continue
+			reflection_mesh.observer.camera.cull_mask += render_layer
+			var reflection_added = seen_object.add_reflection(reflection_mesh.mirror_cam, render_layer, reflection_mesh.recursion_depth)
+			reflection_mesh.recursive_reflections_handled.append(seen_object)
+			reflection_mesh.observer.recursive_reflection_connections[seen_object] = reflection_added
+			
+
+
+func add_reflection(camera_to_reflect, render_layer, recursion_depth) -> Node3D:
 	var new_reflection = reflection.instantiate()
 	new_reflection.render_layer = render_layer
 	new_reflection.mirror_cam_cull_mask = 1
-	new_reflection.pixels_per_unit = pixels_per_unit / 4
 	new_reflection.camera_to_reflect = camera_to_reflect
+	new_reflection.recursion_depth = recursion_depth + 1
+	new_reflection.pixels_per_unit = pixels_per_unit / pow(2, (recursion_depth + 1))
 	new_reflection.translate(Vector3(0, 0, 0.01))
 	reflections.add_child(new_reflection)
 	new_reflection.observer.self_collider = self
 	new_reflection.set_size(size)
+	return new_reflection
 
 
 func update_size(new_size: Vector2) -> void:

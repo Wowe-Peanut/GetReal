@@ -15,6 +15,7 @@ extends Node3D
 
 var camera_to_reflect: Camera3D = null
 var pixels_per_unit: int = 1024
+var recursion_depth: int = 0
 var recursive_reflections_handled: Array = []
 
 func _ready():
