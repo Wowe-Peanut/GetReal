@@ -22,6 +22,7 @@ var jump_vel: Vector3 # Jumping velocity
 @onready var camera: Camera3D = $PlayerCam
 @onready var held_position: Marker3D = $PlayerCam/HeldObjectPosition
 @onready var look_ray: RayCast3D = $PlayerCam/LookRay
+@onready var observer = $PlayerCam/PlayerObserver
 
 var held_object: RigidBody3D = null
 

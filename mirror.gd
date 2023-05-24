@@ -16,7 +16,9 @@ var reflection = preload("res://mirror_reflection.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_reflection.camera_to_reflect = get_tree().root.get_camera_3d()
+	var player_observer = get_tree().get_first_node_in_group("player_observer")
+	player_reflection.camera_to_reflect = player_observer.camera
+	player_reflection.recursive_parent_reflection = player_observer.self_collider
 	
 	for reflection_mesh in reflections.get_children():
 		reflection_mesh.observer.self_collider = self
@@ -47,7 +49,8 @@ func handle_recursive_reflections(reflection_mesh) -> void:
 			reflection_mesh.observer.camera.cull_mask += render_layer
 			var reflection_added = seen_object.add_reflection(reflection_mesh.mirror_cam, render_layer, reflection_mesh.recursion_depth)
 			reflection_mesh.recursive_reflections_handled.append(seen_object)
-			reflection_mesh.observer.recursive_reflection_connections[seen_object] = reflection_added
+			reflection_mesh.recursive_reflection_connections[seen_object] = reflection_added
+			reflection_added.recursive_parent_reflection = reflection_mesh
 			
 
 

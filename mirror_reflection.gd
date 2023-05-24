@@ -16,7 +16,9 @@ extends Node3D
 var camera_to_reflect: Camera3D = null
 var pixels_per_unit: int = 1024
 var recursion_depth: int = 0
+var recursive_parent_reflection = null
 var recursive_reflections_handled: Array = []
+var recursive_reflection_connections: Dictionary = {}
 
 func _ready():
 	mirror_cam.cull_mask = mirror_cam_cull_mask

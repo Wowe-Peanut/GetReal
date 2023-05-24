@@ -14,7 +14,7 @@ func _ready() -> void:
 	connect("body_exited", _on_body_exited)
 	
 	
-func remove_duplicate(array: Array) -> Array:
+func remove_duplicates(array: Array) -> Array:
 	var unique: Array = []
 	for item in array:
 		if not unique.has(item):
