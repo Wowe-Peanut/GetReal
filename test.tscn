@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3jr12ajd7mo4"]
+[gd_scene load_steps=8 format=3 uid="uid://c3jr12ajd7mo4"]
 
 [ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="1_a76g4"]
 [ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="3_duvdi"]
+[ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="3_vc5nl"]
 [ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="4_awx7f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avhxm"]
@@ -47,3 +48,7 @@ material = ExtResource("3_duvdi")
 
 [node name="Box" parent="." instance=ExtResource("4_awx7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, -1.2, 0)
+
+[node name="Mirror" parent="." instance=ExtResource("3_vc5nl")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1, -1, -3)
+size = Vector2(2, 2)

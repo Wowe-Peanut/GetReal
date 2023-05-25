@@ -11,7 +11,7 @@ extends Node3D
 @onready var reflection_mesh: MeshInstance3D = $ReflectionMesh
 @onready var view: SubViewport = $View
 @onready var mirror_cam: Camera3D = $View/MirrorCam
-@onready var observer: Observer = $View/MirrorCam/MirrorObserver
+@onready var observer: Observer = $View/MirrorCam/Observer
 
 var camera_to_reflect: Camera3D = null
 var pixels_per_unit: int = 1024
