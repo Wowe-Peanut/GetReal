@@ -118,6 +118,7 @@ func is_corner_observed(state: PhysicsDirectSpaceState3D, point_position: Vector
 	var point_query = PhysicsPointQueryParameters3D.new()
 	point_query.collide_with_areas = true
 	point_query.collide_with_bodies = false
+	point_query.collision_mask = 8
 	point_query.position = point_position
 	
 	# make sure only the observer looking at the point is the observer being checked.

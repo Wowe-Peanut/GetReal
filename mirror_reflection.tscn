@@ -5,18 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="3_lspv8"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xhkai"]
+resource_local_to_scene = true
 points = PackedVector3Array(0, 0, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
 resource_local_to_scene = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yxfyl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nxl62"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pd161"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_gk6t6")
-shader_parameter/mirrorCamTex = SubResource("ViewportTexture_yxfyl")
+shader_parameter/mirrorCamTex = SubResource("ViewportTexture_nxl62")
 
 [node name="MirrorReflection" type="Node3D"]
 script = ExtResource("2_nbqyc")

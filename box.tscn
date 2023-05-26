@@ -27,9 +27,6 @@ shape = SubResource("BoxShape3D_fsolg")
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_tcafk")
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
-aabb = AABB(-0.375, -0.375, -0.375, 0.75, 0.75, 0.75)
-
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true

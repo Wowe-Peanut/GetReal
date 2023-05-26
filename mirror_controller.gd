@@ -15,3 +15,7 @@ func is_in_used_layers(layer) -> bool:
 	for layer_to_check in used_layers:
 		if layer == layer_to_check: return true
 	return false
+
+func register_polaroid(polaroid):
+	for mirror in get_tree().get_nodes_in_group("mirror"):
+		mirror.register_polaroid(polaroid)

@@ -12,6 +12,7 @@ var reflection = preload("res://mirror_reflection.tscn")
 @onready var mirror_transform: Transform3D = $MirrorOrigin.global_transform
 @onready var reflections = $Reflections
 @onready var player_reflection = $Reflections/PlayerReflectionMesh
+@onready var polaroid_reflection = $Reflections/PolaroidReflectionMesh
 @onready var observer: Observer = $Reflections/PlayerReflectionMesh.observer
 
 # Called when the node enters the scene tree for the first time.
@@ -66,6 +67,10 @@ func add_reflection(camera_to_reflect, render_layer, recursion_depth) -> Node3D:
 	new_reflection.observer.self_collider = self
 	new_reflection.set_size(size)
 	return new_reflection
+
+
+func register_polaroid(polaroid):
+	polaroid_reflection.camera_to_reflect = polaroid.observer.camera
 
 
 func update_size(new_size: Vector2) -> void:

@@ -24,6 +24,21 @@ func remove_duplicates(array: Array) -> Array:
 func set_points(points) -> void:
 	shape.shape.points = points
 
+func update_view_cone(quad_mesh: MeshInstance3D) -> void:
+	var points: Array[Vector3] = []
+	
+	var corners = remove_duplicates(quad_mesh.mesh.get_faces())
+
+	for corner in corners: 
+		points.append(camera.to_local(quad_mesh.to_global(corner)))
+
+	for corner in corners:
+		var point = camera.to_local(quad_mesh.to_global(corner)).normalized() * 100
+		points.append(point)
+	
+	set_points(points)
+
+
 func cast_ray(state: PhysicsDirectSpaceState3D, start_global_position: Vector3, end_global_position: Vector3, exclude: Array[PhysicsBody3D]) -> Dictionary:
 	var query = PhysicsRayQueryParameters3D.create(start_global_position, end_global_position)
 	

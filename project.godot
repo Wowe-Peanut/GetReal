@@ -74,6 +74,7 @@ take_picture={
 3d_physics/layer_5="Mirror"
 3d_physics/layer_6="Polaroid"
 3d_physics/layer_7="Proxy Boxes"
+3d_physics/layer_8="Buttons"
 
 [physics]
 

@@ -49,24 +49,7 @@ func render(mirror_transform: Transform3D) -> void:
 	offset = Vector2(offset.x, offset.y)
 	
 	mirror_cam.set_frustum(reflection_mesh.mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), 100)
-	update_view_cone()
-
-
-func update_view_cone() -> void:
-	var points: Array[Vector3] = []
-	
-	var mirror_corners = reflection_mesh.mesh.get_faces()
-	mirror_corners.remove_at(3)
-	mirror_corners.remove_at(4)
-	
-	for corner in mirror_corners: 
-		points.append(mirror_cam.to_local(to_global(corner)))
-	
-	for corner in mirror_corners:
-		var point = mirror_cam.to_local(to_global(corner)).normalized() * 100
-		points.append(point)
-		
-	observer.set_points(points)
+	observer.update_view_cone(reflection_mesh)
 
 
 func update_viewport(to_disable: bool) -> void:
