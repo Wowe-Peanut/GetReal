@@ -14,3 +14,8 @@ res://door.tscn
 res://level_base.tscn
 res://VR Test.gd
 res://vr_test.tscn
+res://addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres
+res://addons/godot-xr-tools/hands/animations/right/hand_blend_tree.tres
+res://addons/godot-xr-tools/misc/hold_button_visualshader.tres
+res://addons/godot-xr-tools/materials/highlight.tres
+res://addons/godot-xr-tools/staging/loading_screen/loading_screen_shader.tres
