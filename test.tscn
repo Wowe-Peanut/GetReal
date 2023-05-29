@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3jr12ajd7mo4"]
+[gd_scene load_steps=3 format=3 uid="uid://c3jr12ajd7mo4"]
 
 [ext_resource type="PackedScene" uid="uid://bxfx6m3nsdaql" path="res://level_base.tscn" id="1_7328t"]
+[ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="2_ecfvm"]
 
 [node name="test" type="Node3D"]
 
 [node name="LevelBase" parent="." instance=ExtResource("1_7328t")]
 
-[node name="Door" parent="LevelBase/Puzzle Elements" index="0"]
-closed = false
+[node name="Mirror" parent="LevelBase/Mirrors" index="0" instance=ExtResource("2_ecfvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -2)
 
 [editable path="LevelBase"]

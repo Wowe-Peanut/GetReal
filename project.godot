@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Get Real"
-run/main_scene="res://test.tscn"
+config/name="Permanence"
+run/main_scene="res://vr_test.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
@@ -82,4 +82,10 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 environment/default_environment="res://default_env.tres"
+
+[xr]
+
+openxr/enabled=true
+shaders/enabled=true

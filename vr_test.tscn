@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://b47soqajkvdy2"]
+
+[ext_resource type="Script" path="res://VR Test.gd" id="1_dw27c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6lv0c"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yhaab"]
+
+[sub_resource type="Sky" id="Sky_31ree"]
+sky_material = SubResource("ProceduralSkyMaterial_yhaab")
+
+[sub_resource type="Environment" id="Environment_hkv3p"]
+background_mode = 2
+sky = SubResource("Sky_31ree")
+
+[node name="VR Test" type="Node3D"]
+script = ExtResource("1_dw27c")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand"]
+mesh = SubResource("BoxMesh_6lv0c")
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/RightHand"]
+mesh = SubResource("BoxMesh_6lv0c")
+skeleton = NodePath("../../LeftHand")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hkv3p")

@@ -1,11 +1,14 @@
 WorldEnvironment
+MeshInstance3D
+DirectionalLight3D
+XRController3D
+XRCamera3D
+XROrigin3D
 CollisionShape3D
 Area3D
 CSGBox3D
 Node
-MeshInstance3D
 StaticBody3D
-DirectionalLight3D
 Node3D
 RigidBody3D
 SubViewport

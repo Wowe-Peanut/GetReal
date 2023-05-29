@@ -13,6 +13,7 @@ albedo_color = Color(1, 0, 1, 1)
 
 [node name="Door" type="StaticBody3D"]
 script = ExtResource("1_ladfx")
+closed = false
 connection_count = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
