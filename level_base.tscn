@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxfx6m3nsdaql"]
+
+[ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="1_qf08a"]
+[ext_resource type="PackedScene" uid="uid://d04h2k38rjx17" path="res://door.tscn" id="2_7u2ol"]
+[ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="2_18mfb"]
+
+[node name="LevelBase" type="Node3D"]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Room" type="CSGBox3D" parent="Environment"]
+use_collision = true
+flip_faces = true
+size = Vector3(5, 5, 6)
+material = ExtResource("1_qf08a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.25, -0.965926, 0.0669873, 0.258819, -4.60787e-08, 0.965926, -0.933013, 0.258819, 0.25, 0, 0, 0)
+light_indirect_energy = 4.0
+
+[node name="Mirrors" type="Node" parent="."]
+
+[node name="Boxes" type="Node" parent="."]
+
+[node name="Puzzle Elements" type="Node" parent="."]
+
+[node name="Door" parent="Puzzle Elements" instance=ExtResource("2_7u2ol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45058e-09, -2.5, -3)
+
+[node name="Player" parent="." instance=ExtResource("2_18mfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)

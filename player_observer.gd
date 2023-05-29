@@ -17,7 +17,7 @@ func _physics_process(_delta) -> void:
 			var obscured = is_obscured(state, observed_object)
 			modify_observed(observed_object, obscured)
 		elif observed_object.is_in_group("mirror"):
-			check_obscurity_through_reflection(state, observed_object.player_reflection, self)
+			check_obscurity_through_reflection(state, observed_object.player_reflection)
 	
 	#print("observed: ", observed)
 	
@@ -43,7 +43,7 @@ func is_obscured(state: PhysicsDirectSpaceState3D, box: RigidBody3D) -> bool:
 			return false
 	return true
 		
-func check_obscurity_through_reflection(state: PhysicsDirectSpaceState3D, reflection, higher_level_observer: Observer) -> void:
+func check_obscurity_through_reflection(state: PhysicsDirectSpaceState3D, reflection) -> void:
 	#print(observer.name + " seen: ", observer.seen)
 	# sort boxes before any other seen objecets
 	reflection.observer.seen.sort_custom(func(a, b): return a.is_in_group("box") and not b.is_in_group("box"))
@@ -65,7 +65,7 @@ func check_obscurity_through_reflection(state: PhysicsDirectSpaceState3D, reflec
 			if reflection.recursive_reflection_connections.is_empty(): continue
 			if !reflection.recursive_reflection_connections.has(observed_object): continue
 			# recursively check other reflections
-			check_obscurity_through_reflection(state, reflection.recursive_reflection_connections[observed_object], reflection.observer)
+			check_obscurity_through_reflection(state, reflection.recursive_reflection_connections[observed_object])
 
 func is_obscured_through_observer(state: PhysicsDirectSpaceState3D, box: RigidBody3D, corners: Array, reflection) -> bool:
 	
@@ -96,7 +96,7 @@ func recursively_reflect_corners(state: PhysicsDirectSpaceState3D, reflection, r
 	# from the projected points on the mirror, make sure the observer that caused the reflection can even see the points in their viewcone
 	# then, take those points and make sure they aren't obscured 
 	for corner in reflected_corner_positions:
-		if !is_corner_observed(state, corner, reflection.observer, reflection.recursive_parent_reflection.observer):
+		if !is_corner_observed(state, corner, reflection.recursive_parent_reflection.observer):
 			continue
 		var result = cast_ray(state, corner, reflection.recursive_parent_reflection.observer.camera.global_position, [reflection.observer.self_collider])
 		if result.is_empty():
@@ -114,7 +114,7 @@ func convert_box_corners_to_global(corners: Array, box: RigidBody3D):
 	return global_corners
 
 
-func is_corner_observed(state: PhysicsDirectSpaceState3D, point_position: Vector3, mirror_observer: Observer, higher_level_observer: Observer) -> bool:
+func is_corner_observed(state: PhysicsDirectSpaceState3D, point_position: Vector3, higher_level_observer: Observer) -> bool:
 	var point_query = PhysicsPointQueryParameters3D.new()
 	point_query.collide_with_areas = true
 	point_query.collide_with_bodies = false

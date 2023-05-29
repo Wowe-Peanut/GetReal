@@ -61,7 +61,7 @@ func add_reflection(camera_to_reflect, render_layer, recursion_depth) -> Node3D:
 	new_reflection.mirror_cam_cull_mask = 1
 	new_reflection.camera_to_reflect = camera_to_reflect
 	new_reflection.recursion_depth = recursion_depth + 1
-	new_reflection.pixels_per_unit = pixels_per_unit / pow(2, (recursion_depth + 1))
+	new_reflection.pixels_per_unit = pixels_per_unit #/ pow(2, (recursion_depth + 1))
 	new_reflection.translate(Vector3(0, 0, 0.01))
 	reflections.add_child(new_reflection)
 	new_reflection.observer.self_collider = self

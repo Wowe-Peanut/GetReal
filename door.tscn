@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d04h2k38rjx17"]
+
+[ext_resource type="Script" path="res://door.gd" id="1_ladfx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqg7x"]
+size = Vector3(1, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e3bs8"]
+size = Vector3(1, 2, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruf0r"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_ladfx")
+connection_count = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.05)
+shape = SubResource("BoxShape3D_qqg7x")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.2)
+shape = SubResource("BoxShape3D_e3bs8")
+
+[node name="MeshInstance3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.05)
+size = Vector3(1, 2, 0.1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+operation = 2
+size = Vector3(0.9, 1.95, 0.1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, -0.025)
+size = Vector3(0.9, 1.95, 0.05)
+material = SubResource("StandardMaterial3D_ruf0r")

@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export_range(1, 35, 1) var speed: float = 7 # m/s
 @export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
 
-@export_range(0.1, 3.0, 0.1) var jump_height: float = 0.5 # m
+@export_range(0.1, 3.0, 0.1) var jump_height: float = 1.5 # m
 @export_range(0.1, 9.25, 0.05, "or_greater") var camera_sens: float = 3
 
 var jumping: bool = false
@@ -28,6 +28,7 @@ var held_object: RigidBody3D = null
 
 func _ready() -> void:
 	capture_mouse()
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01

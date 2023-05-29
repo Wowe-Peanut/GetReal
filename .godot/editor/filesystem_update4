@@ -1,5 +1,5 @@
+res://level_base.tscn
 res://picture.gdshader
-res://button.tscn
 res://test.tscn
 res://player.tscn
 res://box.tscn
@@ -9,8 +9,9 @@ res://mirror_reflection.tscn
 res://observer.tscn
 res://player_observer.tscn
 res://proxy_box.tscn
-res://button.gd
+res://button.tscn
+res://door.tscn
+res://door.gd
 res://player_observer.gd
-res://mirror.gd
-res://mirror_controller.gd
-res://picture.gd
+res://player.gd
+res://default_environment_texture.tres
