@@ -19,15 +19,16 @@ script = ExtResource("1_23741")
 [node name="Reflections" type="Node3D" parent="."]
 
 [node name="PlayerReflectionMesh" parent="Reflections" instance=ExtResource("2_vl1m7")]
-mirror_cam_cull_mask = 3
-render_layer = 2
+mirror_cam_cull_mask = 11
+render_layer = 8
 
 [node name="PolaroidReflectionMesh" parent="Reflections" instance=ExtResource("2_vl1m7")]
-mirror_cam_cull_mask = 5
-render_layer = 4
+mirror_cam_cull_mask = 21
+render_layer = 16
 
 [node name="Border" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+layers = 2
 mesh = SubResource("BoxMesh_tx3na")
 
 [node name="MirrorOrigin" type="Marker3D" parent="."]

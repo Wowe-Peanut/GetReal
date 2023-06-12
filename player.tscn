@@ -18,7 +18,7 @@ camera_sens = 10.0
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-cull_mask = 3
+cull_mask = 11
 current = true
 far = 100.0
 
@@ -40,4 +40,5 @@ shape = SubResource("CapsuleShape3D_2huvx")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+layers = 2
 mesh = SubResource("CapsuleMesh_vj0us")

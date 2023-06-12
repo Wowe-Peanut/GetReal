@@ -1,7 +1,7 @@
 extends Node
 
 var MAX_REFLECTIONS = 20
-var used_layers = [1, 2, 4]
+var used_layers = [1, 2, 4, 8, 16]
 
 func get_next_layer() -> int:
 	for i in range(MAX_REFLECTIONS):

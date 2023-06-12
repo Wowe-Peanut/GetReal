@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-@export_flags_3d_render var mirror_cam_cull_mask = 1
+@export_flags_3d_render var mirror_cam_cull_mask = 3
 @export_flags_3d_render var render_layer = 0
 @export var disabled: bool = false:
 	set(value):

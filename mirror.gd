@@ -58,7 +58,7 @@ func handle_recursive_reflections(reflection_mesh) -> void:
 func add_reflection(camera_to_reflect, render_layer, recursion_depth) -> Node3D:
 	var new_reflection = reflection.instantiate()
 	new_reflection.render_layer = render_layer
-	new_reflection.mirror_cam_cull_mask = 1
+	new_reflection.mirror_cam_cull_mask = 3
 	new_reflection.camera_to_reflect = camera_to_reflect
 	new_reflection.recursion_depth = recursion_depth + 1
 	new_reflection.pixels_per_unit = pixels_per_unit #/ pow(2, (recursion_depth + 1))

@@ -1,6 +1,6 @@
-res://level_base.tscn
-res://picture.gdshader
 res://test.tscn
+res://default_environment_texture.tres
+res://picture.gdshader
 res://player.tscn
 res://box.tscn
 res://picture.tscn
@@ -11,7 +11,7 @@ res://player_observer.tscn
 res://proxy_box.tscn
 res://button.tscn
 res://door.tscn
-res://door.gd
-res://player_observer.gd
-res://player.gd
-res://default_environment_texture.tres
+res://level_base.tscn
+res://mirror_controller.gd
+res://mirror_reflection.gd
+res://mirror.gd

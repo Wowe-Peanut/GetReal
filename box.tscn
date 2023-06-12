@@ -25,6 +25,7 @@ script = ExtResource("1_odnql")
 shape = SubResource("BoxShape3D_fsolg")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
+layers = 2
 mesh = SubResource("BoxMesh_tcafk")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
