@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://observer.gd" id="1_68yoe"]
 
 [node name="Observer" type="Area3D" groups=["observer"]]
-collision_layer = 8
-collision_mask = 84
+collision_layer = 256
+collision_mask = 12336
 input_ray_pickable = false
 script = ExtResource("1_68yoe")

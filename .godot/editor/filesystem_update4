@@ -12,6 +12,4 @@ res://proxy_box.tscn
 res://button.tscn
 res://door.tscn
 res://level_base.tscn
-res://mirror_controller.gd
-res://mirror_reflection.gd
-res://mirror.gd
+res://player.gd

@@ -38,6 +38,8 @@ current = true
 far = 100.0
 
 [node name="Observer" parent="SubViewport/Camera3D" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_w8kxd")]
+collision_layer = 8196
+collision_mask = 196615
 camera = NodePath("..")
 self_collider = NodePath("../../..")
 
