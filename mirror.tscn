@@ -28,7 +28,7 @@ render_layer = 16
 
 [node name="Border" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
-layers = 2
+layers = 6
 mesh = SubResource("BoxMesh_tx3na")
 
 [node name="MirrorOrigin" type="Marker3D" parent="."]

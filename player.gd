@@ -85,24 +85,3 @@ func toggle_interact() -> void:
 		if collider and collider.is_in_group("box"):
 			held_object = collider as RigidBody3D
 			held_object.freeze = true
-			
-
-func set_observer_points():
-	var planes: Array[Plane] = camera.get_frustum()
-	var points = []
-	# near, far, left, top, right, bottom
-	#near left top; 0, 2, 3
-	#near left bottom; 0, 2, 5
-	#near right top; 0, 4, 3
-	#near right bottom; 0, 4, 5
-	#far left top; 1, 2, 3
-	#far left bottom; 1, 2, 5
-	#far right top; 1, 4, 3
-	#far right bottom; 1, 4, 5
-	for i in range(8):
-		var point = $PlayerCam/PlayerObserver.to_local(planes[1 if (int(i) / 4 == 1) else 0].intersect_3(planes[2 if (int(i / 2) % 2 == 0) else 4], planes[3 if (i % 2 == 0) else 5]))
-		points.append(point)
-		print(point)
-			
-	#$PlayerCam/PlayerObserver.set_points(points)
-

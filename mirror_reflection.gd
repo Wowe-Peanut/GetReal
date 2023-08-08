@@ -28,8 +28,11 @@ func _ready():
 
 func render(mirror_transform: Transform3D) -> void:
 	
-	if disabled: return
 	if camera_to_reflect == null: return
+	
+	observer.update_view_cone(reflection_mesh)
+	
+	if disabled: return
 	
 	var plane_origin = mirror_transform.origin
 	var plane_normal = mirror_transform.basis.z.normalized()
@@ -49,7 +52,6 @@ func render(mirror_transform: Transform3D) -> void:
 	offset = Vector2(offset.x, offset.y)
 	
 	mirror_cam.set_frustum(reflection_mesh.mesh.size.x, -offset, projection_pos.distance_to(main_cam_pos), 100)
-	observer.update_view_cone(reflection_mesh)
 
 
 func update_viewport(to_disable: bool) -> void:

@@ -25,14 +25,7 @@ func take_picture() -> void:
 			get_tree().root.remove_child(proxy)
 		proxies.clear()
 		return
-	
-	camera.global_position = Vector3.ZERO #get_tree().root.get_camera_3d().global_transform
-	
-	visible = false
-	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-	await RenderingServer.frame_post_draw
-	viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
-	
+		
 	for observed_object in observer.seen:
 		if observed_object.is_in_group("box"):
 			print("box!")
@@ -42,6 +35,12 @@ func take_picture() -> void:
 			proxies.append(proxy)
 		if observed_object.is_in_group("mirror"):
 			pass
+	
+	camera.global_position = Vector3(0, -1, 0) #get_tree().root.get_camera_3d().global_transform
+	
+	visible = false
+
+	
 	
 	picture_taken = true
 	visible = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjgyylqm3xc11"]
+[gd_scene load_steps=6 format=3 uid="uid://bjgyylqm3xc11"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_16goh"]
 [ext_resource type="PackedScene" uid="uid://bjgk6csfxdc76" path="res://player_observer.tscn" id="2_teo3p"]
+[ext_resource type="PackedScene" uid="uid://71yhatc6m7hy" path="res://picture.tscn" id="3_fr4d6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2huvx"]
 radius = 0.25
@@ -36,6 +37,9 @@ collision_layer = 8
 collision_mask = 84
 camera = NodePath("..")
 self_collider = NodePath("../..")
+
+[node name="Picture" parent="PlayerCam" instance=ExtResource("3_fr4d6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -0.6)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
