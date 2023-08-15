@@ -11,11 +11,11 @@
 [node name="LevelBase" parent="." instance=ExtResource("1_7328t")]
 
 [node name="Mirror" parent="LevelBase/Mirrors" index="0" instance=ExtResource("2_cv85l")]
-transform = Transform3D(0.707107, 2.51215e-15, 0.707107, 0, 1, -3.55271e-15, -0.707107, 2.51215e-15, 0.707107, -1, -1.6, -2)
+transform = Transform3D(0.707107, 2.51215e-15, 0.707107, 0, 1, -3.55271e-15, -0.707107, 2.51215e-15, 0.707107, -1, -1.1, -2)
 size = Vector2(2, 2)
 
 [node name="Mirror2" parent="LevelBase/Mirrors" index="1" instance=ExtResource("2_cv85l")]
-transform = Transform3D(0.707107, -2.51215e-15, -0.707107, 0, 1, -3.55271e-15, 0.707107, 2.51215e-15, 0.707107, 1, -1.6, -2)
+transform = Transform3D(0.707107, -2.51215e-15, -0.707107, 0, 1, -3.55271e-15, 0.707107, 2.51215e-15, 0.707107, 1, -1.1, -2)
 size = Vector2(2, 2)
 
 [node name="Camera" parent="LevelBase/Camera" index="0" instance=ExtResource("3_jw8fy")]

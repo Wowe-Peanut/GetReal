@@ -34,15 +34,15 @@
 			"title": "Doing",
 			"tasks": [
 				"1ea3c97b-c70a-419e-be8f-461981eb8a4b",
-				"4d44e5ec-9018-45f5-b886-733b9f4f6472",
-				"161850e2-49fb-4168-ad21-f4d15a659827"
+				"4d44e5ec-9018-45f5-b886-733b9f4f6472"
 			]
 		},
 		{
 			"uuid": "9547c0c5-90bf-4c60-af50-255f43864c05",
 			"title": "Done",
 			"tasks": [
-				"d198636a-082d-4c19-8b3b-a25c8f85f1bb"
+				"d198636a-082d-4c19-8b3b-a25c8f85f1bb",
+				"161850e2-49fb-4168-ad21-f4d15a659827"
 			]
 		}
 	],
@@ -55,11 +55,11 @@
 			"steps": [
 				{
 					"details": "Way to disable box deletion",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Add entry for coyote time",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -115,7 +115,7 @@
 				},
 				{
 					"details": "Functionality",
-					"done": true
+					"done": false
 				}
 			]
 		},

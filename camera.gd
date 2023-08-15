@@ -31,6 +31,8 @@ func add_proxy_box(original_box) -> void:
 	proxy.global_transform = original_box.global_transform
 	get_parent().add_child(proxy)
 	proxies.append(proxy)
+	
+	original_box.disabled = true
 	boxes_handled.append(original_box)
 
 
@@ -38,6 +40,9 @@ func remove_proxy_boxes() -> void:
 	for proxy in proxies:
 		get_parent().remove_child(proxy)
 	proxies.clear()
+	
+	for box in boxes_handled:
+		box.disabled = false
 	boxes_handled.clear()
 
 

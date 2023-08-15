@@ -22,14 +22,13 @@ func _physics_process(_delta) -> void:
 	# iterate in all the boxes the player can see (even through other observers)
 	for box in observed:
 		# stop coyote time if started
-		if !box.coyote_timer.is_stopped():
-			box.coyote_timer.stop()
+		box.stop_coyote_timer()
 		# remove box from list of all boxes in scene
 		boxes.erase(box)
 
 	# any remaining boxes must not be able to be seen. start coyote time for them
 	for box in boxes:
-		if box.coyote_timer.is_stopped(): box.coyote_timer.start()
+		box.start_coyote_timer()
 		pass
 
 func is_obscured(state: PhysicsDirectSpaceState3D, box: RigidBody3D) -> bool:
