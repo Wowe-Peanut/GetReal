@@ -12,11 +12,14 @@ albedo_color = Color(1, 1, 1, 0.121569)
 
 [node name="ProxyBox" type="RigidBody3D"]
 collision_layer = 32
+collision_mask = 65
+gravity_scale = 0.0
+can_sleep = false
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_edgpf")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-layers = 4
+layers = 6
 mesh = SubResource("BoxMesh_bxil8")
 surface_material_override/0 = SubResource("StandardMaterial3D_xt6rh")

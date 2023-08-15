@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 
 const PROXY_BOX = preload("res://proxy_box.tscn")
 
@@ -17,29 +17,35 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("take_picture"): take_picture()
 
 
+func _process(_delta):
+	camera.global_transform = global_transform
+
+
 func take_picture() -> void:
 	if picture_taken:
 		picture_taken = false
 		visible = false
 		for proxy in proxies:
-			get_tree().root.remove_child(proxy)
+			get_parent().get_parent().remove_child(proxy)
 		proxies.clear()
 		return
+		
+		
 		
 	for observed_object in observer.seen:
 		if observed_object.is_in_group("box"):
 			print("box!")
 			var proxy = PROXY_BOX.instantiate()
 			proxy.global_transform = observed_object.global_transform
-			get_tree().root.add_child(proxy)
+			get_parent().get_parent().add_child(proxy)
 			proxies.append(proxy)
 		if observed_object.is_in_group("mirror"):
 			pass
 	
-	camera.global_position = Vector3(0, -1, 0) #get_tree().root.get_camera_3d().global_transform
-	
 	visible = false
-
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	await RenderingServer.frame_post_draw
+	viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 	
 	
 	picture_taken = true

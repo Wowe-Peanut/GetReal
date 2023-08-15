@@ -3,6 +3,7 @@ extends Node3D
 
 @export_flags_3d_render var mirror_cam_cull_mask = 3
 @export_flags_3d_render var render_layer = 0
+@export var reflection_type: BaseReflectionType = BaseReflectionType.PlayerReflection
 @export var disabled: bool = false:
 	set(value):
 		update_viewport(value)
@@ -12,6 +13,11 @@ extends Node3D
 @onready var view: SubViewport = $View
 @onready var mirror_cam: Camera3D = $View/MirrorCam
 @onready var observer: Observer = $View/MirrorCam/Observer
+
+enum BaseReflectionType {
+	PlayerReflection = 3,
+	CameraReflection = 5
+}
 
 var camera_to_reflect: Camera3D = null
 var pixels_per_unit: int = 1024

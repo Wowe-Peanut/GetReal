@@ -13,7 +13,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_tcafk"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="Box" type="RigidBody3D" groups=["box"]]
+[node name="Box" type="RigidBody3D" groups=["box", "holdable"]]
 collision_layer = 20
 collision_mask = 196615
 mass = 100.0

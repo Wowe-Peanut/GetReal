@@ -20,26 +20,28 @@ var grav_vel: Vector3 # Gravity velocity
 var jump_vel: Vector3 # Jumping velocity
 
 @onready var camera: Camera3D = $PlayerCam
-@onready var held_position: Marker3D = $PlayerCam/HeldObjectPosition
 @onready var look_ray: RayCast3D = $PlayerCam/LookRay
 @onready var observer = $PlayerCam/PlayerObserver
-
-var held_object: RigidBody3D = null
+@onready var right_hand = $PlayerCam/RightHand
+@onready var left_hand = $PlayerCam/LeftHand
 
 func _ready() -> void:
 	capture_mouse()
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
 	
 	if event.is_action_pressed("jump"): jumping = true
-	if event.is_action_pressed("interact"): toggle_interact()
+	if event.is_action_pressed("right_hand_interact"): toggle_hold_object(true)
+	if event.is_action_pressed("left_hand_interact"): toggle_hold_object(false)
+	if event.is_action_pressed("aim"): aim(true)
+	if event.is_action_released("aim"): aim(false)
+	if event.is_action_pressed("reset"): get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_cancel"): get_tree().quit()
 
 func _process(delta: float) -> void:
-	if mouse_captured: _rotate_camera(delta)
-	if is_instance_valid(held_object) and held_object: held_object.global_transform = held_position.global_transform
+	if mouse_captured: _rotate_camera(delta)	
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
 
@@ -76,12 +78,14 @@ func _jump(delta: float) -> Vector3:
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
 
-func toggle_interact() -> void:
-	if held_object:
-		held_object.freeze = false
-		held_object = null
-	else:
-		var collider = look_ray.get_collider() as Node3D
-		if collider and collider.is_in_group("box"):
-			held_object = collider as RigidBody3D
-			held_object.freeze = true
+func toggle_hold_object(is_right_hand: bool) -> void:
+	var collider = look_ray.get_collider() as Node3D
+	
+	right_hand.toggle_hold(collider) if is_right_hand else left_hand.toggle_hold(collider)
+
+func aim(to_aim):
+	if right_hand.has_object() and right_hand.held_object.name == "Camera":
+		right_hand.toggle_aim(to_aim)
+	if left_hand.has_object() and left_hand.held_object.name == "Camera":
+		left_hand.toggle_aim(to_aim)
+		

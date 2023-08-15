@@ -1,0 +1,209 @@
+{
+	"categories": [
+		{
+			"uuid": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"title": "Task",
+			"color": "70bafa"
+		},
+		{
+			"uuid": "c6be73fe-1b32-4f52-aeb8-8034c515907e",
+			"title": "Optional",
+			"color": "9f2dfd"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "90a32ca1-48ca-41f2-a2dc-a719b5dbc1af",
+			"title": "Todo",
+			"tasks": [
+				"4c24fbf2-8012-4cdd-83ca-e2e56dca5bd2",
+				"18e4372f-2037-4414-a47d-b2c72a723811",
+				"adf02a71-b991-4753-90e0-166e5ec8912e",
+				"b58c1b4c-4216-45f1-b4c1-1f55035a4e62",
+				"af396fea-7fcb-4520-b044-b971d9022e43",
+				"b537b0e7-0ab3-4216-a78e-2084da4425e8",
+				"c9fe289a-b153-4be5-a4ab-2326484dfeb2",
+				"faa33cc8-5be5-4335-9df5-872f2535791e",
+				"3f7fa8e5-f933-4d03-989c-602246ff1a47",
+				"c2e4600d-5a26-43e2-85a0-6f190046f4b5",
+				"2a9aa85d-5f85-4e51-aed0-14984177f588"
+			]
+		},
+		{
+			"uuid": "7f524e22-97a2-4d45-8057-7a7b59dbaaaa",
+			"title": "Doing",
+			"tasks": [
+				"4d44e5ec-9018-45f5-b886-733b9f4f6472",
+				"1ea3c97b-c70a-419e-be8f-461981eb8a4b"
+			]
+		},
+		{
+			"uuid": "9547c0c5-90bf-4c60-af50-255f43864c05",
+			"title": "Done",
+			"tasks": [
+				"161850e2-49fb-4168-ad21-f4d15a659827",
+				"d198636a-082d-4c19-8b3b-a25c8f85f1bb"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "161850e2-49fb-4168-ad21-f4d15a659827",
+			"title": "Boxes",
+			"description": "Box!",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": [
+				{
+					"details": "Add entry for coyote time",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "1ea3c97b-c70a-419e-be8f-461981eb8a4b",
+			"title": "Player",
+			"description": "Add left hand and right hand hold positions for items. All items go in right or left hand.",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": [
+				{
+					"details": "Movement changes",
+					"done": false
+				},
+				{
+					"details": "Right hand / Left hand",
+					"done": true
+				},
+				{
+					"details": "Box collision fixes",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "d198636a-082d-4c19-8b3b-a25c8f85f1bb",
+			"title": "Mirror",
+			"description": "",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": [
+				{
+					"details": "Fix player appearing in Polaroid Mirror",
+					"done": true
+				},
+				{
+					"details": "Recursive Reflections stopped working",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "4d44e5ec-9018-45f5-b886-733b9f4f6472",
+			"title": "Camera",
+			"description": "Camera clips into players head (intended). any workarounds visually?\n\nAll environment objects update in picture? NO! Only puzzle elements that can be photographed and stored will appear in photo (no door, no player, ect)\nwhen dropping camera, picture disappears, state invalidated\n\n\nCurrent state: pictures work, and proxy boxes are spawned and de-spawned properly. functionality for dropping the camera and proxy boxes still needs work",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": [
+				{
+					"details": "Camera Model",
+					"done": true
+				},
+				{
+					"details": "Visuals",
+					"done": true
+				},
+				{
+					"details": "Functionality",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "18e4372f-2037-4414-a47d-b2c72a723811",
+			"title": "Walls",
+			"description": "This has not been worked on at all",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": []
+		},
+		{
+			"uuid": "b537b0e7-0ab3-4216-a78e-2084da4425e8",
+			"title": "Art Overhaul",
+			"description": "Not for me. I don't want to think about modeling and level design and theming and narrative design and writing and blah blah blah",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": []
+		},
+		{
+			"uuid": "c9fe289a-b153-4be5-a4ab-2326484dfeb2",
+			"title": "VR",
+			"description": "Self explanitory",
+			"category": "c6be73fe-1b32-4f52-aeb8-8034c515907e",
+			"steps": []
+		},
+		{
+			"uuid": "faa33cc8-5be5-4335-9df5-872f2535791e",
+			"title": "Sound based Boxes?",
+			"description": "Boxes that only exist when you hear them. Proximity-based sound puzzles.",
+			"category": "c6be73fe-1b32-4f52-aeb8-8034c515907e",
+			"steps": []
+		},
+		{
+			"uuid": "4c24fbf2-8012-4cdd-83ca-e2e56dca5bd2",
+			"title": "Connections",
+			"description": "Abstract connection code enough to be general purpose node to be attached to anything that needs connections\n\ncolor coded connections: little color blocks to show what is connected to each puzzle element",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": []
+		},
+		{
+			"uuid": "adf02a71-b991-4753-90e0-166e5ec8912e",
+			"title": "Reverse Box",
+			"description": "Box that is there when you can't see it",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": []
+		},
+		{
+			"uuid": "b58c1b4c-4216-45f1-b4c1-1f55035a4e62",
+			"title": "Sticky Boxes",
+			"description": "Box that sticks to surfaces (for buttons in weird places)",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": []
+		},
+		{
+			"uuid": "af396fea-7fcb-4520-b044-b971d9022e43",
+			"title": "Levers",
+			"description": "Like a button that can be used without a box, still resets when not observed",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": []
+		},
+		{
+			"uuid": "3f7fa8e5-f933-4d03-989c-602246ff1a47",
+			"title": "Security Camera?",
+			"description": "Has a monitor that video feed streams to. Similar to the hand-held digital camera, but display is not on model.",
+			"category": "c6be73fe-1b32-4f52-aeb8-8034c515907e",
+			"steps": []
+		},
+		{
+			"uuid": "c2e4600d-5a26-43e2-85a0-6f190046f4b5",
+			"title": "Glasses?",
+			"description": "X-ray? Different Reality?",
+			"category": "c6be73fe-1b32-4f52-aeb8-8034c515907e",
+			"steps": []
+		},
+		{
+			"uuid": "2a9aa85d-5f85-4e51-aed0-14984177f588",
+			"title": "Weeping Angels-like enemy?",
+			"description": "",
+			"category": "c6be73fe-1b32-4f52-aeb8-8034c515907e",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"90a32ca1-48ca-41f2-a2dc-a719b5dbc1af"
+			],
+			[
+				"7f524e22-97a2-4d45-8057-7a7b59dbaaaa"
+			],
+			[
+				"9547c0c5-90bf-4c60-af50-255f43864c05"
+			]
+		]
+	}
+}

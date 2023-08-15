@@ -21,8 +21,14 @@ func remove_duplicates(array: Array) -> Array:
 			unique.append(item)
 	return unique
 
+
+func sort_seen() -> void:
+	seen.sort_custom(func(a, b): return a.is_in_group("box") and not b.is_in_group("box"))
+
+
 func set_points(points) -> void:
 	shape.shape.points = points
+
 
 func update_view_cone(quad_mesh: MeshInstance3D) -> void:
 	var points: Array[Vector3] = []
@@ -50,10 +56,12 @@ func cast_ray(state: PhysicsDirectSpaceState3D, start_global_position: Vector3, 
 	
 	return state.intersect_ray(query)
 
+
 func _on_body_entered(body) -> void:
 	if body == self_collider: return
 	if not body in seen:
 		seen.append(body)
+
 
 func _on_body_exited(body) -> void:
 	if body in seen:

@@ -3,6 +3,7 @@ extends StaticBody3D
 @onready var detection = $DetectionArea
 
 var powered: bool = false
+var bodies: Array = []
 
 signal powered_changed(button, powered)
 
@@ -12,12 +13,17 @@ func _ready():
 	detection.connect("body_exited", _on_body_exited)
 
 
-func _on_body_entered(body):
-	print("Entered: ", body)
-	powered = true
+func modify_power():
+	powered = bodies.size() > 0
 	emit_signal("powered_changed", self, powered)
+
+
+func _on_body_entered(body):
+	if not body in bodies: bodies.append(body)
+	print("Entered: ", bodies)
+	modify_power()
 	
 func _on_body_exited(body):
-	print("Exited: ", body)
-	powered = false
-	emit_signal("powered_changed", self, powered)
+	if body in bodies: bodies.erase(body)
+	print("Exited: ", bodies)
+	modify_power()

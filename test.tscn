@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3jr12ajd7mo4"]
+[gd_scene load_steps=6 format=3 uid="uid://c3jr12ajd7mo4"]
 
 [ext_resource type="PackedScene" uid="uid://bxfx6m3nsdaql" path="res://level_base.tscn" id="1_7328t"]
 [ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="2_cv85l"]
 [ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="2_nndio"]
+[ext_resource type="PackedScene" uid="uid://cuwdqdsaeiwqv" path="res://camera.tscn" id="3_jw8fy"]
+[ext_resource type="PackedScene" uid="uid://csospxfu55ld0" path="res://button.tscn" id="5_q0qv2"]
 
 [node name="test" type="Node3D"]
 
@@ -16,7 +18,12 @@ size = Vector2(2, 2)
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1, -1, -2)
 size = Vector2(2, 2)
 
+[node name="Camera" parent="LevelBase/Camera" index="0" instance=ExtResource("3_jw8fy")]
+
 [node name="Box" parent="LevelBase/Boxes" index="0" instance=ExtResource("2_nndio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, -1.5)
+
+[node name="Button" parent="LevelBase/Puzzle Elements" index="1" instance=ExtResource("5_q0qv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.475, -1.5)
 
 [editable path="LevelBase"]

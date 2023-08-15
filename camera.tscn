@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://cuwdqdsaeiwqv"]
+
+[ext_resource type="Script" path="res://camera.gd" id="1_vdyur"]
+[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="2_pirh6"]
+[ext_resource type="Shader" path="res://picture.gdshader" id="3_5qce7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_inmcw"]
+resource_local_to_scene = true
+points = PackedVector3Array(-0.0682069, 0.0383664, -0.05, -0.0682069, -0.0383666, -0.05, 0.0682069, 0.0383664, -0.05, 0.0682069, -0.0383666, -0.05, -76.731, 76.731, -99.998, -76.731, -76.731, -99.998, 76.731, 76.731, -99.998, 76.731, -76.731, -99.998)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yp6q5"]
+size = Vector2(0.4, 0.3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m0mdw"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqk7f"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_5qce7")
+shader_parameter/viewport = SubResource("ViewportTexture_m0mdw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3j5gu"]
+size = Vector3(0.6, 0.4, 0.125)
+
+[node name="Camera" type="RigidBody3D" groups=["holdable"]]
+collision_layer = 8196
+collision_mask = 720903
+can_sleep = false
+script = ExtResource("1_vdyur")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(512, 384)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+cull_mask = 21
+current = true
+far = 100.0
+
+[node name="Observer" parent="SubViewport/Camera3D" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_pirh6")]
+camera = NodePath("..")
+self_collider = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Camera3D/Observer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013, 0.008, 0)
+shape = SubResource("ConvexPolygonShape3D_inmcw")
+
+[node name="Display" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0.075)
+visible = false
+mesh = SubResource("QuadMesh_yp6q5")
+surface_material_override/0 = SubResource("ShaderMaterial_tqk7f")
+
+[node name="Mesh" type="CSGBox3D" parent="."]
+layers = 2
+size = Vector3(0.6, 0.4, 0.125)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.05, 0, -0.09)
+radius = 0.15
+height = 0.063
+sides = 16
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.2, 0)
+radius = 0.04
+height = 0.031
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3j5gu")

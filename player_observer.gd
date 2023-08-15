@@ -9,7 +9,7 @@ func _physics_process(_delta) -> void:
 	var state = get_world_3d().direct_space_state
 	
 	# sort the seen array to put all observers last so the player observer does not override through-observer schenannigans
-	seen.sort_custom(func(a, b): return a.is_in_group("box") and not b.is_in_group("box"))
+	sort_seen()
 	#print("seen: ", seen)
 	
 	for observed_object in seen:
@@ -18,8 +18,6 @@ func _physics_process(_delta) -> void:
 			modify_observed(observed_object, obscured)
 		elif observed_object.is_in_group("mirror"):
 			check_obscurity_through_reflection(state, observed_object.player_reflection)
-	
-	#print("observed: ", observed)
 	
 	# iterate in all the boxes the player can see (even through other observers)
 	for box in observed:
@@ -38,6 +36,9 @@ func is_obscured(state: PhysicsDirectSpaceState3D, box: RigidBody3D) -> bool:
 	for vertex in remove_duplicates(box.mesh.mesh.get_faces()):
 		# cast a ray from the box to the player cam
 		var result = cast_ray(state, box.global_transform * vertex, camera.global_position, [box])
+		# if we hit nothing, the corner of the box is in the player (perhaps while holding it), count it as seen
+		if result.size() == 0:
+			return false
 		# if we hit the player, we can see that corner of the box
 		if result.collider == self_collider:
 			return false
@@ -46,7 +47,8 @@ func is_obscured(state: PhysicsDirectSpaceState3D, box: RigidBody3D) -> bool:
 func check_obscurity_through_reflection(state: PhysicsDirectSpaceState3D, reflection) -> void:
 	#print(observer.name + " seen: ", observer.seen)
 	# sort boxes before any other seen objecets
-	reflection.observer.seen.sort_custom(func(a, b): return a.is_in_group("box") and not b.is_in_group("box"))
+	reflection.observer.sort_seen()
+	
 	for observed_object in reflection.observer.seen:
 		# if we see a box, deal with the box
 		if observed_object.is_in_group("box"):
@@ -61,7 +63,7 @@ func check_obscurity_through_reflection(state: PhysicsDirectSpaceState3D, reflec
 			modify_observed(observed_object, obscured)
 		# if we see a mirror, continue the obscurity checks to the appropriate reflection
 		elif observed_object.is_in_group("mirror"):
-			# if the required connections between reflections is not set up, do check obscurity until they are (sometimes it's a frame late)
+			# if the required connections between reflections is not set up, do not check obscurity until they are (sometimes it's a frame late)
 			if reflection.recursive_reflection_connections.is_empty(): continue
 			if !reflection.recursive_reflection_connections.has(observed_object): continue
 			# recursively check other reflections
@@ -118,7 +120,7 @@ func is_corner_observed(state: PhysicsDirectSpaceState3D, point_position: Vector
 	var point_query = PhysicsPointQueryParameters3D.new()
 	point_query.collide_with_areas = true
 	point_query.collide_with_bodies = false
-	point_query.collision_mask = 8
+	point_query.collision_mask = 256
 	point_query.position = point_position
 	
 	# make sure only the observer looking at the point is the observer being checked.

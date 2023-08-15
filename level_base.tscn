@@ -20,6 +20,8 @@ light_indirect_energy = 4.0
 
 [node name="Mirrors" type="Node" parent="."]
 
+[node name="Camera" type="Node" parent="."]
+
 [node name="Boxes" type="Node" parent="."]
 
 [node name="Puzzle Elements" type="Node" parent="."]

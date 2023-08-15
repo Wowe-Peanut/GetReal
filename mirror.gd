@@ -12,7 +12,7 @@ var reflection = preload("res://mirror_reflection.tscn")
 @onready var mirror_transform: Transform3D = $MirrorOrigin.global_transform
 @onready var reflections = $Reflections
 @onready var player_reflection = $Reflections/PlayerReflectionMesh
-@onready var polaroid_reflection = $Reflections/PolaroidReflectionMesh
+@onready var camera_reflection = $Reflections/CameraReflectionMesh
 @onready var observer: Observer = $Reflections/PlayerReflectionMesh.observer
 
 # Called when the node enters the scene tree for the first time.
@@ -48,20 +48,20 @@ func handle_recursive_reflections(reflection_mesh) -> void:
 			if render_layer < 0:
 				continue
 			reflection_mesh.observer.camera.cull_mask += render_layer
-			var reflection_added = seen_object.add_reflection(reflection_mesh.mirror_cam, render_layer, reflection_mesh.recursion_depth)
+			var reflection_added = seen_object.add_reflection(reflection_mesh, render_layer)
 			reflection_mesh.recursive_reflections_handled.append(seen_object)
 			reflection_mesh.recursive_reflection_connections[seen_object] = reflection_added
 			reflection_added.recursive_parent_reflection = reflection_mesh
 			
 
 
-func add_reflection(camera_to_reflect, render_layer, recursion_depth) -> Node3D:
+func add_reflection(parent_reflection_mesh, render_layer) -> Node3D:
 	var new_reflection = reflection.instantiate()
 	new_reflection.render_layer = render_layer
-	new_reflection.mirror_cam_cull_mask = 3
-	new_reflection.camera_to_reflect = camera_to_reflect
-	new_reflection.recursion_depth = recursion_depth + 1
-	new_reflection.pixels_per_unit = pixels_per_unit / pow(2, (recursion_depth + 1))
+	new_reflection.mirror_cam_cull_mask = parent_reflection_mesh.reflection_type
+	new_reflection.camera_to_reflect = parent_reflection_mesh.mirror_cam
+	new_reflection.recursion_depth = parent_reflection_mesh.recursion_depth + 1
+	new_reflection.pixels_per_unit = pixels_per_unit / pow(2, (new_reflection.recursion_depth))
 	new_reflection.translate(Vector3(0, 0, 0.01))
 	reflections.add_child(new_reflection)
 	new_reflection.observer.self_collider = self
@@ -69,8 +69,8 @@ func add_reflection(camera_to_reflect, render_layer, recursion_depth) -> Node3D:
 	return new_reflection
 
 
-func register_polaroid(polaroid):
-	polaroid_reflection.camera_to_reflect = polaroid.observer.camera
+func register_camera(camera):
+	camera_reflection.camera_to_reflect = camera.observer.camera
 
 
 func update_size(new_size: Vector2) -> void:

@@ -11,13 +11,14 @@ points = PackedVector3Array(0, 0, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_5n1ph"]
 resource_local_to_scene = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2vfpf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8wsru"]
+viewport_path = NodePath("View")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pd161"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_gk6t6")
-shader_parameter/mirrorCamTex = SubResource("ViewportTexture_2vfpf")
+shader_parameter/mirrorCamTex = SubResource("ViewportTexture_8wsru")
 
 [node name="MirrorReflection" type="Node3D"]
 script = ExtResource("2_nbqyc")

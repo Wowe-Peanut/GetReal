@@ -22,9 +22,10 @@ script = ExtResource("1_23741")
 mirror_cam_cull_mask = 11
 render_layer = 8
 
-[node name="PolaroidReflectionMesh" parent="Reflections" instance=ExtResource("2_vl1m7")]
+[node name="CameraReflectionMesh" parent="Reflections" instance=ExtResource("2_vl1m7")]
 mirror_cam_cull_mask = 21
 render_layer = 16
+reflection_type = 5
 
 [node name="Border" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
