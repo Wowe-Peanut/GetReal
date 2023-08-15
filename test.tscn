@@ -11,19 +11,20 @@
 [node name="LevelBase" parent="." instance=ExtResource("1_7328t")]
 
 [node name="Mirror" parent="LevelBase/Mirrors" index="0" instance=ExtResource("2_cv85l")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1, -1, -2)
+transform = Transform3D(0.707107, 2.51215e-15, 0.707107, 0, 1, -3.55271e-15, -0.707107, 2.51215e-15, 0.707107, -1, -1.6, -2)
 size = Vector2(2, 2)
 
 [node name="Mirror2" parent="LevelBase/Mirrors" index="1" instance=ExtResource("2_cv85l")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1, -1, -2)
+transform = Transform3D(0.707107, -2.51215e-15, -0.707107, 0, 1, -3.55271e-15, 0.707107, 2.51215e-15, 0.707107, 1, -1.6, -2)
 size = Vector2(2, 2)
 
 [node name="Camera" parent="LevelBase/Camera" index="0" instance=ExtResource("3_jw8fy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, -0.5)
 
 [node name="Box" parent="LevelBase/Boxes" index="0" instance=ExtResource("2_nndio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, -2)
 
 [node name="Button" parent="LevelBase/Puzzle Elements" index="1" instance=ExtResource("5_q0qv2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.475, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.475, 1.5)
 
 [editable path="LevelBase"]

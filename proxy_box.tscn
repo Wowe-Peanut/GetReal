@@ -8,7 +8,6 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xt6rh"]
 transparency = 1
-albedo_color = Color(1, 1, 1, 0.121569)
 
 [node name="ProxyBox" type="RigidBody3D"]
 collision_layer = 32
@@ -20,6 +19,6 @@ can_sleep = false
 shape = SubResource("BoxShape3D_edgpf")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-layers = 6
+layers = 4
 mesh = SubResource("BoxMesh_bxil8")
 surface_material_override/0 = SubResource("StandardMaterial3D_xt6rh")

@@ -15,6 +15,7 @@ func toggle_hold(object) -> void:
 	if held_object:
 		held_object.collision_layer = object_collision
 		held_object.freeze = false
+		if held_object.has_method("dropped"): held_object.dropped()
 		held_object = null
 	else:
 		if not object or not object.is_in_group("holdable"):

@@ -33,15 +33,15 @@
 			"uuid": "7f524e22-97a2-4d45-8057-7a7b59dbaaaa",
 			"title": "Doing",
 			"tasks": [
+				"1ea3c97b-c70a-419e-be8f-461981eb8a4b",
 				"4d44e5ec-9018-45f5-b886-733b9f4f6472",
-				"1ea3c97b-c70a-419e-be8f-461981eb8a4b"
+				"161850e2-49fb-4168-ad21-f4d15a659827"
 			]
 		},
 		{
 			"uuid": "9547c0c5-90bf-4c60-af50-255f43864c05",
 			"title": "Done",
 			"tasks": [
-				"161850e2-49fb-4168-ad21-f4d15a659827",
 				"d198636a-082d-4c19-8b3b-a25c8f85f1bb"
 			]
 		}
@@ -50,9 +50,13 @@
 		{
 			"uuid": "161850e2-49fb-4168-ad21-f4d15a659827",
 			"title": "Boxes",
-			"description": "Box!",
+			"description": "",
 			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
 			"steps": [
+				{
+					"details": "Way to disable box deletion",
+					"done": false
+				},
 				{
 					"details": "Add entry for coyote time",
 					"done": false
@@ -62,7 +66,7 @@
 		{
 			"uuid": "1ea3c97b-c70a-419e-be8f-461981eb8a4b",
 			"title": "Player",
-			"description": "Add left hand and right hand hold positions for items. All items go in right or left hand.",
+			"description": "",
 			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
 			"steps": [
 				{
@@ -98,7 +102,7 @@
 		{
 			"uuid": "4d44e5ec-9018-45f5-b886-733b9f4f6472",
 			"title": "Camera",
-			"description": "Camera clips into players head (intended). any workarounds visually?\n\nAll environment objects update in picture? NO! Only puzzle elements that can be photographed and stored will appear in photo (no door, no player, ect)\nwhen dropping camera, picture disappears, state invalidated\n\n\nCurrent state: pictures work, and proxy boxes are spawned and de-spawned properly. functionality for dropping the camera and proxy boxes still needs work",
+			"description": "Camera clips into players head (intended). any workarounds visually?\n\ncheck to make sure box isn't obscured before creating proxy\nbox that is connected to proxy box doesn't disappear when not looking at it\n\nAll environment objects update in picture? NO! Only puzzle elements that can be photographed and stored will appear in photo (no door, no player, ect)\nhow does open doors effect this? do some doors need to be considered puzzle elements?\n\n",
 			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
 			"steps": [
 				{
@@ -107,11 +111,11 @@
 				},
 				{
 					"details": "Visuals",
-					"done": true
+					"done": false
 				},
 				{
 					"details": "Functionality",
-					"done": false
+					"done": true
 				}
 			]
 		},

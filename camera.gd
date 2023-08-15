@@ -33,11 +33,21 @@ func add_proxy_box(original_box) -> void:
 	proxies.append(proxy)
 	boxes_handled.append(original_box)
 
+
 func remove_proxy_boxes() -> void:
 	for proxy in proxies:
 		get_parent().remove_child(proxy)
 	proxies.clear()
 	boxes_handled.clear()
+
+
+func reset() -> bool:
+	if picture_taken:
+		picture_taken = false
+		display.visible = false
+		remove_proxy_boxes()
+		return true
+	return false
 
 
 func recursive_find_box_in_mirror(mirror_reflection) -> void:
@@ -52,15 +62,16 @@ func recursive_find_box_in_mirror(mirror_reflection) -> void:
 			recursive_find_box_in_mirror(mirror_reflection.recursive_reflection_connections[observed_object])
 
 
+func dropped() -> void:
+	reset()
+
+
 func take_picture() -> void:
-	if picture_taken:
-		picture_taken = false
-		display.visible = false
-		remove_proxy_boxes()
-		return
-		
-		
-		
+	
+	
+	if reset(): return
+	
+	
 	for observed_object in observer.seen:
 		if observed_object.is_in_group("box"):
 			add_proxy_box(observed_object)
