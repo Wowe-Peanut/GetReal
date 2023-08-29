@@ -20,6 +20,7 @@ mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_dtxx0")
 freeze_mode = 1
 script = ExtResource("1_odnql")
+type = 2
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_fsolg")

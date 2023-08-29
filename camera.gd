@@ -32,7 +32,7 @@ func add_proxy_box(original_box) -> void:
 	get_parent().add_child(proxy)
 	proxies.append(proxy)
 	
-	original_box.disabled = true
+	original_box.disable(true) # this is scary because we don't know if it should actually be disabled
 	boxes_handled.append(original_box)
 
 
@@ -42,7 +42,7 @@ func remove_proxy_boxes() -> void:
 	proxies.clear()
 	
 	for box in boxes_handled:
-		box.disabled = false
+		box.disable(false) # same as above comment
 	boxes_handled.clear()
 
 

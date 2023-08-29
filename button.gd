@@ -19,11 +19,13 @@ func modify_power():
 
 
 func _on_body_entered(body):
-	if not body in bodies: bodies.append(body)
+	if not body in bodies: 
+		bodies.append(body)
 	modify_power()
 	print("Entered: ", bodies, powered)
 	
 func _on_body_exited(body):
-	if body in bodies: bodies.erase(body)
+	if body in bodies: 
+		bodies.erase(body)
 	modify_power()
 	print("Exited: ", bodies, powered)
