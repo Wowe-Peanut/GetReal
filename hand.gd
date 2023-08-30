@@ -23,7 +23,9 @@ func toggle_hold(object) -> void:
 		held_object = object as RigidBody3D
 		held_object.freeze = true
 		object_collision = held_object.collision_layer
+		# below needs to be changed: not only the box can be picked up now
 		held_object.collision_layer = 16 + 65536 #box layer + held object layer, so it doesn't disappear and counts as being held
+		if held_object.has_signal("to_drop"): held_object.connect("to_drop", func() : toggle_hold(held_object))
 
 func toggle_aim(to_aim):
 	aiming = to_aim

@@ -23,6 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, -0.5)
 
 [node name="Box" parent="LevelBase/Boxes" index="0" instance=ExtResource("2_nndio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1, 1.5)
+type = 1
 
 [node name="Button" parent="LevelBase/Puzzle Elements" index="1" instance=ExtResource("5_q0qv2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.475, 1.5)

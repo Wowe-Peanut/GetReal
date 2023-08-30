@@ -1,7 +1,7 @@
 res://box.tscn
 res://default_environment_texture.tres
 res://picture.gdshader
-res://los_component.gd
+res://box.gd
 res://test.tscn
 res://player.tscn
 res://mirror.tscn
@@ -13,6 +13,5 @@ res://proxy_box.tscn
 res://button.tscn
 res://door.tscn
 res://level_base.tscn
-res://box.gd
-res://camera.gd
-res://player_observer.gd
+res://hand.gd
+res://holdable_body.gd

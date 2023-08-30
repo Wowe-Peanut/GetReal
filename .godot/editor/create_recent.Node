@@ -1,3 +1,5 @@
+HoldableBody
+RayCast3D
 Node3D
 Node
 RigidBody3D
@@ -18,5 +20,4 @@ VisibleOnScreenEnabler3D
 Sprite3D
 Timer
 VisibleOnScreenNotifier3D
-RayCast3D
 CharacterBody3D
