@@ -200,9 +200,22 @@
 		{
 			"uuid": "29bf6223-fb2c-45c3-9a83-8631eb837421",
 			"title": "Holdable Objects",
-			"description": "",
+			"description": "Change to CharacterBody in order to have more granular control over collisions for physically based items\n\nCharacter bodies can be rotated using rotate_axis() functions and still collide with move_and_slide(). USE THAT!",
 			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
-			"steps": []
+			"steps": [
+				{
+					"details": "Gravity Physics",
+					"done": false
+				},
+				{
+					"details": "Collision Physics",
+					"done": false
+				},
+				{
+					"details": "Rotation upon Collisions",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {

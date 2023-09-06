@@ -33,14 +33,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
 	
 	if event.is_action_pressed("jump"): jumping = true
-	if event.is_action_pressed("right_hand_interact"): toggle_hold_object(true)
-	if event.is_action_pressed("left_hand_interact"): toggle_hold_object(false)
-	if event.is_action_pressed("aim"): aim(true)
-	if event.is_action_released("aim"): aim(false)
 	if event.is_action_pressed("reset"): get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_cancel"): get_tree().quit()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if mouse_captured: _rotate_camera(delta)	
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
@@ -77,15 +73,3 @@ func _jump(delta: float) -> Vector3:
 		return jump_vel
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
-
-func toggle_hold_object(is_right_hand: bool) -> void:
-	var collider = look_ray.get_collider() as Node3D
-	
-	right_hand.toggle_hold(collider) if is_right_hand else left_hand.toggle_hold(collider)
-
-func aim(to_aim):
-	if right_hand.has_object() and right_hand.held_object.name == "Camera":
-		right_hand.toggle_aim(to_aim)
-	if left_hand.has_object() and left_hand.held_object.name == "Camera":
-		left_hand.toggle_aim(to_aim)
-		

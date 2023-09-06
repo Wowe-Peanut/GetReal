@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://cl5qkgt8f4myf"]
+
+[ext_resource type="Script" path="res://box_test.gd" id="1_cfffp"]
+[ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="2_d42cm"]
+[ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="2_j8moj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jw2tc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2sc4l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt5th"]
+resource_local_to_scene = true
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rrpgm"]
+resource_local_to_scene = true
+material = ExtResource("2_j8moj")
+size = Vector3(20, 1, 20)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kgcce"]
+
+[sub_resource type="Sky" id="Sky_jb83y"]
+sky_material = SubResource("ProceduralSkyMaterial_kgcce")
+
+[sub_resource type="Environment" id="Environment_tmgs5"]
+background_mode = 2
+sky = SubResource("Sky_jb83y")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+script = ExtResource("1_cfffp")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Node3D"]
+collision_layer = 20
+collision_mask = 720903
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Node3D"]
+collision_layer = 20
+collision_mask = 196615
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_jw2tc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D"]
+shape = SubResource("BoxShape3D_2sc4l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_gt5th")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_rrpgm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tmgs5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 10, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_d42cm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)

@@ -2,30 +2,31 @@
 
 [ext_resource type="Script" path="res://box.gd" id="1_odnql"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ptw6d"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtxx0"]
+friction = 2.0
+rough = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fsolg"]
+resource_local_to_scene = true
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tcafk"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_sbiki"]
-size = Vector3(0.1, 0.1, 0.1)
-
-[node name="Box" type="CharacterBody3D" groups=["box"]]
+[node name="Box" type="RigidBody3D" groups=["box"]]
 collision_layer = 20
 collision_mask = 196615
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_dtxx0")
+freeze_mode = 1
 script = ExtResource("1_odnql")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_ptw6d")
+shape = SubResource("BoxShape3D_fsolg")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 layers = 2
 mesh = SubResource("BoxMesh_tcafk")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
-mesh = SubResource("BoxMesh_sbiki")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.25

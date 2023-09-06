@@ -33,13 +33,14 @@ exclude_parent = false
 target_position = Vector3(0, 0, -3)
 collision_mask = 4
 
-[node name="RightHand" type="Marker3D" parent="PlayerCam"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0.4, -0.27, -0.8)
+[node name="RightHand" type="Node3D" parent="PlayerCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.27, -1)
 script = ExtResource("3_kqyjs")
 
-[node name="LeftHand" type="Marker3D" parent="PlayerCam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.27, -0.8)
+[node name="LeftHand" type="Node3D" parent="PlayerCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.27, -1)
 script = ExtResource("3_kqyjs")
+hand = "left"
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
