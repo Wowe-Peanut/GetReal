@@ -1,18 +1,17 @@
 class_name HoldableBody
-extends Node3D
+extends RigidBody3D
 
-@export var snap_velocity = 800.0
+@export var snap_velocity = 40.0
 @export var let_go_distance = 1.2
 
-@onready var kinematic = $CharacterBody3D
-@onready var rigidbody = $RigidBody3D
-@onready var collision = $CollisionShape3D
-@onready var mesh = $MeshInstance3D
+var linear_spring_stiffness = 10000.0
+var linear_spring_damping = 800.0
+
+var angular_spring_stiffness = 1200.0
+var angular_spring_damping = 110.0
 
 
-var current_physics: PhysicsBody3D
 var hand: Node3D
-var direction: Vector3
 var distance: float
 
 
@@ -29,9 +28,6 @@ signal on_dropped
 
 func _ready():
 	add_to_group("holdable")
-	current_physics = rigidbody
-	set_physics_body(rigidbody)
-
 
 func _physics_process(delta) -> void:
 	if hand:
@@ -42,37 +38,43 @@ func _physics_process(delta) -> void:
 			drop()
 
 
-func set_physics_body(physics):
-	physics.global_transform = current_physics.global_transform
-	current_physics.remove_from_group("box")
-	current_physics.process_mode = Node.PROCESS_MODE_DISABLED
-	physics.process_mode = Node.PROCESS_MODE_INHERIT
-	physics.add_to_group("box")
-	collision.reparent(physics, false)
-	mesh.reparent(physics, false)
-	current_physics = physics
-
-
 func move_hold_and_collide(delta) -> void:
-	direction = global_position.direction_to(hand.global_position).normalized()
-	distance = global_position.distance_to(hand.global_position)
 	
-	kinematic.velocity = direction * distance * delta * snap_velocity
 	
-	kinematic.move_and_slide()
+
+	var hand_transform: Transform3D = hand.global_transform
+	var current_transform: Transform3D = global_transform
+	
+	# translational spring movement
+	var displacement = hand_transform.origin - current_transform.origin
+	var force = hookes_law(linear_spring_stiffness, displacement, linear_spring_damping, linear_velocity)
+	
+	apply_central_force(force * delta)
+
+	# rotational spring movement (i don't understand basises)
+	var rotation_difference = hand_transform.basis * current_transform.basis.inverse()
+	var torque = hookes_law(angular_spring_stiffness, rotation_difference.get_euler(), angular_spring_damping, angular_velocity)
+	
+	apply_torque(torque * delta)
+
+	distance = displacement.length()
+
+
+func hookes_law(k: float, x: Vector3, damping: float, curr_velocity: Vector3):
+	return (k * x) - (damping * curr_velocity)
 
 
 func drop():
 	hand = null
-	kinematic.collision_layer += 4 # re-add to pickable objects
-	rigidbody.collision_layer += 4
+	collision_layer += 4 # re-add to pickable objects
+	gravity_scale = 1
 	print("dropped")
 	emit_signal("on_dropped")
 
 
 func pick_up(pickup_hand):
 	hand = pickup_hand
-	kinematic.collision_layer -= 4 # remove from pickable objects
-	rigidbody.collision_layer -= 4
+	collision_layer -= 4 # remove from pickable objects
+	gravity_scale = 0
 	print("picked up")
 	emit_signal("on_picked_up")

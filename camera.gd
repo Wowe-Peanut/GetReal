@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends HoldableBody
 
 const PROXY_BOX = preload("res://proxy_box.tscn")
 
@@ -12,6 +12,7 @@ var proxies = []
 var boxes_handled = []
 
 func _ready() -> void:
+	super()
 	MirrorController.register_camera(self)
 
 	
