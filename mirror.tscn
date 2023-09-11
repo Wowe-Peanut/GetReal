@@ -12,7 +12,7 @@ size = Vector3(2, 2, 0.1)
 
 [node name="Mirror" type="RigidBody3D" groups=["mirror"]]
 collision_layer = 4100
-collision_mask = 196615
+collision_mask = 720903
 freeze = true
 script = ExtResource("1_23741")
 

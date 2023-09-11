@@ -21,8 +21,6 @@ func toggle_hold() -> void:
 	else:
 		var object = look_ray.get_collider()
 		
-		print("object")
-		
 		if object and object.is_in_group("holdable"):
 			object.pick_up(self)
 			object.connect("on_dropped", _on_dropped)

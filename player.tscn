@@ -16,7 +16,10 @@ height = 1.4
 collision_layer = 524288
 collision_mask = 11
 script = ExtResource("1_16goh")
-camera_sens = 10.0
+speed = 5.0
+acceleration = 80.0
+jump_height = 1.2
+camera_sens = 8.0
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
@@ -30,7 +33,7 @@ self_collider = NodePath("../..")
 
 [node name="LookRay" type="RayCast3D" parent="PlayerCam"]
 exclude_parent = false
-target_position = Vector3(0, 0, -3)
+target_position = Vector3(0, 0, -2)
 collision_mask = 4
 
 [node name="RightHand" type="Node3D" parent="PlayerCam"]

@@ -2,16 +2,12 @@ class_name HoldableBody
 extends RigidBody3D
 
 @export var snap_velocity = 40.0
-@export var let_go_distance = 1.2
-
-var linear_spring_stiffness = 10000.0
-var linear_spring_damping = 800.0
-
-var angular_spring_stiffness = 1200.0
-var angular_spring_damping = 110.0
+@export var throw_velocity = 10.0
+@export var let_go_distance = 1.5
 
 
 var hand: Node3D
+var displacement: Vector3
 var distance: float
 
 
@@ -39,41 +35,41 @@ func _physics_process(delta) -> void:
 
 
 func move_hold_and_collide(delta) -> void:
-	
-	
-
 	var hand_transform: Transform3D = hand.global_transform
 	var current_transform: Transform3D = global_transform
 	
+	global_rotation = hand.global_rotation
+	
 	# translational spring movement
-	var displacement = hand_transform.origin - current_transform.origin
-	var force = hookes_law(linear_spring_stiffness, displacement, linear_spring_damping, linear_velocity)
+	displacement = hand_transform.origin - current_transform.origin
+	#var force = hookes_law(linear_spring_stiffness, displacement, linear_spring_damping, linear_velocity)
 	
-	apply_central_force(force * delta)
-
-	# rotational spring movement (i don't understand basises)
-	var rotation_difference = hand_transform.basis * current_transform.basis.inverse()
-	var torque = hookes_law(angular_spring_stiffness, rotation_difference.get_euler(), angular_spring_damping, angular_velocity)
+	var velocity = displacement * displacement.length() * snap_velocity
 	
-	apply_torque(torque * delta)
+	var collision = move_and_collide(velocity * delta, true)
+	if collision:
+		velocity = velocity.slide(collision.get_normal())
+		
+	move_and_collide(velocity * delta)
+	
 
 	distance = displacement.length()
-
-
-func hookes_law(k: float, x: Vector3, damping: float, curr_velocity: Vector3):
-	return (k * x) - (damping * curr_velocity)
 
 
 func drop():
 	hand = null
 	collision_layer += 4 # re-add to pickable objects
 	gravity_scale = 1
+	apply_central_impulse(displacement * throw_velocity)
 	print("dropped")
 	emit_signal("on_dropped")
 
 
 func pick_up(pickup_hand):
 	hand = pickup_hand
+	if hand.global_position.distance_to(global_position) > let_go_distance: 
+		drop()
+		return
 	collision_layer -= 4 # remove from pickable objects
 	gravity_scale = 0
 	print("picked up")
