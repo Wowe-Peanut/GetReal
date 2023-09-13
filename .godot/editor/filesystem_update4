@@ -1,10 +1,9 @@
 res://test.tscn
-res://default_environment_texture.tres
 res://picture.gdshader
 res://player.tscn
 res://box.tscn
 res://camera.tscn
 res://mirror.tscn
 res://box_test.tscn
-res://player.gd
-res://camera.gd
+res://player_observer.gd
+res://box.gd

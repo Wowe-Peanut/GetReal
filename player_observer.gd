@@ -3,7 +3,6 @@ extends Observer
 var observed: Array = []
 
 func _physics_process(_delta) -> void:
-	"""
 	var boxes = get_tree().get_nodes_in_group("box")
 	observed.clear()
 	
@@ -30,9 +29,6 @@ func _physics_process(_delta) -> void:
 	# any remaining boxes must not be able to be seen. start coyote time for them
 	for box in boxes:
 		box.not_seen()
-		pass
-	"""
-	pass
 
 func is_obscured(state: PhysicsDirectSpaceState3D, box: RigidBody3D) -> bool:
 	for vertex in remove_duplicates(box.mesh.mesh.get_faces()):

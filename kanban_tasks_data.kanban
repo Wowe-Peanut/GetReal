@@ -31,9 +31,8 @@
 			"uuid": "7f524e22-97a2-4d45-8057-7a7b59dbaaaa",
 			"title": "Doing",
 			"tasks": [
-				"1ea3c97b-c70a-419e-be8f-461981eb8a4b",
 				"b58c1b4c-4216-45f1-b4c1-1f55035a4e62",
-				"29bf6223-fb2c-45c3-9a83-8631eb837421"
+				"1ea3c97b-c70a-419e-be8f-461981eb8a4b"
 			]
 		},
 		{
@@ -43,7 +42,8 @@
 				"d198636a-082d-4c19-8b3b-a25c8f85f1bb",
 				"4d44e5ec-9018-45f5-b886-733b9f4f6472",
 				"161850e2-49fb-4168-ad21-f4d15a659827",
-				"adf02a71-b991-4753-90e0-166e5ec8912e"
+				"adf02a71-b991-4753-90e0-166e5ec8912e",
+				"29bf6223-fb2c-45c3-9a83-8631eb837421"
 			]
 		}
 	],
@@ -72,7 +72,7 @@
 			"steps": [
 				{
 					"details": "Movement changes",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Right hand / Left hand",
@@ -205,15 +205,15 @@
 			"steps": [
 				{
 					"details": "Gravity Physics",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Collision Physics",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Rotation upon Collisions",
-					"done": false
+					"done": true
 				}
 			]
 		}

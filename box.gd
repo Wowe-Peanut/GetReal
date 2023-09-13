@@ -28,6 +28,14 @@ func _ready() -> void:
 	coyote_timer.timeout.connect(destroy_self)
 
 
+func drop():
+	disabled = false
+	super()
+
+func pick_up(pickup_hand):
+	disabled = true
+	super(pickup_hand)
+
 
 func disable(to_disable: bool) -> void:
 	if type == BoxType.PERSISTANT or type == BoxType.INVERSE:
