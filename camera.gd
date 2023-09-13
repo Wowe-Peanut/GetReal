@@ -68,8 +68,9 @@ func recursive_find_box_in_mirror(mirror_reflection) -> void:
 			recursive_find_box_in_mirror(mirror_reflection.recursive_reflection_connections[observed_object])
 
 
-func dropped() -> void:
+func drop() -> void:
 	reset()
+	super()
 
 
 func take_picture() -> void:

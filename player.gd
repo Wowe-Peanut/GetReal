@@ -1,11 +1,15 @@
 extends CharacterBody3D
 
 @export_category("Player")
-@export_range(1, 35, 1) var speed: float = 7 # m/s
-@export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
+@export_range(1, 35, 1) var speed: float = 4 # m/s
+@export_range(10, 400, 1) var acceleration: float = 80 # m/s^2
 
-@export_range(0.1, 3.0, 0.1) var jump_height: float = 1.5 # m
-@export_range(0.1, 9.25, 0.05, "or_greater") var camera_sens: float = 3
+@export_range(0.1, 3.0, 0.1) var jump_height: float = 0.7 # m
+@export_range(0.1, 9.25, 0.05, "or_greater") var camera_sens: float = 8
+
+const MAX_SPEED: float = 6.0
+const MIN_SPEED: float = 1.0
+const SPEED_CHANGE_FACTOR: float = 0.1
 
 var jumping: bool = false
 var mouse_captured: bool = false
@@ -34,6 +38,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("jump"): jumping = true
 	if event.is_action_pressed("reset"): get_tree().reload_current_scene()
+	if event.is_action_pressed("raise_move_speed"): change_move_speed(SPEED_CHANGE_FACTOR)
+	if event.is_action_pressed("lower_move_speed"): change_move_speed(-SPEED_CHANGE_FACTOR)
 	if event.is_action_pressed("ui_cancel"): get_tree().quit()
 
 func _physics_process(delta: float) -> void:
@@ -73,3 +79,8 @@ func _jump(delta: float) -> Vector3:
 		return jump_vel
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
+
+func change_move_speed(speed_change):
+	speed += speed_change
+	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
+	pass
