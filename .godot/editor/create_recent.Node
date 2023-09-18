@@ -1,3 +1,4 @@
+Node
 WorldEnvironment
 MeshInstance3D
 CollisionShape3D
@@ -12,7 +13,6 @@ CharacterBody3D
 RemoteTransform3D
 CSGBox3D
 RayCast3D
-Node
 CSGCylinder3D
 SpringArm3D
 Marker3D

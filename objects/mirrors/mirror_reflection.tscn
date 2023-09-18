@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://r2w0qysvtd6"]
 
-[ext_resource type="Shader" path="res://mirror.gdshader" id="1_gk6t6"]
-[ext_resource type="Script" path="res://mirror_reflection.gd" id="2_nbqyc"]
-[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="3_lspv8"]
+[ext_resource type="Shader" path="res://objects/mirrors/mirror.gdshader" id="1_gk6t6"]
+[ext_resource type="Script" path="res://objects/mirrors/mirror_reflection.gd" id="2_nbqyc"]
+[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://objects/observers/observer.tscn" id="3_lspv8"]
+
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xhkai"]
 resource_local_to_scene = true

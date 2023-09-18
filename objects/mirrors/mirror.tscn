@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b41j52vgwvasr"]
 
-[ext_resource type="Script" path="res://mirror.gd" id="1_23741"]
-[ext_resource type="PackedScene" uid="uid://r2w0qysvtd6" path="res://mirror_reflection.tscn" id="2_vl1m7"]
+[ext_resource type="Script" path="res://objects/mirrors/mirror.gd" id="1_gyhln"]
+[ext_resource type="PackedScene" uid="uid://r2w0qysvtd6" path="res://objects/mirrors/mirror_reflection.tscn" id="2_dg1k7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tx3na"]
 resource_local_to_scene = true
@@ -14,15 +14,15 @@ size = Vector3(1, 1, 0.1)
 collision_layer = 4100
 collision_mask = 720903
 freeze = true
-script = ExtResource("1_23741")
+script = ExtResource("1_gyhln")
 
 [node name="Reflections" type="Node3D" parent="."]
 
-[node name="PlayerReflectionMesh" parent="Reflections" instance=ExtResource("2_vl1m7")]
+[node name="PlayerReflectionMesh" parent="Reflections" instance=ExtResource("2_dg1k7")]
 mirror_cam_cull_mask = 11
 render_layer = 8
 
-[node name="CameraReflectionMesh" parent="Reflections" instance=ExtResource("2_vl1m7")]
+[node name="CameraReflectionMesh" parent="Reflections" instance=ExtResource("2_dg1k7")]
 mirror_cam_cull_mask = 21
 render_layer = 16
 reflection_type = 5

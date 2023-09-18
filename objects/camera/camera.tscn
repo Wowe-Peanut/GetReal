@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cuwdqdsaeiwqv"]
 
-[ext_resource type="Script" path="res://camera.gd" id="1_vdyur"]
-[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://observer.tscn" id="2_pirh6"]
-[ext_resource type="Shader" path="res://picture.gdshader" id="3_5qce7"]
+[ext_resource type="Script" path="res://objects/camera/camera.gd" id="1_rxguv"]
+[ext_resource type="PackedScene" uid="uid://tb1yinrrwcmg" path="res://objects/observers/observer.tscn" id="2_8sg36"]
+[ext_resource type="Shader" path="res://objects/camera/picture.gdshader" id="3_vpuw8"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_inmcw"]
 resource_local_to_scene = true
@@ -17,7 +17,7 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tqk7f"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_5qce7")
+shader = ExtResource("3_vpuw8")
 shader_parameter/viewport = SubResource("ViewportTexture_m0mdw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3j5gu"]
@@ -28,7 +28,7 @@ collision_layer = 8196
 collision_mask = 196615
 inertia = Vector3(0.03, 0.03, 0.03)
 can_sleep = false
-script = ExtResource("1_vdyur")
+script = ExtResource("1_rxguv")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(512, 384)
@@ -39,7 +39,7 @@ cull_mask = 21
 current = true
 far = 100.0
 
-[node name="Observer" parent="SubViewport/Camera3D" node_paths=PackedStringArray("camera") instance=ExtResource("2_pirh6")]
+[node name="Observer" parent="SubViewport/Camera3D" node_paths=PackedStringArray("camera") instance=ExtResource("2_8sg36")]
 camera = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Camera3D/Observer"]

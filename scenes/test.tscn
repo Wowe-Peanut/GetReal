@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3jr12ajd7mo4"]
 
-[ext_resource type="PackedScene" uid="uid://bxfx6m3nsdaql" path="res://level_base.tscn" id="1_7328t"]
-[ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://mirror.tscn" id="2_cv85l"]
-[ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://box.tscn" id="2_nndio"]
-[ext_resource type="PackedScene" uid="uid://bedpn4txymnt5" path="res://lever.tscn" id="4_jyybq"]
-[ext_resource type="PackedScene" uid="uid://csospxfu55ld0" path="res://button.tscn" id="5_q0qv2"]
+[ext_resource type="PackedScene" uid="uid://bxfx6m3nsdaql" path="res://scenes/level_base.tscn" id="1_7328t"]
+[ext_resource type="PackedScene" uid="uid://b41j52vgwvasr" path="res://objects/mirrors/mirror.tscn" id="2_cv85l"]
+[ext_resource type="PackedScene" uid="uid://c6t43xntvjerc" path="res://objects/box.tscn" id="2_nndio"]
+[ext_resource type="PackedScene" uid="uid://bedpn4txymnt5" path="res://objects/lever.tscn" id="4_jyybq"]
+[ext_resource type="PackedScene" uid="uid://csospxfu55ld0" path="res://objects/button.tscn" id="5_q0qv2"]
 
 [node name="test" type="Node3D"]
 

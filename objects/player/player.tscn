@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjgyylqm3xc11"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_16goh"]
-[ext_resource type="PackedScene" uid="uid://bjgk6csfxdc76" path="res://player_observer.tscn" id="2_teo3p"]
-[ext_resource type="Script" path="res://hand.gd" id="3_kqyjs"]
+[ext_resource type="Script" path="res://objects/player/player.gd" id="1_lmjs3"]
+[ext_resource type="PackedScene" uid="uid://bjgk6csfxdc76" path="res://objects/observers/player_observer.tscn" id="2_rjext"]
+[ext_resource type="Script" path="res://objects/player/hand.gd" id="3_sbkyk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2huvx"]
 radius = 0.25
@@ -15,7 +15,7 @@ height = 0.5
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 524288
 collision_mask = 11
-script = ExtResource("1_16goh")
+script = ExtResource("1_lmjs3")
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
@@ -23,7 +23,7 @@ cull_mask = 11
 current = true
 far = 100.0
 
-[node name="PlayerObserver" parent="PlayerCam" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_teo3p")]
+[node name="PlayerObserver" parent="PlayerCam" node_paths=PackedStringArray("camera", "self_collider") instance=ExtResource("2_rjext")]
 camera = NodePath("..")
 self_collider = NodePath("../..")
 
@@ -34,11 +34,11 @@ collision_mask = 4
 
 [node name="RightHand" type="Node3D" parent="PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.27, -0.8)
-script = ExtResource("3_kqyjs")
+script = ExtResource("3_sbkyk")
 
 [node name="LeftHand" type="Node3D" parent="PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.27, -0.8)
-script = ExtResource("3_kqyjs")
+script = ExtResource("3_sbkyk")
 hand = "left"
 
 [node name="Collision" type="CollisionShape3D" parent="."]

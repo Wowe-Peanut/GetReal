@@ -16,9 +16,10 @@
 			"uuid": "90a32ca1-48ca-41f2-a2dc-a719b5dbc1af",
 			"title": "Todo",
 			"tasks": [
+				"adf02a71-b991-4753-90e0-166e5ec8912e",
+				"b58c1b4c-4216-45f1-b4c1-1f55035a4e62",
 				"4c24fbf2-8012-4cdd-83ca-e2e56dca5bd2",
 				"18e4372f-2037-4414-a47d-b2c72a723811",
-				"af396fea-7fcb-4520-b044-b971d9022e43",
 				"b537b0e7-0ab3-4216-a78e-2084da4425e8",
 				"c9fe289a-b153-4be5-a4ab-2326484dfeb2",
 				"faa33cc8-5be5-4335-9df5-872f2535791e",
@@ -31,8 +32,9 @@
 			"uuid": "7f524e22-97a2-4d45-8057-7a7b59dbaaaa",
 			"title": "Doing",
 			"tasks": [
-				"b58c1b4c-4216-45f1-b4c1-1f55035a4e62",
-				"1ea3c97b-c70a-419e-be8f-461981eb8a4b"
+				"1ea3c97b-c70a-419e-be8f-461981eb8a4b",
+				"af396fea-7fcb-4520-b044-b971d9022e43",
+				"67236515-f811-4e5a-b04a-610893808f00"
 			]
 		},
 		{
@@ -42,7 +44,6 @@
 				"d198636a-082d-4c19-8b3b-a25c8f85f1bb",
 				"4d44e5ec-9018-45f5-b886-733b9f4f6472",
 				"161850e2-49fb-4168-ad21-f4d15a659827",
-				"adf02a71-b991-4753-90e0-166e5ec8912e",
 				"29bf6223-fb2c-45c3-9a83-8631eb837421"
 			]
 		}
@@ -81,6 +82,10 @@
 				{
 					"details": "Box collision fixes",
 					"done": true
+				},
+				{
+					"details": "Camera Sens modifier",
+					"done": false
 				}
 			]
 		},
@@ -214,6 +219,26 @@
 				{
 					"details": "Rotation upon Collisions",
 					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "67236515-f811-4e5a-b04a-610893808f00",
+			"title": "Interactables",
+			"description": "component for highlighting interactable meshes when targeted, as well as entry for behavior when interacted. \n\ncan only interact with open hand? (ie. hand without any objects in it?)",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": [
+				{
+					"details": "Targeting Behavoir",
+					"done": false
+				},
+				{
+					"details": "Entry to interaction",
+					"done": false
+				},
+				{
+					"details": "Mesh highlighting",
+					"done": false
 				}
 			]
 		}

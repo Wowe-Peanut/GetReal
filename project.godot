@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Get Real"
-run/main_scene="res://test.tscn"
+run/main_scene="res://scenes/test.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
 
 [autoload]
 
-MirrorController="*res://mirror_controller.gd"
+MirrorController="*res://objects/mirrors/mirror_controller.gd"
 
 [display]
 

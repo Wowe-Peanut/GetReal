@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxfx6m3nsdaql"]
 
 [ext_resource type="Material" uid="uid://byswl41fa324d" path="res://default_environment_texture.tres" id="1_qf08a"]
-[ext_resource type="PackedScene" uid="uid://d04h2k38rjx17" path="res://door.tscn" id="2_7u2ol"]
-[ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://player.tscn" id="2_18mfb"]
+[ext_resource type="PackedScene" uid="uid://d04h2k38rjx17" path="res://objects/door.tscn" id="2_7u2ol"]
+[ext_resource type="PackedScene" uid="uid://bjgyylqm3xc11" path="res://objects/player/player.tscn" id="2_18mfb"]
 
 [sub_resource type="Environment" id="Environment_vhfuv"]
 tonemap_mode = 3

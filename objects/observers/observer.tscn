@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tb1yinrrwcmg"]
 
-[ext_resource type="Script" path="res://observer.gd" id="1_68yoe"]
+[ext_resource type="Script" path="res://objects/observers/observer.gd" id="1_68yoe"]
 
 [node name="Observer" type="Area3D" groups=["observer"]]
 collision_layer = 256

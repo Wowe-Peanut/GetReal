@@ -1,6 +1,6 @@
 extends HoldableBody
 
-const PROXY_BOX = preload("res://proxy_box.tscn")
+const PROXY_BOX = preload("res://objects/proxy_box.tscn")
 
 @onready var viewport: SubViewport = $SubViewport
 @onready var camera: Camera3D = $SubViewport/Camera3D

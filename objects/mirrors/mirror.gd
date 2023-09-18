@@ -1,7 +1,7 @@
 @tool
 extends RigidBody3D
 
-var reflection = preload("res://mirror_reflection.tscn")
+var reflection = preload("res://objects/mirrors/mirror_reflection.tscn")
 
 @export var pixels_per_unit: int = 1024
 @export var size: Vector2 = Vector2(1, 1):

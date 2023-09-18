@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://csospxfu55ld0"]
 
-[ext_resource type="Texture2D" uid="uid://bfnen7wfni1pd" path="res://PNG/Red/texture_03.png" id="1_tmaph"]
-[ext_resource type="Script" path="res://button.gd" id="1_xrjfu"]
-[ext_resource type="Texture2D" uid="uid://bebafni6u3f2l" path="res://PNG/Light/texture_11.png" id="2_gf4dt"]
+[ext_resource type="Script" path="res://objects/button.gd" id="1_1pprb"]
+[ext_resource type="Texture2D" uid="uid://bfnen7wfni1pd" path="res://PNG/Red/texture_03.png" id="2_4d73m"]
+[ext_resource type="Texture2D" uid="uid://bebafni6u3f2l" path="res://PNG/Light/texture_11.png" id="3_xrfng"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_iview"]
 top_radius = 0.4
@@ -11,13 +11,13 @@ height = 0.05
 cap_bottom = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf1p2"]
-albedo_texture = ExtResource("1_tmaph")
+albedo_texture = ExtResource("2_4d73m")
 
 [sub_resource type="BoxMesh" id="BoxMesh_i26oq"]
 size = Vector3(1, 0.05, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur2k3"]
-albedo_texture = ExtResource("2_gf4dt")
+albedo_texture = ExtResource("3_xrfng")
 uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b1pyw"]
@@ -28,7 +28,7 @@ size = Vector3(1, 0.05, 1)
 
 [node name="Button" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
-script = ExtResource("1_xrjfu")
+script = ExtResource("1_1pprb")
 
 [node name="Mesh" type="Node3D" parent="."]
 
