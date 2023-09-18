@@ -104,6 +104,7 @@ raise_move_speed={
 3d_physics/layer_5="Boxes"
 3d_physics/layer_6="Proxy Boxes"
 3d_physics/layer_7="Buttons"
+3d_physics/layer_8="Levers"
 3d_physics/layer_9="Observers"
 3d_physics/layer_13="Mirror"
 3d_physics/layer_14="Polaroid"

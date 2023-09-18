@@ -9,3 +9,7 @@ res://mirror.tscn
 res://box_test.tscn
 res://player.gd
 res://holdable_body.gd
+res://lever.tscn
+res://button.tscn
+res://level_base.tscn
+res://default_env.tres
