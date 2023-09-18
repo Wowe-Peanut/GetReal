@@ -1,8 +1,8 @@
 class_name HoldableBody
 extends RigidBody3D
 
-@export var snap_velocity = 40.0
-@export var throw_velocity = 10.0
+@export var snap_velocity = 70.0
+@export var throw_velocity = 15.0
 @export var let_go_distance = 1.5
 
 

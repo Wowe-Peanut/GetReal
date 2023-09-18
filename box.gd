@@ -29,11 +29,11 @@ func _ready() -> void:
 
 
 func drop():
-	disabled = false
+	disable(true)
 	super()
 
 func pick_up(pickup_hand):
-	disabled = true
+	disable(false)
 	super(pickup_hand)
 
 

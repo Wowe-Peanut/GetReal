@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export_range(10, 400, 1) var acceleration: float = 80 # m/s^2
 
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 0.7 # m
-@export_range(0.1, 9.25, 0.05, "or_greater") var camera_sens: float = 8
+@export_range(0.1, 9.25, 0.05, "or_greater") var camera_sens: float = 5
 
 const MAX_SPEED: float = 6.0
 const MIN_SPEED: float = 1.0
