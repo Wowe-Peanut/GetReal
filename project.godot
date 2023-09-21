@@ -19,10 +19,6 @@ config/icon="res://icon.png"
 
 MirrorController="*res://objects/mirrors/mirror_controller.gd"
 
-[display]
-
-window/size/mode=3
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")

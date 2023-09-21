@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bedpn4txymnt5"]
+[gd_scene load_steps=9 format=3 uid="uid://bedpn4txymnt5"]
 
 [ext_resource type="Texture2D" uid="uid://dmrirbyk384be" path="res://PNG/Light/texture_04.png" id="1_e24kw"]
 [ext_resource type="Texture2D" uid="uid://cdguyieywy0q6" path="res://PNG/Purple/texture_09.png" id="2_nooon"]
+[ext_resource type="Script" path="res://interact_component.gd" id="3_sy7v6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pp033"]
 size = Vector3(0.2, 0.3, 0.1)
@@ -37,3 +38,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_54ecc")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0.05)
 mesh = SubResource("BoxMesh_jnvrc")
 surface_material_override/0 = SubResource("StandardMaterial3D_oiutn")
+
+[node name="InteractComponent" type="Node" parent="."]
+script = ExtResource("3_sy7v6")

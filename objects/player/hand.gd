@@ -3,7 +3,7 @@ extends Node3D
 
 @export_enum("right", "left") var hand: String = "right"
 
-@onready var look_ray: RayCast3D = $"../LookRay"
+@onready var look_ray: RayCast3D = get_parent()
 
 
 var held_object: HoldableBody = null

@@ -24,10 +24,7 @@ var grav_vel: Vector3 # Gravity velocity
 var jump_vel: Vector3 # Jumping velocity
 
 @onready var camera: Camera3D = $PlayerCam
-@onready var look_ray: RayCast3D = $PlayerCam/LookRay
-@onready var observer = $PlayerCam/PlayerObserver
-@onready var right_hand = $PlayerCam/RightHand
-@onready var left_hand = $PlayerCam/LeftHand
+@onready var observer: Observer = $PlayerCam/PlayerObserver
 
 func _ready() -> void:
 	capture_mouse()

@@ -3,3 +3,11 @@ res://default_environment_texture.tres
 res://objects/camera/picture.gdshader
 res://objects/camera/camera.tscn
 res://scenes/level_base.tscn
+res://objects/lever.tscn
+res://objects/player/hand.gd
+res://objects/player/player.tscn
+res://objects/player/player.gd
+res://objects/box.gd
+res://objects/player/look_ray.gd
+res://objects/box.tscn
+res://interact_component.gd
