@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bedpn4txymnt5"]
+[gd_scene load_steps=10 format=3 uid="uid://bedpn4txymnt5"]
 
 [ext_resource type="Texture2D" uid="uid://dmrirbyk384be" path="res://PNG/Light/texture_04.png" id="1_e24kw"]
 [ext_resource type="Texture2D" uid="uid://cdguyieywy0q6" path="res://PNG/Purple/texture_09.png" id="2_nooon"]
@@ -15,12 +15,15 @@ albedo_texture = ExtResource("1_e24kw")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_jnvrc"]
-size = Vector3(0.05, 0.05, 0.2)
+size = Vector3(0.05, 0.05, 0.15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oiutn"]
 shading_mode = 0
 albedo_texture = ExtResource("2_nooon")
 uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ip0yr"]
+size = Vector3(0.25, 0.35, 0.1)
 
 [node name="Lever" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
@@ -34,10 +37,19 @@ shape = SubResource("BoxShape3D_pp033")
 mesh = SubResource("BoxMesh_3lycy")
 surface_material_override/0 = SubResource("StandardMaterial3D_54ecc")
 
-[node name="Handle" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0.05)
+[node name="Fulcrum" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.83867, -0.544639, 0, 0.544639, 0.83867, 0, 0, 0)
+
+[node name="Handle" type="MeshInstance3D" parent="Fulcrum"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0798887)
 mesh = SubResource("BoxMesh_jnvrc")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_oiutn")
 
-[node name="InteractComponent" type="Node" parent="."]
+[node name="InteractComponent" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("3_sy7v6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractComponent"]
+shape = SubResource("BoxShape3D_ip0yr")

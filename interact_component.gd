@@ -1,13 +1,15 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	get_parent().add_to_group("interactable")
+signal on_targeted
+signal on_stop_targeted
+
+
+func target():
+	print("targeted: ", self.name)
+	emit_signal("on_targeted")
 	
-	print(get_parent().get_groups())
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func stop_target():
+	print("stop targeted: ", self.name)
+	emit_signal("on_stop_targeted")

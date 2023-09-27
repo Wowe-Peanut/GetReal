@@ -1,14 +1,15 @@
+CollisionShape3D
+Area3D
+Node3D
 Node
 WorldEnvironment
 MeshInstance3D
-CollisionShape3D
 StaticBody3D
 HoldableBody
 DirectionalLight3D
 Generic6DOFJoint3D
 Camera3D
 RigidBody3D
-Node3D
 CharacterBody3D
 RemoteTransform3D
 CSGBox3D
@@ -16,7 +17,6 @@ RayCast3D
 CSGCylinder3D
 SpringArm3D
 Marker3D
-Area3D
 SubViewport
 AnimationPlayer
 VisibleOnScreenEnabler3D
