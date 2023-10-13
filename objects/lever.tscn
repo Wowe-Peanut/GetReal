@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bedpn4txymnt5"]
+[gd_scene load_steps=11 format=3 uid="uid://bedpn4txymnt5"]
 
 [ext_resource type="Texture2D" uid="uid://dmrirbyk384be" path="res://PNG/Light/texture_04.png" id="1_e24kw"]
+[ext_resource type="Script" path="res://objects/lever.gd" id="1_xaetj"]
 [ext_resource type="Texture2D" uid="uid://cdguyieywy0q6" path="res://PNG/Purple/texture_09.png" id="2_nooon"]
-[ext_resource type="Script" path="res://interact_component.gd" id="3_sy7v6"]
+[ext_resource type="PackedScene" uid="uid://bm3sumpk6hrv3" path="res://interact_component.tscn" id="4_2qw0y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pp033"]
 size = Vector3(0.2, 0.3, 0.1)
@@ -22,13 +23,14 @@ shading_mode = 0
 albedo_texture = ExtResource("2_nooon")
 uv1_triplanar = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ip0yr"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpm8p"]
 size = Vector3(0.25, 0.35, 0.1)
 
 [node name="Lever" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
 collision_layer = 5
 collision_mask = 128
+script = ExtResource("1_xaetj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_pp033")
@@ -46,10 +48,7 @@ mesh = SubResource("BoxMesh_jnvrc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_oiutn")
 
-[node name="InteractComponent" type="Area3D" parent="."]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("3_sy7v6")
+[node name="InteractComponent" parent="." instance=ExtResource("4_2qw0y")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractComponent"]
-shape = SubResource("BoxShape3D_ip0yr")
+shape = SubResource("BoxShape3D_tpm8p")

@@ -10,20 +10,9 @@ var hand: Node3D
 var displacement: Vector3
 var distance: float
 
-
-var holdable: bool = true:
-	set(value):
-		if value:
-			add_to_group("holdable")
-		else:
-			remove_from_group("holdable")
-		holdable = value
-
 signal on_picked_up
 signal on_dropped
 
-func _ready():
-	add_to_group("holdable")
 
 func _physics_process(delta) -> void:
 	if hand:
@@ -58,7 +47,6 @@ func move_hold_and_collide(delta) -> void:
 
 func drop():
 	hand = null
-	collision_layer += 4 # re-add to pickable objects
 	gravity_scale = 1
 	apply_central_impulse(displacement * throw_velocity)
 	print("dropped")
@@ -70,7 +58,6 @@ func pick_up(pickup_hand):
 	if hand.global_position.distance_to(global_position) > let_go_distance: 
 		drop()
 		return
-	collision_layer -= 4 # remove from pickable objects
 	gravity_scale = 0
 	print("picked up")
 	emit_signal("on_picked_up")

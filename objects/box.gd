@@ -5,8 +5,7 @@ extends HoldableBody
 
 @onready var mesh: MeshInstance3D = $Mesh
 @onready var coyote_timer: Timer = $CoyoteTimer
-
-@onready var sticky_check = $RayCast3D
+@onready var interact_component = $InteractComponent
 
 
 enum BoxType {
@@ -22,18 +21,20 @@ var disabled: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	super()
 	if type == BoxType.PERSISTANT: disabled = true
 	
+	interact_component.connect("on_interact", _on_box_interact)
 	coyote_timer.timeout.connect(destroy_self)
 
 
 func drop():
 	disable(false)
+	interact_component.disable(false)
 	super()
 
 func pick_up(pickup_hand):
 	disable(true)
+	interact_component.disable(true)
 	super(pickup_hand)
 
 
@@ -52,7 +53,6 @@ func is_seen():
 			stop_coyote_timer()
 		BoxType.INVERSE:
 			mesh.visible = false
-			holdable = false
 
 
 func not_seen():
@@ -63,7 +63,14 @@ func not_seen():
 			start_coyote_timer()
 		BoxType.INVERSE:
 			mesh.visible = true
-			holdable = true
+
+
+func _on_box_interact(pickup_hand):
+	if hand: return
+	
+	pickup_hand.held_object = self
+	connect("on_dropped", pickup_hand._on_dropped)
+	pick_up(pickup_hand)
 
 
 func start_coyote_timer() -> void:

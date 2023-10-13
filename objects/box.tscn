@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6t43xntvjerc"]
+[gd_scene load_steps=8 format=3 uid="uid://c6t43xntvjerc"]
 
 [ext_resource type="Script" path="res://objects/box.gd" id="1_pdfvi"]
 [ext_resource type="Texture2D" uid="uid://dvulhu6l1jx2b" path="res://PNG/Purple/texture_10.png" id="2_p5gf3"]
+[ext_resource type="PackedScene" uid="uid://bm3sumpk6hrv3" path="res://interact_component.tscn" id="3_uvnmb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ptw6d"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -14,8 +15,11 @@ shading_mode = 0
 albedo_texture = ExtResource("2_p5gf3")
 uv1_triplanar = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ubgk"]
+size = Vector3(0.55, 0.55, 0.55)
+
 [node name="Box" type="RigidBody3D" groups=["box"]]
-collision_layer = 20
+collision_layer = 16
 collision_mask = 196615
 script = ExtResource("1_pdfvi")
 
@@ -31,6 +35,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_am40h")
 wait_time = 0.25
 one_shot = true
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -0.3)
-collision_mask = 3
+[node name="InteractComponent" parent="." instance=ExtResource("3_uvnmb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractComponent"]
+shape = SubResource("BoxShape3D_7ubgk")
