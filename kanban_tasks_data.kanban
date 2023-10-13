@@ -33,6 +33,7 @@
 			"title": "Doing",
 			"tasks": [
 				"1ea3c97b-c70a-419e-be8f-461981eb8a4b",
+				"e57d1b05-3b05-48a8-96d5-dca5fe9ab122",
 				"af396fea-7fcb-4520-b044-b971d9022e43",
 				"67236515-f811-4e5a-b04a-610893808f00"
 			]
@@ -179,7 +180,20 @@
 			"title": "Levers",
 			"description": "Like a button that can be used without a box, still resets when not observed",
 			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
-			"steps": []
+			"steps": [
+				{
+					"details": "Interaction",
+					"done": true
+				},
+				{
+					"details": "Behavior",
+					"done": false
+				},
+				{
+					"details": "Persistant Levers?",
+					"done": false
+				}
+			]
 		},
 		{
 			"uuid": "3f7fa8e5-f933-4d03-989c-602246ff1a47",
@@ -230,17 +244,24 @@
 			"steps": [
 				{
 					"details": "Targeting Behavoir",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Entry to interaction",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Mesh highlighting",
 					"done": false
 				}
 			]
+		},
+		{
+			"uuid": "e57d1b05-3b05-48a8-96d5-dca5fe9ab122",
+			"title": "Visibility Component",
+			"description": "Component to hook into the line of sight code (applies to boxes, levers, and any other object that has LOS dependent behavior)",
+			"category": "370e6858-ea13-46a6-afc7-978be64f1c39",
+			"steps": []
 		}
 	],
 	"layout": {
